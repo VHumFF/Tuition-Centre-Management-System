@@ -16,5 +16,10 @@ namespace Tuition_Centre_Management_System
         {
 
         }
+
+        private void btnLogin_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
