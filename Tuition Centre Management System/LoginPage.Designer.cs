@@ -36,8 +36,8 @@
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.picboxUsername = new System.Windows.Forms.PictureBox();
             this.picboxPassword = new System.Windows.Forms.PictureBox();
-            this.picboxShowPass = new System.Windows.Forms.PictureBox();
             this.btnLogin = new System.Windows.Forms.Button();
+            this.picboxShowPass = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.picboxUsername)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picboxPassword)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picboxShowPass)).BeginInit();
@@ -108,16 +108,6 @@
             this.picboxPassword.TabIndex = 5;
             this.picboxPassword.TabStop = false;
             // 
-            // picboxShowPass
-            // 
-            this.picboxShowPass.Image = ((System.Drawing.Image)(resources.GetObject("picboxShowPass.Image")));
-            this.picboxShowPass.Location = new System.Drawing.Point(261, 190);
-            this.picboxShowPass.Name = "picboxShowPass";
-            this.picboxShowPass.Size = new System.Drawing.Size(25, 23);
-            this.picboxShowPass.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picboxShowPass.TabIndex = 6;
-            this.picboxShowPass.TabStop = false;
-            // 
             // btnLogin
             // 
             this.btnLogin.Font = new System.Drawing.Font("Gill Sans MT", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -129,6 +119,18 @@
             this.btnLogin.Text = "Log in";
             this.btnLogin.UseVisualStyleBackColor = true;
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
+            // 
+            // picboxShowPass
+            // 
+            this.picboxShowPass.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.picboxShowPass.Image = ((System.Drawing.Image)(resources.GetObject("picboxShowPass.Image")));
+            this.picboxShowPass.Location = new System.Drawing.Point(261, 190);
+            this.picboxShowPass.Name = "picboxShowPass";
+            this.picboxShowPass.Size = new System.Drawing.Size(25, 23);
+            this.picboxShowPass.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picboxShowPass.TabIndex = 6;
+            this.picboxShowPass.TabStop = false;
+            this.picboxShowPass.Click += new System.EventHandler(this.picboxShowPass_Click);
             // 
             // frmLoginPage
             // 
@@ -165,7 +167,7 @@
         private TextBox txtPassword;
         private PictureBox picboxUsername;
         private PictureBox picboxPassword;
-        private PictureBox picboxShowPass;
         private Button btnLogin;
+        public PictureBox picboxShowPass;
     }
 }
