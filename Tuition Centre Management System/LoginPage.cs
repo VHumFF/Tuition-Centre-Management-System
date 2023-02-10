@@ -4,6 +4,7 @@ namespace Tuition_Centre_Management_System
 {
     public partial class frmLoginPage : Form
     {
+        
         public frmLoginPage()
         {
             InitializeComponent();
@@ -27,7 +28,7 @@ namespace Tuition_Centre_Management_System
             if (test_account == "receptionist")
             {
                 //open Receptionist page
-                ReceptionistHomePage r = new ReceptionistHomePage();
+                ReceptionistHomePage r = new ReceptionistHomePage(txtUsername.Text);
                 r.ShowDialog();
 
             }
