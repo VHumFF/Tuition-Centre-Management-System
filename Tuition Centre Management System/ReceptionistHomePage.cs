@@ -28,9 +28,10 @@ namespace Tuition_Centre_Management_System
             con.Open(); //open connection
 
             //execute command and read from database
-            SqlCommand cmd = new SqlCommand("Select name from receptionist where id = (select id from Users where username = '" + username + "')", con);
+            SqlCommand cmd = new SqlCommand("Select name from receptionist where UserID = (select id from Users where username = '" + username + "')", con);
             string name = cmd.ExecuteScalar().ToString();
-            lblwelcome.Text = "Welcome, " + name;
+            
+            lblwelcome.Text = "WELCOME, " + name.ToUpper();
         }
 
 
