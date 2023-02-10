@@ -28,7 +28,7 @@ namespace Tuition_Centre_Management_System
             if (test_account == "receptionist")
             {
                 //open Receptionist page
-                ReceptionistHomePage r = new ReceptionistHomePage(txtUsername.Text);
+                ReceptionistHomePage r = new ReceptionistHomePage(txtUsername.Text, test_account);
                 r.ShowDialog();
 
             }

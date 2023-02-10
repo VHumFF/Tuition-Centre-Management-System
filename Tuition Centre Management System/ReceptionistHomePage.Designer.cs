@@ -37,7 +37,7 @@
             this.txtAddress = new System.Windows.Forms.TextBox();
             this.lblemail = new System.Windows.Forms.Label();
             this.txtemail = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtcontact = new System.Windows.Forms.TextBox();
             this.txtname = new System.Windows.Forms.TextBox();
             this.lblcontact = new System.Windows.Forms.Label();
             this.lblname = new System.Windows.Forms.Label();
@@ -76,7 +76,7 @@
             this.tabprofile.Controls.Add(this.txtAddress);
             this.tabprofile.Controls.Add(this.lblemail);
             this.tabprofile.Controls.Add(this.txtemail);
-            this.tabprofile.Controls.Add(this.textBox1);
+            this.tabprofile.Controls.Add(this.txtcontact);
             this.tabprofile.Controls.Add(this.txtname);
             this.tabprofile.Controls.Add(this.lblcontact);
             this.tabprofile.Controls.Add(this.lblname);
@@ -109,6 +109,7 @@
             this.btnupdateprofile.TabIndex = 14;
             this.btnupdateprofile.Text = "Update Profile";
             this.btnupdateprofile.UseVisualStyleBackColor = true;
+            this.btnupdateprofile.Click += new System.EventHandler(this.btnupdateprofile_Click);
             // 
             // btneditprofile
             // 
@@ -118,6 +119,7 @@
             this.btneditprofile.TabIndex = 13;
             this.btneditprofile.Text = "Edit Profile";
             this.btneditprofile.UseVisualStyleBackColor = true;
+            this.btneditprofile.Click += new System.EventHandler(this.btneditprofile_Click);
             // 
             // lbladdress
             // 
@@ -157,15 +159,15 @@
             this.txtemail.Size = new System.Drawing.Size(184, 23);
             this.txtemail.TabIndex = 7;
             // 
-            // textBox1
+            // txtcontact
             // 
-            this.textBox1.BackColor = System.Drawing.Color.White;
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox1.Location = new System.Drawing.Point(52, 112);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(184, 23);
-            this.textBox1.TabIndex = 6;
+            this.txtcontact.BackColor = System.Drawing.Color.White;
+            this.txtcontact.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtcontact.Location = new System.Drawing.Point(52, 112);
+            this.txtcontact.Name = "txtcontact";
+            this.txtcontact.ReadOnly = true;
+            this.txtcontact.Size = new System.Drawing.Size(184, 23);
+            this.txtcontact.TabIndex = 6;
             // 
             // txtname
             // 
@@ -277,7 +279,7 @@
         private TextBox txtname;
         private Label lblemail;
         private TextBox txtemail;
-        private TextBox textBox1;
+        private TextBox txtcontact;
         private Label lblwelcome;
         private Label lbltuitioname;
         private TabPage tabPage2;
