@@ -120,5 +120,11 @@ namespace Tuition_Centre_Management_System
                 btnupdateprofile.Enabled = false;
             }
         }
+
+        private void lblcpass_Click(object sender, EventArgs e)
+        {
+            changePassword cp = new changePassword(username);
+            cp.ShowDialog();
+        }
     }
 }

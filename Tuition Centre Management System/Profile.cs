@@ -84,10 +84,6 @@ namespace Tuition_Centre_Management_System
             //update user infomation
             SqlCommand cmd = new SqlCommand("Update "+role+" set contact= '"+contact+"', email= '"+email+"', address= '"+address+"' where UserID = (Select Id from Users where username = '"+username+"')",con);
             cmd.ExecuteNonQuery();
-            //SqlCommand cmd = new SqlCommand("Update " + role + " set contact = '" + contact + "', email = '" + email + "', address = '" + address + "' " +
-            //    "where UserID = (Select id from Users where username = '" + username + "');", con);
-
-
 
         }
 

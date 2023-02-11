@@ -147,6 +147,7 @@
             this.Controls.Add(this.txtUsername);
             this.Controls.Add(this.lblTuitionCentre);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "frmLoginPage";
             this.Text = "Sign In";
             this.Load += new System.EventHandler(this.Form1_Load);

@@ -60,9 +60,8 @@
             this.lblwelcome.ForeColor = System.Drawing.Color.White;
             this.lblwelcome.Location = new System.Drawing.Point(24, 45);
             this.lblwelcome.Name = "lblwelcome";
-            this.lblwelcome.Size = new System.Drawing.Size(126, 30);
+            this.lblwelcome.Size = new System.Drawing.Size(0, 30);
             this.lblwelcome.TabIndex = 1;
-            this.lblwelcome.Text = "lblwelcome";
             // 
             // lbltuitioname
             // 
@@ -164,6 +163,7 @@
             // 
             this.lblcpass.AutoSize = true;
             this.lblcpass.BackColor = System.Drawing.SystemColors.Control;
+            this.lblcpass.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblcpass.Font = new System.Drawing.Font("Gill Sans MT", 9.75F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
             this.lblcpass.ForeColor = System.Drawing.SystemColors.Highlight;
             this.lblcpass.Location = new System.Drawing.Point(541, 226);
@@ -171,6 +171,7 @@
             this.lblcpass.Size = new System.Drawing.Size(104, 18);
             this.lblcpass.TabIndex = 15;
             this.lblcpass.Text = "Change Password";
+            this.lblcpass.Click += new System.EventHandler(this.lblcpass_Click);
             // 
             // btnupdateprofile
             // 
@@ -298,6 +299,8 @@
             this.Controls.Add(this.lbltuitioname);
             this.Controls.Add(this.lblwelcome);
             this.Controls.Add(this.tabconprofile);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "ReceptionistHomePage";
             this.Text = "ReceptionistPage";
             this.Load += new System.EventHandler(this.ReceptionistHomePage_Load);
