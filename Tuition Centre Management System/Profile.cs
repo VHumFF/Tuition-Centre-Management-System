@@ -66,11 +66,14 @@ namespace Tuition_Centre_Management_System
 
                 //return user profile in list
                 var info = new List<String>() { name, contact, email, address };
+                con.Close();
                 return info;
+
             }
             else
             {
                 var info = new List<String>() { "No Data", "No Data", "No Data", "No Data" };
+                con.Close();
                 return info;
             }
 
@@ -84,6 +87,7 @@ namespace Tuition_Centre_Management_System
             //update user infomation
             SqlCommand cmd = new SqlCommand("Update "+role+" set contact= '"+contact+"', email= '"+email+"', address= '"+address+"' where UserID = (Select Id from Users where username = '"+username+"')",con);
             cmd.ExecuteNonQuery();
+            con.Close();
 
         }
 
@@ -123,10 +127,11 @@ namespace Tuition_Centre_Management_System
         }
 
 
-        //validate address
-        public bool IsAddressValid()
+        //validate string
+        //Allow 50 characters only
+        public bool IsStringValid()
         {
-            //Address cannot more than 50 characters
+            //cannot more than 50 characters
             if (x.Length > 50)
             {
                 return false;

@@ -20,6 +20,7 @@ namespace Tuition_Centre_Management_System
         private char _showPassword;
         private string newpassword;
         private string currentpassword;
+        private string _userrole;
 
         //constructor
         public User(string u, string p, char displayp)
@@ -35,6 +36,10 @@ namespace Tuition_Centre_Management_System
             _username = u;
             newpassword = newp;
             currentpassword = currp;
+        }
+        public User(string u)
+        {
+            _username = u;
         }
 
         public string login()
@@ -54,7 +59,7 @@ namespace Tuition_Centre_Management_System
                 reader.Close();
                 SqlCommand cmd2 = new SqlCommand("select role from users where username ='" + _username + "' and password ='" + _password + "'", con);
                 string role = cmd2.ExecuteScalar().ToString();
-
+                con.Close();
                 return role;
 
             }
@@ -97,13 +102,65 @@ namespace Tuition_Centre_Management_System
                     SqlCommand cmd2 = new SqlCommand("Update users set password= '" + newpassword + "' where username = '" + _username + "'", con);
                     cmd2.ExecuteNonQuery();
                     MessageBox.Show("Your password has been changed Successfully", "Password Changed", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
                 }
                 else
                 {
                     MessageBox.Show("The password you entered is incorrect.", "Password Incorrect", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+            con.Close();
         }
+
+        internal int checkUsername(string role)
+        {
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["myCS"].ToString());
+            con.Open(); //open connection
+
+            SqlCommand cmd = new SqlCommand("Select * from users where username = '" + _username + "'", con);
+            SqlDataReader usernameExist;
+            usernameExist = cmd.ExecuteReader();
+            //check whether there is record
+            if (usernameExist.Read())
+            {
+                //user exist return -1
+                con.Close();
+                return -1;
+            }
+            else
+            {
+                //if user does not exist
+                //register user and return user id
+                con.Close();
+                int userid = registerUser(_username, role);
+                return userid;
+            }
+        }
+
+        private int registerUser(string username, string role)
+        {
+            int id = 0;
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["myCS"].ToString());
+            con.Open(); //open connection
+
+            //register username with default password equal to username
+            SqlCommand cmd = new SqlCommand("insert into users (username, password, role) values ('" + username + "','" + username + "','" + role + "')", con); ;
+            cmd.ExecuteNonQuery();
+
+            //retrieve user id after registered
+            SqlCommand cmd2 = new SqlCommand("Select Id from users where username = '" + username + "'", con);
+            SqlDataReader userid;
+            userid = cmd2.ExecuteReader();
+            if (userid.Read())
+            {
+                id = userid.GetInt32(0);
+            }
+            
+            con.Close();
+            //return user id
+            return id;
+        }
+
     }
 }
 

@@ -93,6 +93,7 @@
             // 
             this.txtcurrentpass.Location = new System.Drawing.Point(139, 102);
             this.txtcurrentpass.Name = "txtcurrentpass";
+            this.txtcurrentpass.PasswordChar = '*';
             this.txtcurrentpass.Size = new System.Drawing.Size(154, 23);
             this.txtcurrentpass.TabIndex = 9;
             this.txtcurrentpass.TextChanged += new System.EventHandler(this.txtcurrentpass_TextChanged);
@@ -112,6 +113,7 @@
             // 
             this.txtnewpass.Location = new System.Drawing.Point(139, 161);
             this.txtnewpass.Name = "txtnewpass";
+            this.txtnewpass.PasswordChar = '*';
             this.txtnewpass.Size = new System.Drawing.Size(154, 23);
             this.txtnewpass.TabIndex = 11;
             this.txtnewpass.TextChanged += new System.EventHandler(this.txtnewpass_TextChanged);
@@ -131,6 +133,7 @@
             // 
             this.txtcomfirmpass.Location = new System.Drawing.Point(139, 201);
             this.txtcomfirmpass.Name = "txtcomfirmpass";
+            this.txtcomfirmpass.PasswordChar = '*';
             this.txtcomfirmpass.Size = new System.Drawing.Size(154, 23);
             this.txtcomfirmpass.TabIndex = 13;
             this.txtcomfirmpass.Click += new System.EventHandler(this.txtcomfirmpass_Click);
