@@ -85,6 +85,7 @@ namespace Tuition_Centre_Management_System
             return _showPassword;
         }
 
+        //method for password change
         internal void changepassword()
         {
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["myCS"].ToString());
@@ -93,12 +94,14 @@ namespace Tuition_Centre_Management_System
             SqlCommand cmd = new SqlCommand("Select password from users where username = '" + _username + "'", con);
             SqlDataReader readpassword;
             readpassword = cmd.ExecuteReader();
-            //check whether there is record
+            //get the current password of the user
             if (readpassword.Read())
             {
+                //compare the password in the database and the password user input
                 if(currentpassword == readpassword["password"].ToString())
                 {
                     readpassword.Close();
+                    //update the old password with new password
                     SqlCommand cmd2 = new SqlCommand("Update users set password= '" + newpassword + "' where username = '" + _username + "'", con);
                     cmd2.ExecuteNonQuery();
                     MessageBox.Show("Your password has been changed Successfully", "Password Changed", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -106,6 +109,7 @@ namespace Tuition_Centre_Management_System
                 }
                 else
                 {
+
                     MessageBox.Show("The password you entered is incorrect.", "Password Incorrect", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
@@ -116,11 +120,10 @@ namespace Tuition_Centre_Management_System
         {
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["myCS"].ToString());
             con.Open(); //open connection
-
+            //check whether the username exist in the database
             SqlCommand cmd = new SqlCommand("Select * from users where username = '" + _username + "'", con);
             SqlDataReader usernameExist;
             usernameExist = cmd.ExecuteReader();
-            //check whether there is record
             if (usernameExist.Read())
             {
                 //user exist return -1

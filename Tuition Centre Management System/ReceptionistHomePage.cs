@@ -29,6 +29,7 @@ namespace Tuition_Centre_Management_System
         }
         private void ReceptionistHomePage_Load(object sender, EventArgs e)
         {
+            //load user infomation onto profile page
             Profile profile1 = new Profile(username, userrole);
             var info = profile1.getProfile();
             lblwelcome.Text = "Welcome, " + info[0];
@@ -37,6 +38,8 @@ namespace Tuition_Centre_Management_System
             txtemail.Text = info[2];
             txtAddress.Text = info[3];
 
+
+            //set student level combobox default value as "Form 1"
             if (cmbStudent_Level.SelectedIndex == -1)
                 cmbStudent_Level.SelectedIndex = cmbStudent_Level.FindString("Form 1");
 
@@ -44,6 +47,7 @@ namespace Tuition_Centre_Management_System
 
         private void btneditprofile_Click(object sender, EventArgs e)
         {
+            //make the textbox editable
             txtcontact.ReadOnly= false;
             txtAddress.ReadOnly= false;
             txtemail.ReadOnly= false;
@@ -51,6 +55,7 @@ namespace Tuition_Centre_Management_System
 
         private void btnupdateprofile_Click(object sender, EventArgs e)
         {
+            //update user profile
             Profile update = new Profile(username, userrole, this.txtcontact.Text, this.txtAddress.Text, this.txtemail.Text);
             update.updateProfile();
             txtcontact.ReadOnly = true;
@@ -60,6 +65,7 @@ namespace Tuition_Centre_Management_System
 
         private void txtcontact_TextChanged(object sender, EventArgs e)
         {
+            //check whether the contact user enter is valid
             Profile contact = new Profile(this.txtcontact.Text);
             if (contact.IsContactValid())
             {
@@ -79,6 +85,7 @@ namespace Tuition_Centre_Management_System
 
         private void txtemail_TextChanged(object sender, EventArgs e)
         {
+            //check whether the email user enter is valid
             Profile email = new Profile(this.txtemail.Text);
             if (email.IsEmailValid())
             {
@@ -97,6 +104,7 @@ namespace Tuition_Centre_Management_System
 
         private void txtAddress_TextChanged(object sender, EventArgs e)
         {
+            //check whether the address user enter is valid
             Profile address = new Profile(this.txtAddress.Text);
             if (address.IsStringValid())
             {
@@ -115,12 +123,14 @@ namespace Tuition_Centre_Management_System
 
         private void lblcpass_Click(object sender, EventArgs e)
         {
+            //open change password window
             changePassword cp = new changePassword(username);
             cp.ShowDialog();
         }
 
         private void txtStudent_Contact_TextChanged(object sender, EventArgs e)
         {
+            //check whether user user have enter a valid data
             Profile contact = new Profile(this.txtStudent_Contact.Text);
             if (contact.IsContactValid())
             {
@@ -149,6 +159,7 @@ namespace Tuition_Centre_Management_System
 
         private void txtStudent_Email_TextChanged(object sender, EventArgs e)
         {
+            //check whether user user have enter a valid data
             Profile email = new Profile(this.txtStudent_Email.Text);
             if (email.IsEmailValid())
             {
@@ -177,6 +188,7 @@ namespace Tuition_Centre_Management_System
 
         private void txtStudent_Address_TextChanged(object sender, EventArgs e)
         {
+            //check whether user user have enter a valid data
             Profile address = new Profile(this.txtStudent_Address.Text);
             if (address.IsStringValid())
             {
@@ -205,6 +217,7 @@ namespace Tuition_Centre_Management_System
 
         private void txtStudent_Username_TextChanged(object sender, EventArgs e)
         {
+            //check whether user user have enter a valid data
             Profile username = new Profile(this.txtStudent_Username.Text);
             if (username.IsStringValid())
             {
@@ -238,6 +251,7 @@ namespace Tuition_Centre_Management_System
 
         private void txtStudent_Name_TextChanged(object sender, EventArgs e)
         {
+            //check whether user user have enter a valid data
             Profile name = new Profile(this.txtStudent_Name.Text);
             if (name.IsStringValid())
             {
@@ -274,6 +288,7 @@ namespace Tuition_Centre_Management_System
 
         private void btn_reset_info_Click(object sender, EventArgs e)
         {
+            //reset the textbox and combobox
             txtStudent_Name.Text = String.Empty;
             txtStudent_Contact.Text = String.Empty;
             txtStudent_Email.Text = String.Empty;
@@ -289,22 +304,28 @@ namespace Tuition_Centre_Management_System
 
         private void btnRegister_Student_Click(object sender, EventArgs e)
         {
+            //register student information into database
             DialogResult registerStudent = MessageBox.Show("Student Personal Information\n\n\nUsername: "+txtStudent_Username.Text+"\n\nName: "+txtStudent_Name.Text+
                 "\n\nContact: "+txtStudent_Contact.Text+"\n\nEmail: "+txtStudent_Email.Text+"\n\nAddress: "+txtStudent_Address.Text+"\n\nLevel: "+cmbStudent_Level.Text+
                 "\n\n\nComfirm Student Information", "Comfirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
             if (registerStudent == DialogResult.Yes)
             {
+                //if user click yes, register user
                 User UserExist = new User(this.txtStudent_Username.Text);
                 int userid = UserExist.checkUsername("student");
                 if (userid == -1)
                 {
+                    //user name exist, display error message
                     MessageBox.Show("Username Exist. Please try with another one","Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
                 }
                 else
                 {
+                    //register student
                     Student student = new Student(userid, this.txtStudent_Name.Text, this.txtStudent_Contact.Text, this.txtStudent_Email.Text, this.txtStudent_Address.Text, this.cmbStudent_Level.Text);
                     student.register_student();
                     MessageBox.Show("Student has been successfully registered.", "Registration Completed", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    //reset textbox and combobox
                     txtStudent_Name.Text = String.Empty;
                     txtStudent_Contact.Text = String.Empty;
                     txtStudent_Email.Text = String.Empty;

@@ -47,7 +47,9 @@ namespace Tuition_Centre_Management_System
                 getlevelID.Close();
             }
 
-            SqlCommand cmd2 = new SqlCommand("insert into student (UserId, name, contact, email, address, levelId) values ("+userid+",'"+student_name+"','"+student_contact+"','"+student_email+"','"+student_address+"',"+level_id+")", con);
+            //insert student infomation into student table
+            SqlCommand cmd2 = new SqlCommand("insert into student (UserId, name, contact, email, address, levelId) values ("+userid+",'"+student_name+"','"
+                +student_contact+"','"+student_email+"','"+student_address+"',"+level_id+")", con);
             cmd2.ExecuteNonQuery();
             con.Close();
         }
