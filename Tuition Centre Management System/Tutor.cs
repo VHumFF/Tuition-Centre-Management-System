@@ -17,7 +17,7 @@ using System.Xml.Linq;
 
 namespace Tuition_Centre_Management_System
 {
-    internal class Student
+    internal class Tutor
     {
         private int userid;
         private string student_name;
@@ -28,7 +28,7 @@ namespace Tuition_Centre_Management_System
         private int student_id;
 
 
-        public Student(int uid, string s_name, string s_contact, string s_email, string s_address, string s_level)
+        public Tutor(int uid, string s_name, string s_contact, string s_email, string s_address, string s_level)
         {
             userid = uid;
             student_name = s_name;
@@ -38,18 +38,18 @@ namespace Tuition_Centre_Management_System
             student_level = s_level;
         }
 
-        public Student(string s_level)
+        public Tutor(string s_level)
         {
             student_level = s_level;
         }
 
-        public Student(string s_level, int s_id)
+        public Tutor(string s_level, int s_id)
         {
             student_level = s_level;
             student_id = s_id;
         }
 
-        public Student(int s_id)
+        public Tutor(int s_id)
         {
             student_id = s_id;
         }
@@ -158,6 +158,7 @@ namespace Tuition_Centre_Management_System
             }
             reader.Close();
 
+            bool registered = false;
             SqlCommand cmd2 = new SqlCommand("Select * from enroll where subjectID = (select ID from subject where subjectname = '"+subject+"' and levelID = (select id from level where level ='"+student_level+"')) and studentid = "+student_id, con);
             SqlDataReader readerSub_exist;
             readerSub_exist = cmd2.ExecuteReader();
@@ -179,12 +180,24 @@ namespace Tuition_Centre_Management_System
                 readSub_id.Close();
                 SqlCommand cmd4 = new SqlCommand("insert into enroll(subjectId, studentID, Progress, changeSubject) values(" + sub_id + ", '" + student_id + "','In Progress', NULL)", con);
                 cmd4.ExecuteNonQuery();
-                        
+
+                SqlCommand cmd5 = new SqlCommand("Select fee from subject where SubjectName = '" + subject + "' and levelID = (select id from level where level ='" + student_level + "')", con);
+                SqlDataReader readFee;
+                readFee = cmd5.ExecuteReader();
+                if (readFee.Read())
+                {
+                    
+                    decimal sub_fee = readFee.GetDecimal(0);
+                    readFee.Close();
+                    SqlCommand cmd6 = new SqlCommand("Insert into payment(StudentID, outstanding, status) values(" + student_id + "," + sub_fee + ",'unpaid')", con);
+                    cmd6.ExecuteReader();
+
+                }
+
+
             }
             con.Close();
             return true;
-                    
-
         }
 
     }

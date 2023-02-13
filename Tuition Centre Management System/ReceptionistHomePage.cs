@@ -323,7 +323,7 @@ namespace Tuition_Centre_Management_System
                 else
                 {
                     //register student
-                    Student student = new Student(userid, this.txtStudent_Name.Text, this.txtStudent_Contact.Text, this.txtStudent_Email.Text, this.txtStudent_Address.Text, this.cmbStudent_Level.Text);
+                    Tutor student = new Tutor(userid, this.txtStudent_Name.Text, this.txtStudent_Contact.Text, this.txtStudent_Email.Text, this.txtStudent_Address.Text, this.cmbStudent_Level.Text);
                     student.register_student();
                     MessageBox.Show("Student has been successfully registered.", "Registration Completed", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
@@ -352,7 +352,7 @@ namespace Tuition_Centre_Management_System
             lstSubjectList.Items.Clear();
             lblStudent_name2.Text = "Student Name : ";
             lstStudent_List.Items.Clear();
-            Student s_list = new Student(this.cmbStudent_from_level.Text);
+            Tutor s_list = new Tutor(this.cmbStudent_from_level.Text);
             ArrayList student_ID_list = new ArrayList();
             ArrayList subject_list = new ArrayList();
             student_ID_list = s_list.getStudentIDList();
@@ -377,7 +377,7 @@ namespace Tuition_Centre_Management_System
             if(stu_id.Length > 0)
             {
                 int id = Convert.ToInt32(stu_id);
-                Student getname = new Student(id);
+                Tutor getname = new Tutor(id);
                 string name = getname.getStudentName();
 
                 lblStudent_name2.Text = "Student Name : " + name;
@@ -397,7 +397,7 @@ namespace Tuition_Centre_Management_System
                 string s_id = lstStudent_List.GetItemText(lstStudent_List.SelectedItem);
                 int id = Convert.ToInt32(s_id);
 
-                Student obj1 = new Student(this.cmbStudent_from_level.Text, id);
+                Tutor obj1 = new Tutor(this.cmbStudent_from_level.Text, id);
                 string selected_subject = lstSubjectList.GetItemText(lstSubjectList.SelectedItem);
                 if (obj1.enrollStudent(selected_subject))
                 {

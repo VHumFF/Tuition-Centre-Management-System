@@ -33,7 +33,6 @@
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.tabEnrollStudent = new System.Windows.Forms.TabPage();
             this.lstSubjectList = new System.Windows.Forms.ListBox();
-            this.lblSubjecterror = new System.Windows.Forms.Label();
             this.lblStudent_name2 = new System.Windows.Forms.Label();
             this.btnEnroll_Student = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -117,7 +116,6 @@
             // tabEnrollStudent
             // 
             this.tabEnrollStudent.Controls.Add(this.lstSubjectList);
-            this.tabEnrollStudent.Controls.Add(this.lblSubjecterror);
             this.tabEnrollStudent.Controls.Add(this.lblStudent_name2);
             this.tabEnrollStudent.Controls.Add(this.btnEnroll_Student);
             this.tabEnrollStudent.Controls.Add(this.label1);
@@ -141,16 +139,6 @@
             this.lstSubjectList.Name = "lstSubjectList";
             this.lstSubjectList.Size = new System.Drawing.Size(146, 148);
             this.lstSubjectList.TabIndex = 40;
-            // 
-            // lblSubjecterror
-            // 
-            this.lblSubjecterror.AutoSize = true;
-            this.lblSubjecterror.Font = new System.Drawing.Font("Gill Sans MT", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblSubjecterror.ForeColor = System.Drawing.Color.Red;
-            this.lblSubjecterror.Location = new System.Drawing.Point(416, 185);
-            this.lblSubjecterror.Name = "lblSubjecterror";
-            this.lblSubjecterror.Size = new System.Drawing.Size(0, 16);
-            this.lblSubjecterror.TabIndex = 39;
             // 
             // lblStudent_name2
             // 
@@ -700,7 +688,6 @@
         private Label label1;
         private Button btnEnroll_Student;
         private Label lblStudent_name2;
-        private Label lblSubjecterror;
         private ListBox lstSubjectList;
     }
 }
