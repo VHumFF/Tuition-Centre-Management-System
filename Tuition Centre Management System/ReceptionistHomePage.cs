@@ -45,6 +45,15 @@ namespace Tuition_Centre_Management_System
             if (cmbStudent_Level.SelectedIndex == -1)
                 cmbStudent_Level.SelectedIndex = cmbStudent_Level.FindString("Form 1");
 
+
+            Receptionist r_list = new Receptionist();
+            ArrayList request_list = new ArrayList();
+            request_list = r_list.getSubject_change_RequestList();
+            foreach(var item in request_list)
+            {
+                lstRequest_sub_change.Items.Add(item);
+            }
+
         }
 
         private void btneditprofile_Click(object sender, EventArgs e)
@@ -323,7 +332,7 @@ namespace Tuition_Centre_Management_System
                 else
                 {
                     //register student
-                    Tutor student = new Tutor(userid, this.txtStudent_Name.Text, this.txtStudent_Contact.Text, this.txtStudent_Email.Text, this.txtStudent_Address.Text, this.cmbStudent_Level.Text);
+                    Receptionist student = new Receptionist(userid, this.txtStudent_Name.Text, this.txtStudent_Contact.Text, this.txtStudent_Email.Text, this.txtStudent_Address.Text, this.cmbStudent_Level.Text);
                     student.register_student();
                     MessageBox.Show("Student has been successfully registered.", "Registration Completed", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
@@ -352,7 +361,7 @@ namespace Tuition_Centre_Management_System
             lstSubjectList.Items.Clear();
             lblStudent_name2.Text = "Student Name : ";
             lstStudent_List.Items.Clear();
-            Tutor s_list = new Tutor(this.cmbStudent_from_level.Text);
+            Receptionist s_list = new Receptionist(this.cmbStudent_from_level.Text);
             ArrayList student_ID_list = new ArrayList();
             ArrayList subject_list = new ArrayList();
             student_ID_list = s_list.getStudentIDList();
@@ -377,7 +386,7 @@ namespace Tuition_Centre_Management_System
             if(stu_id.Length > 0)
             {
                 int id = Convert.ToInt32(stu_id);
-                Tutor getname = new Tutor(id);
+                Receptionist getname = new Receptionist(id);
                 string name = getname.getStudentName();
 
                 lblStudent_name2.Text = "Student Name : " + name;
@@ -397,7 +406,7 @@ namespace Tuition_Centre_Management_System
                 string s_id = lstStudent_List.GetItemText(lstStudent_List.SelectedItem);
                 int id = Convert.ToInt32(s_id);
 
-                Tutor obj1 = new Tutor(this.cmbStudent_from_level.Text, id);
+                Receptionist obj1 = new Receptionist(this.cmbStudent_from_level.Text, id);
                 string selected_subject = lstSubjectList.GetItemText(lstSubjectList.SelectedItem);
                 if (obj1.enrollStudent(selected_subject))
                 {
@@ -405,6 +414,11 @@ namespace Tuition_Centre_Management_System
                 }
 
             }
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -17,7 +17,7 @@ using System.Xml.Linq;
 
 namespace Tuition_Centre_Management_System
 {
-    internal class Tutor
+    internal class Receptionist
     {
         private int userid;
         private string student_name;
@@ -28,7 +28,7 @@ namespace Tuition_Centre_Management_System
         private int student_id;
 
 
-        public Tutor(int uid, string s_name, string s_contact, string s_email, string s_address, string s_level)
+        public Receptionist(int uid, string s_name, string s_contact, string s_email, string s_address, string s_level)
         {
             userid = uid;
             student_name = s_name;
@@ -38,20 +38,25 @@ namespace Tuition_Centre_Management_System
             student_level = s_level;
         }
 
-        public Tutor(string s_level)
+        public Receptionist(string s_level)
         {
             student_level = s_level;
         }
 
-        public Tutor(string s_level, int s_id)
+        public Receptionist(string s_level, int s_id)
         {
             student_level = s_level;
             student_id = s_id;
         }
 
-        public Tutor(int s_id)
+        public Receptionist(int s_id)
         {
             student_id = s_id;
+        }
+
+        public Receptionist()
+        {
+            //default constructor
         }
 
 
@@ -124,7 +129,7 @@ namespace Tuition_Centre_Management_System
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["myCS"].ToString());
             con.Open();
 
-            SqlCommand cmd = new SqlCommand("Select SubjectName from subject where levelid = (select id from level where level = '" + student_level + "')", con);
+            SqlCommand cmd = new SqlCommand("Select SubjectName from subject where levelid = (select id from level where level = '" + student_level + "') and TutorID is not NULL", con);
             SqlDataReader reader;
             reader = cmd.ExecuteReader();
             while (reader.Read())
@@ -178,7 +183,7 @@ namespace Tuition_Centre_Management_System
             {
                 int sub_id = readSub_id.GetInt32(0);
                 readSub_id.Close();
-                SqlCommand cmd4 = new SqlCommand("insert into enroll(subjectId, studentID, Progress, changeSubject) values(" + sub_id + ", '" + student_id + "','In Progress', NULL)", con);
+                SqlCommand cmd4 = new SqlCommand("insert into enroll(subjectId, studentID, Progress) values(" + sub_id + ", '" + student_id + "','In Progress')", con);
                 cmd4.ExecuteNonQuery();
 
                 SqlCommand cmd5 = new SqlCommand("Select fee from subject where SubjectName = '" + subject + "' and levelID = (select id from level where level ='" + student_level + "')", con);
@@ -198,6 +203,30 @@ namespace Tuition_Centre_Management_System
             }
             con.Close();
             return true;
+        }
+
+
+
+        public ArrayList getSubject_change_RequestList()
+        {
+            ArrayList request_list = new ArrayList();
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["myCS"].ToString());
+            con.Open();
+
+
+            SqlCommand cmd = new SqlCommand("Select id from request", con);
+            SqlDataReader reader;
+            reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                request_list.Add(reader.GetInt32(0));
+            }
+
+
+            con.Close();
+            return request_list;
+
+
         }
 
     }
