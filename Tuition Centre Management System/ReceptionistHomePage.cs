@@ -13,6 +13,8 @@ using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 using System.Xml.Linq;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using System.Collections;
+using System.Reflection;
 
 namespace Tuition_Centre_Management_System
 {
@@ -342,6 +344,67 @@ namespace Tuition_Centre_Management_System
 
             }
 
+        }
+
+        private void cmbStudent_from_level_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            btnEnroll_Student.Enabled = false;
+            lstSubjectList.Items.Clear();
+            lblStudent_name2.Text = "Student Name : ";
+            lstStudent_List.Items.Clear();
+            Student s_list = new Student(this.cmbStudent_from_level.Text);
+            ArrayList student_ID_list = new ArrayList();
+            ArrayList subject_list = new ArrayList();
+            student_ID_list = s_list.getStudentIDList();
+            foreach(var item in student_ID_list)
+            {
+                lstStudent_List.Items.Add(item);
+            }
+            subject_list = s_list.getSubjectList();
+            foreach (var item in subject_list)
+            {
+                lstSubjectList.Items.Add(item);
+            }
+
+           
+
+
+        }
+
+        private void lstStudent_List_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string stu_id = lstStudent_List.GetItemText(lstStudent_List.SelectedItem);
+            if(stu_id.Length > 0)
+            {
+                int id = Convert.ToInt32(stu_id);
+                Student getname = new Student(id);
+                string name = getname.getStudentName();
+
+                lblStudent_name2.Text = "Student Name : " + name;
+            }
+
+            if (lstStudent_List.SelectedItems.Count > 0)
+            {
+                btnEnroll_Student.Enabled = true;
+            }
+
+        }
+
+        private void btnEnroll_Student_Click(object sender, EventArgs e)
+        {
+            if (lstStudent_List.SelectedItems.Count > 0 && cmbStudent_from_level.SelectedIndex > -1 && lstSubjectList.SelectedItems.Count > 0)
+            {
+                string s_id = lstStudent_List.GetItemText(lstStudent_List.SelectedItem);
+                int id = Convert.ToInt32(s_id);
+
+                Student obj1 = new Student(this.cmbStudent_from_level.Text, id);
+                string selected_subject = lstSubjectList.GetItemText(lstSubjectList.SelectedItem);
+                if (obj1.enrollStudent(selected_subject))
+                {
+                    MessageBox.Show("Student have been enrolled successfully.");
+                }
+
+            }
         }
     }
 }

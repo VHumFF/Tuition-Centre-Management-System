@@ -31,7 +31,16 @@
             this.lblwelcome = new System.Windows.Forms.Label();
             this.lbltuitioname = new System.Windows.Forms.Label();
             this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.tabEnrollStudent = new System.Windows.Forms.TabPage();
+            this.lstSubjectList = new System.Windows.Forms.ListBox();
+            this.lblSubjecterror = new System.Windows.Forms.Label();
+            this.lblStudent_name2 = new System.Windows.Forms.Label();
+            this.btnEnroll_Student = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.lblStudent_ID_List = new System.Windows.Forms.Label();
+            this.lblStudent_From_Level = new System.Windows.Forms.Label();
+            this.cmbStudent_from_level = new System.Windows.Forms.ComboBox();
+            this.lstStudent_List = new System.Windows.Forms.ListBox();
             this.tabpRegisterStudent = new System.Windows.Forms.TabPage();
             this.btn_reset_info = new System.Windows.Forms.Button();
             this.lblStudent_Username_error = new System.Windows.Forms.Label();
@@ -68,6 +77,7 @@
             this.lblcontact = new System.Windows.Forms.Label();
             this.lblname = new System.Windows.Forms.Label();
             this.tabcon = new System.Windows.Forms.TabControl();
+            this.tabEnrollStudent.SuspendLayout();
             this.tabpRegisterStudent.SuspendLayout();
             this.tabprofile.SuspendLayout();
             this.tabcon.SuspendLayout();
@@ -104,15 +114,115 @@
             this.tabPage4.Text = "tabPage4";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
-            // tabPage3
+            // tabEnrollStudent
             // 
-            this.tabPage3.Location = new System.Drawing.Point(4, 30);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(651, 249);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "tabPage3";
-            this.tabPage3.UseVisualStyleBackColor = true;
+            this.tabEnrollStudent.Controls.Add(this.lstSubjectList);
+            this.tabEnrollStudent.Controls.Add(this.lblSubjecterror);
+            this.tabEnrollStudent.Controls.Add(this.lblStudent_name2);
+            this.tabEnrollStudent.Controls.Add(this.btnEnroll_Student);
+            this.tabEnrollStudent.Controls.Add(this.label1);
+            this.tabEnrollStudent.Controls.Add(this.lblStudent_ID_List);
+            this.tabEnrollStudent.Controls.Add(this.lblStudent_From_Level);
+            this.tabEnrollStudent.Controls.Add(this.cmbStudent_from_level);
+            this.tabEnrollStudent.Controls.Add(this.lstStudent_List);
+            this.tabEnrollStudent.Location = new System.Drawing.Point(4, 30);
+            this.tabEnrollStudent.Name = "tabEnrollStudent";
+            this.tabEnrollStudent.Padding = new System.Windows.Forms.Padding(3);
+            this.tabEnrollStudent.Size = new System.Drawing.Size(651, 249);
+            this.tabEnrollStudent.TabIndex = 2;
+            this.tabEnrollStudent.Text = "Enroll Student";
+            this.tabEnrollStudent.UseVisualStyleBackColor = true;
+            // 
+            // lstSubjectList
+            // 
+            this.lstSubjectList.FormattingEnabled = true;
+            this.lstSubjectList.ItemHeight = 18;
+            this.lstSubjectList.Location = new System.Drawing.Point(416, 34);
+            this.lstSubjectList.Name = "lstSubjectList";
+            this.lstSubjectList.Size = new System.Drawing.Size(146, 148);
+            this.lstSubjectList.TabIndex = 40;
+            // 
+            // lblSubjecterror
+            // 
+            this.lblSubjecterror.AutoSize = true;
+            this.lblSubjecterror.Font = new System.Drawing.Font("Gill Sans MT", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblSubjecterror.ForeColor = System.Drawing.Color.Red;
+            this.lblSubjecterror.Location = new System.Drawing.Point(416, 185);
+            this.lblSubjecterror.Name = "lblSubjecterror";
+            this.lblSubjecterror.Size = new System.Drawing.Size(0, 16);
+            this.lblSubjecterror.TabIndex = 39;
+            // 
+            // lblStudent_name2
+            // 
+            this.lblStudent_name2.AutoSize = true;
+            this.lblStudent_name2.Location = new System.Drawing.Point(51, 199);
+            this.lblStudent_name2.Name = "lblStudent_name2";
+            this.lblStudent_name2.Size = new System.Drawing.Size(110, 18);
+            this.lblStudent_name2.TabIndex = 7;
+            this.lblStudent_name2.Text = "Student Name : ";
+            // 
+            // btnEnroll_Student
+            // 
+            this.btnEnroll_Student.Enabled = false;
+            this.btnEnroll_Student.Location = new System.Drawing.Point(470, 218);
+            this.btnEnroll_Student.Name = "btnEnroll_Student";
+            this.btnEnroll_Student.Size = new System.Drawing.Size(109, 23);
+            this.btnEnroll_Student.TabIndex = 6;
+            this.btnEnroll_Student.Text = "Enroll Student";
+            this.btnEnroll_Student.UseVisualStyleBackColor = true;
+            this.btnEnroll_Student.Click += new System.EventHandler(this.btnEnroll_Student_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(416, 13);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(82, 18);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "Subject List";
+            // 
+            // lblStudent_ID_List
+            // 
+            this.lblStudent_ID_List.AutoSize = true;
+            this.lblStudent_ID_List.Location = new System.Drawing.Point(47, 57);
+            this.lblStudent_ID_List.Name = "lblStudent_ID_List";
+            this.lblStudent_ID_List.Size = new System.Drawing.Size(102, 18);
+            this.lblStudent_ID_List.TabIndex = 4;
+            this.lblStudent_ID_List.Text = "Student ID List";
+            // 
+            // lblStudent_From_Level
+            // 
+            this.lblStudent_From_Level.AutoSize = true;
+            this.lblStudent_From_Level.Location = new System.Drawing.Point(8, 13);
+            this.lblStudent_From_Level.Name = "lblStudent_From_Level";
+            this.lblStudent_From_Level.Size = new System.Drawing.Size(137, 18);
+            this.lblStudent_From_Level.TabIndex = 3;
+            this.lblStudent_From_Level.Text = "Select Student From";
+            // 
+            // cmbStudent_from_level
+            // 
+            this.cmbStudent_from_level.FormattingEnabled = true;
+            this.cmbStudent_from_level.Items.AddRange(new object[] {
+            "Form 1",
+            "Form 2",
+            "Form 3",
+            "Form 4",
+            "Form 5"});
+            this.cmbStudent_from_level.Location = new System.Drawing.Point(151, 10);
+            this.cmbStudent_from_level.Name = "cmbStudent_from_level";
+            this.cmbStudent_from_level.Size = new System.Drawing.Size(121, 26);
+            this.cmbStudent_from_level.TabIndex = 2;
+            this.cmbStudent_from_level.SelectedIndexChanged += new System.EventHandler(this.cmbStudent_from_level_SelectedIndexChanged);
+            // 
+            // lstStudent_List
+            // 
+            this.lstStudent_List.FormattingEnabled = true;
+            this.lstStudent_List.ItemHeight = 18;
+            this.lstStudent_List.Location = new System.Drawing.Point(151, 57);
+            this.lstStudent_List.Name = "lstStudent_List";
+            this.lstStudent_List.Size = new System.Drawing.Size(121, 130);
+            this.lstStudent_List.TabIndex = 0;
+            this.lstStudent_List.SelectedIndexChanged += new System.EventHandler(this.lstStudent_List_SelectedIndexChanged);
             // 
             // tabpRegisterStudent
             // 
@@ -504,7 +614,7 @@
             this.tabcon.Appearance = System.Windows.Forms.TabAppearance.FlatButtons;
             this.tabcon.Controls.Add(this.tabprofile);
             this.tabcon.Controls.Add(this.tabpRegisterStudent);
-            this.tabcon.Controls.Add(this.tabPage3);
+            this.tabcon.Controls.Add(this.tabEnrollStudent);
             this.tabcon.Controls.Add(this.tabPage4);
             this.tabcon.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.tabcon.Font = new System.Drawing.Font("Gill Sans MT", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -530,6 +640,8 @@
             this.Name = "ReceptionistHomePage";
             this.Text = "ReceptionistPage";
             this.Load += new System.EventHandler(this.ReceptionistHomePage_Load);
+            this.tabEnrollStudent.ResumeLayout(false);
+            this.tabEnrollStudent.PerformLayout();
             this.tabpRegisterStudent.ResumeLayout(false);
             this.tabpRegisterStudent.PerformLayout();
             this.tabprofile.ResumeLayout(false);
@@ -544,7 +656,7 @@
         private Label lblwelcome;
         private Label lbltuitioname;
         private TabPage tabPage4;
-        private TabPage tabPage3;
+        private TabPage tabEnrollStudent;
         private TabPage tabpRegisterStudent;
         private TabPage tabprofile;
         private Label lbladdresserror;
@@ -581,5 +693,14 @@
         private Label lblStudent_Contact_error;
         private Label lblStudent_Username_error;
         private Button btn_reset_info;
+        private ListBox lstStudent_List;
+        private Label lblStudent_ID_List;
+        private Label lblStudent_From_Level;
+        private ComboBox cmbStudent_from_level;
+        private Label label1;
+        private Button btnEnroll_Student;
+        private Label lblStudent_name2;
+        private Label lblSubjecterror;
+        private ListBox lstSubjectList;
     }
 }
