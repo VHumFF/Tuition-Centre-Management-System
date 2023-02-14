@@ -75,17 +75,28 @@
             this.lblcontact = new System.Windows.Forms.Label();
             this.lblname = new System.Windows.Forms.Label();
             this.tabcon = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabStudent_Request = new System.Windows.Forms.TabPage();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btnApprove = new System.Windows.Forms.Button();
+            this.lblSubject_Change_From = new System.Windows.Forms.Label();
+            this.lblStudent_name_request = new System.Windows.Forms.Label();
             this.lstRequest_sub_change = new System.Windows.Forms.ListBox();
+            this.tabProgress_student = new System.Windows.Forms.TabPage();
+            this.tabPayment = new System.Windows.Forms.TabPage();
+            this.listBox1 = new System.Windows.Forms.ListBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.tabEnrollStudent.SuspendLayout();
             this.tabpRegisterStudent.SuspendLayout();
             this.tabprofile.SuspendLayout();
             this.tabcon.SuspendLayout();
-            this.tabPage1.SuspendLayout();
+            this.tabStudent_Request.SuspendLayout();
+            this.tabProgress_student.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblwelcome
@@ -185,6 +196,7 @@
             // 
             // cmbStudent_from_level
             // 
+            this.cmbStudent_from_level.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbStudent_from_level.FormattingEnabled = true;
             this.cmbStudent_from_level.Items.AddRange(new object[] {
             "Form 1",
@@ -298,6 +310,7 @@
             // 
             // cmbStudent_Level
             // 
+            this.cmbStudent_Level.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbStudent_Level.FormattingEnabled = true;
             this.cmbStudent_Level.Items.AddRange(new object[] {
             "Form 1",
@@ -599,7 +612,9 @@
             this.tabcon.Controls.Add(this.tabprofile);
             this.tabcon.Controls.Add(this.tabpRegisterStudent);
             this.tabcon.Controls.Add(this.tabEnrollStudent);
-            this.tabcon.Controls.Add(this.tabPage1);
+            this.tabcon.Controls.Add(this.tabStudent_Request);
+            this.tabcon.Controls.Add(this.tabProgress_student);
+            this.tabcon.Controls.Add(this.tabPayment);
             this.tabcon.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.tabcon.Font = new System.Drawing.Font("Gill Sans MT", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.tabcon.ImeMode = System.Windows.Forms.ImeMode.NoControl;
@@ -610,56 +625,20 @@
             this.tabcon.Size = new System.Drawing.Size(659, 283);
             this.tabcon.TabIndex = 0;
             // 
-            // tabPage1
+            // tabStudent_Request
             // 
-            this.tabPage1.Controls.Add(this.label1);
-            this.tabPage1.Controls.Add(this.button1);
-            this.tabPage1.Controls.Add(this.label3);
-            this.tabPage1.Controls.Add(this.label2);
-            this.tabPage1.Controls.Add(this.lstRequest_sub_change);
-            this.tabPage1.Location = new System.Drawing.Point(4, 30);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(651, 249);
-            this.tabPage1.TabIndex = 3;
-            this.tabPage1.Text = "tabPage1";
-            this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // lstRequest_sub_change
-            // 
-            this.lstRequest_sub_change.FormattingEnabled = true;
-            this.lstRequest_sub_change.ItemHeight = 18;
-            this.lstRequest_sub_change.Location = new System.Drawing.Point(8, 39);
-            this.lstRequest_sub_change.Name = "lstRequest_sub_change";
-            this.lstRequest_sub_change.Size = new System.Drawing.Size(182, 130);
-            this.lstRequest_sub_change.TabIndex = 0;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(8, 172);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(45, 18);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "label2";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(8, 207);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(45, 18);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "label3";
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(218, 39);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
+            this.tabStudent_Request.Controls.Add(this.label1);
+            this.tabStudent_Request.Controls.Add(this.btnApprove);
+            this.tabStudent_Request.Controls.Add(this.lblSubject_Change_From);
+            this.tabStudent_Request.Controls.Add(this.lblStudent_name_request);
+            this.tabStudent_Request.Controls.Add(this.lstRequest_sub_change);
+            this.tabStudent_Request.Location = new System.Drawing.Point(4, 30);
+            this.tabStudent_Request.Name = "tabStudent_Request";
+            this.tabStudent_Request.Padding = new System.Windows.Forms.Padding(3);
+            this.tabStudent_Request.Size = new System.Drawing.Size(651, 249);
+            this.tabStudent_Request.TabIndex = 3;
+            this.tabStudent_Request.Text = "Student Request";
+            this.tabStudent_Request.UseVisualStyleBackColor = true;
             // 
             // label1
             // 
@@ -669,7 +648,147 @@
             this.label1.Size = new System.Drawing.Size(215, 18);
             this.label1.TabIndex = 4;
             this.label1.Text = "List of Request to change subject";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+            // 
+            // btnApprove
+            // 
+            this.btnApprove.Enabled = false;
+            this.btnApprove.Location = new System.Drawing.Point(541, 209);
+            this.btnApprove.Name = "btnApprove";
+            this.btnApprove.Size = new System.Drawing.Size(75, 23);
+            this.btnApprove.TabIndex = 3;
+            this.btnApprove.Text = "Approve";
+            this.btnApprove.UseVisualStyleBackColor = true;
+            this.btnApprove.Click += new System.EventHandler(this.btnApprove_Click);
+            // 
+            // lblSubject_Change_From
+            // 
+            this.lblSubject_Change_From.AutoSize = true;
+            this.lblSubject_Change_From.Location = new System.Drawing.Point(241, 75);
+            this.lblSubject_Change_From.Name = "lblSubject_Change_From";
+            this.lblSubject_Change_From.Size = new System.Drawing.Size(169, 18);
+            this.lblSubject_Change_From.TabIndex = 2;
+            this.lblSubject_Change_From.Text = "Request to change from : ";
+            // 
+            // lblStudent_name_request
+            // 
+            this.lblStudent_name_request.AutoSize = true;
+            this.lblStudent_name_request.Location = new System.Drawing.Point(241, 39);
+            this.lblStudent_name_request.Name = "lblStudent_name_request";
+            this.lblStudent_name_request.Size = new System.Drawing.Size(110, 18);
+            this.lblStudent_name_request.TabIndex = 1;
+            this.lblStudent_name_request.Text = "Student Name : ";
+            // 
+            // lstRequest_sub_change
+            // 
+            this.lstRequest_sub_change.FormattingEnabled = true;
+            this.lstRequest_sub_change.ItemHeight = 18;
+            this.lstRequest_sub_change.Location = new System.Drawing.Point(8, 39);
+            this.lstRequest_sub_change.Name = "lstRequest_sub_change";
+            this.lstRequest_sub_change.Size = new System.Drawing.Size(210, 202);
+            this.lstRequest_sub_change.TabIndex = 0;
+            this.lstRequest_sub_change.SelectedIndexChanged += new System.EventHandler(this.lstRequest_sub_change_SelectedIndexChanged);
+            // 
+            // tabProgress_student
+            // 
+            this.tabProgress_student.Controls.Add(this.label7);
+            this.tabProgress_student.Controls.Add(this.button1);
+            this.tabProgress_student.Controls.Add(this.label6);
+            this.tabProgress_student.Controls.Add(this.label5);
+            this.tabProgress_student.Controls.Add(this.label4);
+            this.tabProgress_student.Controls.Add(this.label3);
+            this.tabProgress_student.Controls.Add(this.label2);
+            this.tabProgress_student.Controls.Add(this.listBox1);
+            this.tabProgress_student.Location = new System.Drawing.Point(4, 30);
+            this.tabProgress_student.Name = "tabProgress_student";
+            this.tabProgress_student.Padding = new System.Windows.Forms.Padding(3);
+            this.tabProgress_student.Size = new System.Drawing.Size(651, 249);
+            this.tabProgress_student.TabIndex = 4;
+            this.tabProgress_student.Text = "Student Progression";
+            this.tabProgress_student.UseVisualStyleBackColor = true;
+            // 
+            // tabPayment
+            // 
+            this.tabPayment.Location = new System.Drawing.Point(4, 30);
+            this.tabPayment.Name = "tabPayment";
+            this.tabPayment.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPayment.Size = new System.Drawing.Size(651, 249);
+            this.tabPayment.TabIndex = 5;
+            this.tabPayment.Text = "Payment";
+            this.tabPayment.UseVisualStyleBackColor = true;
+            // 
+            // listBox1
+            // 
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.ItemHeight = 18;
+            this.listBox1.Location = new System.Drawing.Point(20, 63);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(159, 148);
+            this.listBox1.TabIndex = 0;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(20, 13);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(162, 18);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "List of Student that have";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(20, 31);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(159, 18);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "Completed thier studies";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(238, 63);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(110, 18);
+            this.label4.TabIndex = 3;
+            this.label4.Text = "Student Name : ";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(242, 95);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(106, 18);
+            this.label5.TabIndex = 4;
+            this.label5.Text = "Student Level : ";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(208, 128);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(140, 18);
+            this.label6.TabIndex = 5;
+            this.label6.Text = "Subject Completed : ";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(480, 215);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(147, 26);
+            this.button1.TabIndex = 6;
+            this.button1.Text = "Progress Student";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Gill Sans MT", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label7.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.label7.Location = new System.Drawing.Point(463, 195);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(180, 16);
+            this.label7.TabIndex = 7;
+            this.label7.Text = "Click to progress student to next level";
             // 
             // ReceptionistHomePage
             // 
@@ -692,8 +811,10 @@
             this.tabprofile.ResumeLayout(false);
             this.tabprofile.PerformLayout();
             this.tabcon.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
-            this.tabPage1.PerformLayout();
+            this.tabStudent_Request.ResumeLayout(false);
+            this.tabStudent_Request.PerformLayout();
+            this.tabProgress_student.ResumeLayout(false);
+            this.tabProgress_student.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -747,11 +868,21 @@
         private Button btnEnroll_Student;
         private Label lblStudent_name2;
         private ListBox lstSubjectList;
-        private TabPage tabPage1;
-        private Label label3;
-        private Label label2;
+        private TabPage tabStudent_Request;
+        private Label lblSubject_Change_From;
+        private Label lblStudent_name_request;
         private ListBox lstRequest_sub_change;
         private Label label1;
+        private Button btnApprove;
+        private TabPage tabProgress_student;
+        private Label label7;
         private Button button1;
+        private Label label6;
+        private Label label5;
+        private Label label4;
+        private Label label3;
+        private Label label2;
+        private ListBox listBox1;
+        private TabPage tabPayment;
     }
 }

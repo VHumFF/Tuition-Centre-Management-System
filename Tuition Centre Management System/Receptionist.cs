@@ -26,7 +26,7 @@ namespace Tuition_Centre_Management_System
         private string student_address;
         private string student_level;
         private int student_id;
-
+        private int request_id;
 
         public Receptionist(int uid, string s_name, string s_contact, string s_email, string s_address, string s_level)
         {
@@ -36,6 +36,7 @@ namespace Tuition_Centre_Management_System
             student_email = s_email;
             student_address = s_address;
             student_level = s_level;
+
         }
 
         public Receptionist(string s_level)
@@ -49,10 +50,12 @@ namespace Tuition_Centre_Management_System
             student_id = s_id;
         }
 
-        public Receptionist(int s_id)
+        public Receptionist(int id)//could be request id or student id
         {
-            student_id = s_id;
+            student_id = id;
+            request_id= id;
         }
+
 
         public Receptionist()
         {
@@ -89,7 +92,7 @@ namespace Tuition_Centre_Management_System
             ArrayList s_id = new ArrayList();
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["myCS"].ToString());
             con.Open();
-
+            //get all student from the specific level
             SqlCommand cmd = new SqlCommand("Select id from student where levelid = (select id from level where level = '" + student_level + "')", con);
             SqlDataReader reader;
             reader = cmd.ExecuteReader();
@@ -109,6 +112,7 @@ namespace Tuition_Centre_Management_System
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["myCS"].ToString());
             con.Open();
 
+            //get the name of the student with student id
             SqlCommand cmd = new SqlCommand("Select name from student where id = '" + student_id +"';", con);
             SqlDataReader reader;
             reader = cmd.ExecuteReader();
@@ -129,6 +133,7 @@ namespace Tuition_Centre_Management_System
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["myCS"].ToString());
             con.Open();
 
+            //get list of subject from specific level and have tutor assigned
             SqlCommand cmd = new SqlCommand("Select SubjectName from subject where levelid = (select id from level where level = '" + student_level + "') and TutorID is not NULL", con);
             SqlDataReader reader;
             reader = cmd.ExecuteReader();
@@ -148,12 +153,14 @@ namespace Tuition_Centre_Management_System
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["myCS"].ToString());
             con.Open();
 
+            //get the number of subject the student have enrolled
             SqlCommand cmd = new SqlCommand("Select Count(*) as subject_enrolled from enroll where StudentID = " + student_id, con);
             SqlDataReader reader;
             reader = cmd.ExecuteReader();
             if (reader.Read())
             {
                 int subject_enrolled = reader.GetInt32(0);
+                //dont allow student to enroll new subject if already enrolled in 3
                 if(subject_enrolled == 3)
                 {
                     MessageBox.Show("Student cannot enrolled more than 3 subject.\nCurrent taken Subject number : "+ subject_enrolled);
@@ -163,11 +170,12 @@ namespace Tuition_Centre_Management_System
             }
             reader.Close();
 
-            bool registered = false;
+            //check whether student have enrolled in this subject
             SqlCommand cmd2 = new SqlCommand("Select * from enroll where subjectID = (select ID from subject where subjectname = '"+subject+"' and levelID = (select id from level where level ='"+student_level+"')) and studentid = "+student_id, con);
             SqlDataReader readerSub_exist;
             readerSub_exist = cmd2.ExecuteReader();
             bool sub_exist = readerSub_exist.Read();
+            //if read rows, means student have enrolled in the subject.
             if(sub_exist)
             { 
                 MessageBox.Show("Student already in the subject.\n\n" + subject + "\n\nPlease enroll another subject");
@@ -175,17 +183,22 @@ namespace Tuition_Centre_Management_System
                 return false;
             }
                 
+            
             readerSub_exist.Close();
+
+            //get the subject id using subject name and level id
             SqlCommand cmd3 = new SqlCommand("Select id from subject where SubjectName = '" + subject + "' and levelID = (select id from level where level ='" + student_level + "')", con);
             SqlDataReader readSub_id;
             readSub_id = cmd3.ExecuteReader();
             if (readSub_id.Read())
             {
+                //insert new enroll subject for the student
                 int sub_id = readSub_id.GetInt32(0);
                 readSub_id.Close();
                 SqlCommand cmd4 = new SqlCommand("insert into enroll(subjectId, studentID, Progress) values(" + sub_id + ", '" + student_id + "','In Progress')", con);
                 cmd4.ExecuteNonQuery();
 
+                //get the fee of the subject student enroll
                 SqlCommand cmd5 = new SqlCommand("Select fee from subject where SubjectName = '" + subject + "' and levelID = (select id from level where level ='" + student_level + "')", con);
                 SqlDataReader readFee;
                 readFee = cmd5.ExecuteReader();
@@ -194,6 +207,7 @@ namespace Tuition_Centre_Management_System
                     
                     decimal sub_fee = readFee.GetDecimal(0);
                     readFee.Close();
+                    //add outstanding fees to student account
                     SqlCommand cmd6 = new SqlCommand("Insert into payment(StudentID, outstanding, status) values(" + student_id + "," + sub_fee + ",'unpaid')", con);
                     cmd6.ExecuteReader();
 
@@ -213,7 +227,7 @@ namespace Tuition_Centre_Management_System
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["myCS"].ToString());
             con.Open();
 
-
+            //get the requeid subject change id
             SqlCommand cmd = new SqlCommand("Select id from request", con);
             SqlDataReader reader;
             reader = cmd.ExecuteReader();
@@ -225,8 +239,102 @@ namespace Tuition_Centre_Management_System
 
             con.Close();
             return request_list;
+        }
+
+        public List<String> getRequestInfo()
+        {
+            string name = "";
+            string current_sub_name = "";
+            string new_sub_name = "";
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["myCS"].ToString());
+            con.Open();
+
+            SqlCommand cmd = new SqlCommand("Select StudentID from request where id = "+request_id, con);
+            SqlDataReader reader;
+            reader = cmd.ExecuteReader();
+            if (reader.Read())
+            {
+                int stu_id = Convert.ToInt32(reader["StudentID"]);
+                Receptionist getname = new Receptionist(stu_id);
+                name = getname.getStudentName();
+
+                reader.Close();
 
 
+                SqlCommand cmd2 = new SqlCommand("Select CurrentSubjectID, NewSubjectID from request where id = " + request_id, con);
+                SqlDataReader reader2;
+                reader2 = cmd2.ExecuteReader();
+                if (reader2.Read())
+                {
+                    string currentsubjectID = reader2["CurrentSubjectID"].ToString();
+                    string newSubjectID = reader2["NewSubjectID"].ToString();
+
+                    current_sub_name = getSubjectName(currentsubjectID);
+                    new_sub_name = getSubjectName(newSubjectID);
+                }
+
+
+            }
+            var request_info = new List<String>() { name, current_sub_name, new_sub_name};
+            con.Close();
+            return request_info;
+
+        }
+
+        private string getSubjectName(string sub_id)
+        {
+            string sub_name = "";
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["myCS"].ToString());
+            con.Open();
+
+            SqlCommand cmd = new SqlCommand("Select SubjectName from Subject where id = " + sub_id, con);
+            SqlDataReader reader;
+            reader = cmd.ExecuteReader();
+            if (reader.Read())
+            {
+                sub_name = reader["SubjectName"].ToString();
+                con.Close();
+                return sub_name;
+            }
+
+            con.Close();
+            return sub_name;
+        }
+
+        
+        public void approve_sub_change_request()
+        {
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["myCS"].ToString());
+            con.Open();
+
+            SqlCommand cmd = new SqlCommand("Select StudentID, CurrentSubjectID, NewSubjectID from request where id = " + request_id, con);
+            SqlDataReader reader;
+            reader = cmd.ExecuteReader();
+            if (reader.Read())
+            {
+                
+                int currentsubjectID = Convert.ToInt32(reader["CurrentSubjectID"].ToString());
+                int newSubjectID = Convert.ToInt32(reader["NewSubjectID"].ToString());
+                int stu_id = Convert.ToInt32(reader["StudentID"].ToString());
+                reader.Close();
+                change_enrolled_subject(stu_id, currentsubjectID, newSubjectID);
+
+                SqlCommand cmd2 = new SqlCommand("Delete From Request Where ID = "+request_id, con);
+                cmd2.ExecuteNonQuery();
+
+            }
+            con.Close();
+        }
+
+        private void change_enrolled_subject(int stu_id, int current_sub_id, int new_sub_id)
+        {
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["myCS"].ToString());
+            con.Open();
+
+            SqlCommand cmd = new SqlCommand("Update enroll set SubjectID = "+new_sub_id+" Where StudentID = "+stu_id+" and SubjectID = "+current_sub_id, con);
+            cmd.ExecuteNonQuery();
+
+            con.Close();
         }
 
     }

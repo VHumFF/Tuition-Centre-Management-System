@@ -361,6 +361,8 @@ namespace Tuition_Centre_Management_System
             lstSubjectList.Items.Clear();
             lblStudent_name2.Text = "Student Name : ";
             lstStudent_List.Items.Clear();
+
+
             Receptionist s_list = new Receptionist(this.cmbStudent_from_level.Text);
             ArrayList student_ID_list = new ArrayList();
             ArrayList subject_list = new ArrayList();
@@ -382,25 +384,29 @@ namespace Tuition_Centre_Management_System
 
         private void lstStudent_List_SelectedIndexChanged(object sender, EventArgs e)
         {
+           //get the selected student id from the listbox
             string stu_id = lstStudent_List.GetItemText(lstStudent_List.SelectedItem);
+
+            //ensure that user select a value
             if(stu_id.Length > 0)
             {
+                //covert string to integer for student id
                 int id = Convert.ToInt32(stu_id);
                 Receptionist getname = new Receptionist(id);
                 string name = getname.getStudentName();
 
+                //display the name of the selected student id
                 lblStudent_name2.Text = "Student Name : " + name;
-            }
-
-            if (lstStudent_List.SelectedItems.Count > 0)
-            {
                 btnEnroll_Student.Enabled = true;
             }
+
+
 
         }
 
         private void btnEnroll_Student_Click(object sender, EventArgs e)
         {
+            //make sure that all necessary value have been selected before enable the enroll button
             if (lstStudent_List.SelectedItems.Count > 0 && cmbStudent_from_level.SelectedIndex > -1 && lstSubjectList.SelectedItems.Count > 0)
             {
                 string s_id = lstStudent_List.GetItemText(lstStudent_List.SelectedItem);
@@ -408,6 +414,7 @@ namespace Tuition_Centre_Management_System
 
                 Receptionist obj1 = new Receptionist(this.cmbStudent_from_level.Text, id);
                 string selected_subject = lstSubjectList.GetItemText(lstSubjectList.SelectedItem);
+                //display message if enroll successful
                 if (obj1.enrollStudent(selected_subject))
                 {
                     MessageBox.Show("Student have been enrolled successfully.");
@@ -416,9 +423,38 @@ namespace Tuition_Centre_Management_System
             }
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void lstRequest_sub_change_SelectedIndexChanged(object sender, EventArgs e)
         {
+            int request_id = Convert.ToInt32(lstRequest_sub_change.GetItemText(lstRequest_sub_change.SelectedItem));
 
+
+            if (lstRequest_sub_change.SelectedItems.Count > 0)
+            {
+                Receptionist receptionistobj = new Receptionist(request_id);
+                var request_info = receptionistobj.getRequestInfo();
+                lblStudent_name_request.Text = "Student Name : "+request_info[0];
+                lblSubject_Change_From.Text = "Request to change from : " + request_info[1] + " ===> " + request_info[2];
+                btnApprove.Enabled= true;
+            }
+            
+        }
+
+        private void btnApprove_Click(object sender, EventArgs e)
+        {
+            int request_id = Convert.ToInt32(lstRequest_sub_change.GetItemText(lstRequest_sub_change.SelectedItem));
+            Receptionist receptionistobj = new Receptionist(request_id);
+            receptionistobj.approve_sub_change_request();
+            MessageBox.Show("Student subject have been updated.");
+
+
+            Receptionist r_list = new Receptionist();
+            ArrayList request_list = new ArrayList();
+            request_list = r_list.getSubject_change_RequestList();
+            lstRequest_sub_change.Items.Clear();
+            foreach (var item in request_list)
+            {
+                lstRequest_sub_change.Items.Add(item);
+            }
         }
     }
 }
