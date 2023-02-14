@@ -54,6 +54,16 @@ namespace Tuition_Centre_Management_System
                 lstRequest_sub_change.Items.Add(item);
             }
 
+            //get student id of student who they have completed their studies
+            Receptionist s_list = new Receptionist();
+            ArrayList stu_list = new ArrayList();
+            stu_list = s_list.getStudentid_Studies_complete();
+            foreach (var item in stu_list)
+            {
+                lstStudent_Complete_studies.Items.Add(item);
+            }
+
+
         }
 
         private void btneditprofile_Click(object sender, EventArgs e)
@@ -425,12 +435,12 @@ namespace Tuition_Centre_Management_System
 
         private void lstRequest_sub_change_SelectedIndexChanged(object sender, EventArgs e)
         {
-            int request_id = Convert.ToInt32(lstRequest_sub_change.GetItemText(lstRequest_sub_change.SelectedItem));
+            string request_id = lstRequest_sub_change.GetItemText(lstRequest_sub_change.SelectedItem);
 
 
             if (lstRequest_sub_change.SelectedItems.Count > 0)
             {
-                Receptionist receptionistobj = new Receptionist(request_id);
+                Receptionist receptionistobj = new Receptionist(Convert.ToInt32(request_id));
                 var request_info = receptionistobj.getRequestInfo();
                 lblStudent_name_request.Text = "Student Name : "+request_info[0];
                 lblSubject_Change_From.Text = "Request to change from : " + request_info[1] + " ===> " + request_info[2];
@@ -454,6 +464,25 @@ namespace Tuition_Centre_Management_System
             foreach (var item in request_list)
             {
                 lstRequest_sub_change.Items.Add(item);
+            }
+        }
+
+        private void lstStudent_Complete_studies_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string stu_id = lstStudent_Complete_studies.GetItemText(lstStudent_Complete_studies.SelectedItem);
+
+
+            if (lstStudent_Complete_studies.SelectedItems.Count > 0)
+            {
+                Receptionist obj = new Receptionist(Convert.ToInt32(stu_id));
+                var student_info = obj.getStudent_complete_studies_info();
+                lblStudent_name_progress.Text = "Student Name : " + student_info[0];
+                lblStudent_level_progress.Text = "Student Level : " + student_info[1];
+                lblSubject1.Text = student_info[2];
+                lblSubject2.Text = student_info[3];
+                lblSubject3.Text = student_info[4];
+
+                btnProgress_student.Enabled = true;
             }
         }
     }

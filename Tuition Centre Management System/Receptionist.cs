@@ -331,10 +331,70 @@ namespace Tuition_Centre_Management_System
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["myCS"].ToString());
             con.Open();
 
-            SqlCommand cmd = new SqlCommand("Update enroll set SubjectID = "+new_sub_id+" Where StudentID = "+stu_id+" and SubjectID = "+current_sub_id, con);
+            SqlCommand cmd = new SqlCommand("Update enroll set SubjectID = "+new_sub_id+", progress = 'In Progress' Where StudentID = "+stu_id+" and SubjectID = "+current_sub_id, con);
             cmd.ExecuteNonQuery();
 
             con.Close();
+        }
+
+
+        public ArrayList getStudentid_Studies_complete()
+        {
+            ArrayList stu_id = new ArrayList();
+
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["myCS"].ToString());
+            con.Open();
+
+            SqlCommand cmd = new SqlCommand("select distinct StudentID from enroll where progress = 'Completed' group by studentID having count(progress) = 3", con);
+            SqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                stu_id.Add(reader.GetInt32(0));
+            }
+            
+            con.Close();
+            return stu_id;
+        }
+
+        private string getstudentLevel(int stu_id)
+        {
+            string level = "";
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["myCS"].ToString());
+            con.Open();
+            SqlCommand cmd = new SqlCommand("select level from level where id =(select levelid from student where id = "+stu_id+")", con);
+            SqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                level = reader.GetString(0);
+            }
+            return level;
+
+        }
+
+
+        public List<string> getStudent_complete_studies_info()
+        {
+            string name = getStudentName();
+            string level = getstudentLevel(student_id);
+            List<string> sub_id_list = new List<string>();
+            List<string> sub_name_list = new List<string>() { name, level};
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["myCS"].ToString());
+            con.Open();
+            SqlCommand cmd = new SqlCommand("select subjectId from enroll where studentID ="+student_id, con);
+            SqlDataReader reader = cmd.ExecuteReader();
+            
+            while (reader.Read())
+            {
+                sub_id_list.Add(reader["Subjectid"].ToString());
+            }
+            foreach(var id in sub_id_list)
+            {
+                sub_name_list.Add(getSubjectName(id));
+            }
+    
+
+            return sub_name_list;
+
         }
 
     }

@@ -82,15 +82,18 @@
             this.lblStudent_name_request = new System.Windows.Forms.Label();
             this.lstRequest_sub_change = new System.Windows.Forms.ListBox();
             this.tabProgress_student = new System.Windows.Forms.TabPage();
+            this.lblProgress_student = new System.Windows.Forms.Label();
+            this.btnProgress_student = new System.Windows.Forms.Button();
+            this.lblStudent_completed_sub = new System.Windows.Forms.Label();
+            this.lblStudent_level_progress = new System.Windows.Forms.Label();
+            this.lblStudent_name_progress = new System.Windows.Forms.Label();
+            this.lblStudent_complete_title2 = new System.Windows.Forms.Label();
+            this.lblStudent_complete_title = new System.Windows.Forms.Label();
+            this.lstStudent_Complete_studies = new System.Windows.Forms.ListBox();
             this.tabPayment = new System.Windows.Forms.TabPage();
-            this.listBox1 = new System.Windows.Forms.ListBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.label7 = new System.Windows.Forms.Label();
+            this.lblSubject1 = new System.Windows.Forms.Label();
+            this.lblSubject2 = new System.Windows.Forms.Label();
+            this.lblSubject3 = new System.Windows.Forms.Label();
             this.tabEnrollStudent.SuspendLayout();
             this.tabpRegisterStudent.SuspendLayout();
             this.tabprofile.SuspendLayout();
@@ -690,14 +693,17 @@
             // 
             // tabProgress_student
             // 
-            this.tabProgress_student.Controls.Add(this.label7);
-            this.tabProgress_student.Controls.Add(this.button1);
-            this.tabProgress_student.Controls.Add(this.label6);
-            this.tabProgress_student.Controls.Add(this.label5);
-            this.tabProgress_student.Controls.Add(this.label4);
-            this.tabProgress_student.Controls.Add(this.label3);
-            this.tabProgress_student.Controls.Add(this.label2);
-            this.tabProgress_student.Controls.Add(this.listBox1);
+            this.tabProgress_student.Controls.Add(this.lblSubject3);
+            this.tabProgress_student.Controls.Add(this.lblSubject2);
+            this.tabProgress_student.Controls.Add(this.lblSubject1);
+            this.tabProgress_student.Controls.Add(this.lblProgress_student);
+            this.tabProgress_student.Controls.Add(this.btnProgress_student);
+            this.tabProgress_student.Controls.Add(this.lblStudent_completed_sub);
+            this.tabProgress_student.Controls.Add(this.lblStudent_level_progress);
+            this.tabProgress_student.Controls.Add(this.lblStudent_name_progress);
+            this.tabProgress_student.Controls.Add(this.lblStudent_complete_title2);
+            this.tabProgress_student.Controls.Add(this.lblStudent_complete_title);
+            this.tabProgress_student.Controls.Add(this.lstStudent_Complete_studies);
             this.tabProgress_student.Location = new System.Drawing.Point(4, 30);
             this.tabProgress_student.Name = "tabProgress_student";
             this.tabProgress_student.Padding = new System.Windows.Forms.Padding(3);
@@ -705,6 +711,82 @@
             this.tabProgress_student.TabIndex = 4;
             this.tabProgress_student.Text = "Student Progression";
             this.tabProgress_student.UseVisualStyleBackColor = true;
+            // 
+            // lblProgress_student
+            // 
+            this.lblProgress_student.AutoSize = true;
+            this.lblProgress_student.Font = new System.Drawing.Font("Gill Sans MT", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lblProgress_student.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.lblProgress_student.Location = new System.Drawing.Point(463, 196);
+            this.lblProgress_student.Name = "lblProgress_student";
+            this.lblProgress_student.Size = new System.Drawing.Size(180, 16);
+            this.lblProgress_student.TabIndex = 7;
+            this.lblProgress_student.Text = "Click to progress student to next level";
+            // 
+            // btnProgress_student
+            // 
+            this.btnProgress_student.Enabled = false;
+            this.btnProgress_student.Location = new System.Drawing.Point(480, 215);
+            this.btnProgress_student.Name = "btnProgress_student";
+            this.btnProgress_student.Size = new System.Drawing.Size(147, 26);
+            this.btnProgress_student.TabIndex = 6;
+            this.btnProgress_student.Text = "Progress Student";
+            this.btnProgress_student.UseVisualStyleBackColor = true;
+            // 
+            // lblStudent_completed_sub
+            // 
+            this.lblStudent_completed_sub.AutoSize = true;
+            this.lblStudent_completed_sub.Location = new System.Drawing.Point(208, 128);
+            this.lblStudent_completed_sub.Name = "lblStudent_completed_sub";
+            this.lblStudent_completed_sub.Size = new System.Drawing.Size(140, 18);
+            this.lblStudent_completed_sub.TabIndex = 5;
+            this.lblStudent_completed_sub.Text = "Subject Completed : ";
+            // 
+            // lblStudent_level_progress
+            // 
+            this.lblStudent_level_progress.AutoSize = true;
+            this.lblStudent_level_progress.Location = new System.Drawing.Point(242, 95);
+            this.lblStudent_level_progress.Name = "lblStudent_level_progress";
+            this.lblStudent_level_progress.Size = new System.Drawing.Size(106, 18);
+            this.lblStudent_level_progress.TabIndex = 4;
+            this.lblStudent_level_progress.Text = "Student Level : ";
+            // 
+            // lblStudent_name_progress
+            // 
+            this.lblStudent_name_progress.AutoSize = true;
+            this.lblStudent_name_progress.Location = new System.Drawing.Point(238, 63);
+            this.lblStudent_name_progress.Name = "lblStudent_name_progress";
+            this.lblStudent_name_progress.Size = new System.Drawing.Size(110, 18);
+            this.lblStudent_name_progress.TabIndex = 3;
+            this.lblStudent_name_progress.Text = "Student Name : ";
+            // 
+            // lblStudent_complete_title2
+            // 
+            this.lblStudent_complete_title2.AutoSize = true;
+            this.lblStudent_complete_title2.Location = new System.Drawing.Point(20, 31);
+            this.lblStudent_complete_title2.Name = "lblStudent_complete_title2";
+            this.lblStudent_complete_title2.Size = new System.Drawing.Size(159, 18);
+            this.lblStudent_complete_title2.TabIndex = 2;
+            this.lblStudent_complete_title2.Text = "Completed thier studies";
+            // 
+            // lblStudent_complete_title
+            // 
+            this.lblStudent_complete_title.AutoSize = true;
+            this.lblStudent_complete_title.Location = new System.Drawing.Point(20, 13);
+            this.lblStudent_complete_title.Name = "lblStudent_complete_title";
+            this.lblStudent_complete_title.Size = new System.Drawing.Size(162, 18);
+            this.lblStudent_complete_title.TabIndex = 1;
+            this.lblStudent_complete_title.Text = "List of Student that have";
+            // 
+            // lstStudent_Complete_studies
+            // 
+            this.lstStudent_Complete_studies.FormattingEnabled = true;
+            this.lstStudent_Complete_studies.ItemHeight = 18;
+            this.lstStudent_Complete_studies.Location = new System.Drawing.Point(20, 63);
+            this.lstStudent_Complete_studies.Name = "lstStudent_Complete_studies";
+            this.lstStudent_Complete_studies.Size = new System.Drawing.Size(159, 148);
+            this.lstStudent_Complete_studies.TabIndex = 0;
+            this.lstStudent_Complete_studies.SelectedIndexChanged += new System.EventHandler(this.lstStudent_Complete_studies_SelectedIndexChanged);
             // 
             // tabPayment
             // 
@@ -716,79 +798,32 @@
             this.tabPayment.Text = "Payment";
             this.tabPayment.UseVisualStyleBackColor = true;
             // 
-            // listBox1
+            // lblSubject1
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 18;
-            this.listBox1.Location = new System.Drawing.Point(20, 63);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(159, 148);
-            this.listBox1.TabIndex = 0;
+            this.lblSubject1.AutoSize = true;
+            this.lblSubject1.Location = new System.Drawing.Point(343, 128);
+            this.lblSubject1.Name = "lblSubject1";
+            this.lblSubject1.Size = new System.Drawing.Size(45, 18);
+            this.lblSubject1.TabIndex = 8;
+            this.lblSubject1.Text = "label2";
             // 
-            // label2
+            // lblSubject2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(20, 13);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(162, 18);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "List of Student that have";
+            this.lblSubject2.AutoSize = true;
+            this.lblSubject2.Location = new System.Drawing.Point(343, 146);
+            this.lblSubject2.Name = "lblSubject2";
+            this.lblSubject2.Size = new System.Drawing.Size(45, 18);
+            this.lblSubject2.TabIndex = 9;
+            this.lblSubject2.Text = "label3";
             // 
-            // label3
+            // lblSubject3
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(20, 31);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(159, 18);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Completed thier studies";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(238, 63);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(110, 18);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "Student Name : ";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(242, 95);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(106, 18);
-            this.label5.TabIndex = 4;
-            this.label5.Text = "Student Level : ";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(208, 128);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(140, 18);
-            this.label6.TabIndex = 5;
-            this.label6.Text = "Subject Completed : ";
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(480, 215);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(147, 26);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "Progress Student";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Gill Sans MT", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label7.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.label7.Location = new System.Drawing.Point(463, 195);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(180, 16);
-            this.label7.TabIndex = 7;
-            this.label7.Text = "Click to progress student to next level";
+            this.lblSubject3.AutoSize = true;
+            this.lblSubject3.Location = new System.Drawing.Point(343, 164);
+            this.lblSubject3.Name = "lblSubject3";
+            this.lblSubject3.Size = new System.Drawing.Size(45, 18);
+            this.lblSubject3.TabIndex = 10;
+            this.lblSubject3.Text = "label4";
             // 
             // ReceptionistHomePage
             // 
@@ -875,14 +910,17 @@
         private Label label1;
         private Button btnApprove;
         private TabPage tabProgress_student;
-        private Label label7;
-        private Button button1;
-        private Label label6;
-        private Label label5;
-        private Label label4;
-        private Label label3;
-        private Label label2;
-        private ListBox listBox1;
+        private Label lblProgress_student;
+        private Button btnProgress_student;
+        private Label lblStudent_completed_sub;
+        private Label lblStudent_level_progress;
+        private Label lblStudent_name_progress;
+        private Label lblStudent_complete_title2;
+        private Label lblStudent_complete_title;
+        private ListBox lstStudent_Complete_studies;
         private TabPage tabPayment;
+        private Label lblSubject3;
+        private Label lblSubject2;
+        private Label lblSubject1;
     }
 }
