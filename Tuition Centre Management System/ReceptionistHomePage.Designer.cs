@@ -76,7 +76,7 @@
             this.lblname = new System.Windows.Forms.Label();
             this.tabcon = new System.Windows.Forms.TabControl();
             this.tabStudent_Request = new System.Windows.Forms.TabPage();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblRequestList = new System.Windows.Forms.Label();
             this.btnApprove = new System.Windows.Forms.Button();
             this.lblSubject_Change_From = new System.Windows.Forms.Label();
             this.lblStudent_name_request = new System.Windows.Forms.Label();
@@ -96,12 +96,18 @@
             this.lblStudent_complete_title = new System.Windows.Forms.Label();
             this.lstStudent_Complete_studies = new System.Windows.Forms.ListBox();
             this.tabPayment = new System.Windows.Forms.TabPage();
+            this.btnAcceptPayment = new System.Windows.Forms.Button();
+            this.lblPaid_amount = new System.Windows.Forms.Label();
+            this.lblPayment_student_name = new System.Windows.Forms.Label();
+            this.lstPayment_list = new System.Windows.Forms.ListBox();
+            this.lblPaymentList = new System.Windows.Forms.Label();
             this.tabEnrollStudent.SuspendLayout();
             this.tabpRegisterStudent.SuspendLayout();
             this.tabprofile.SuspendLayout();
             this.tabcon.SuspendLayout();
             this.tabStudent_Request.SuspendLayout();
             this.tabProgress_student.SuspendLayout();
+            this.tabPayment.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblwelcome
@@ -632,7 +638,7 @@
             // 
             // tabStudent_Request
             // 
-            this.tabStudent_Request.Controls.Add(this.label1);
+            this.tabStudent_Request.Controls.Add(this.lblRequestList);
             this.tabStudent_Request.Controls.Add(this.btnApprove);
             this.tabStudent_Request.Controls.Add(this.lblSubject_Change_From);
             this.tabStudent_Request.Controls.Add(this.lblStudent_name_request);
@@ -645,14 +651,14 @@
             this.tabStudent_Request.Text = "Student Request";
             this.tabStudent_Request.UseVisualStyleBackColor = true;
             // 
-            // label1
+            // lblRequestList
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(3, 2);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(215, 18);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "List of Request to change subject";
+            this.lblRequestList.AutoSize = true;
+            this.lblRequestList.Location = new System.Drawing.Point(3, 2);
+            this.lblRequestList.Name = "lblRequestList";
+            this.lblRequestList.Size = new System.Drawing.Size(215, 18);
+            this.lblRequestList.TabIndex = 4;
+            this.lblRequestList.Text = "List of Request to change subject";
             // 
             // btnApprove
             // 
@@ -835,6 +841,11 @@
             // 
             // tabPayment
             // 
+            this.tabPayment.Controls.Add(this.btnAcceptPayment);
+            this.tabPayment.Controls.Add(this.lblPaid_amount);
+            this.tabPayment.Controls.Add(this.lblPayment_student_name);
+            this.tabPayment.Controls.Add(this.lstPayment_list);
+            this.tabPayment.Controls.Add(this.lblPaymentList);
             this.tabPayment.Location = new System.Drawing.Point(4, 30);
             this.tabPayment.Name = "tabPayment";
             this.tabPayment.Padding = new System.Windows.Forms.Padding(3);
@@ -842,6 +853,54 @@
             this.tabPayment.TabIndex = 5;
             this.tabPayment.Text = "Payment";
             this.tabPayment.UseVisualStyleBackColor = true;
+            // 
+            // btnAcceptPayment
+            // 
+            this.btnAcceptPayment.Enabled = false;
+            this.btnAcceptPayment.Location = new System.Drawing.Point(509, 212);
+            this.btnAcceptPayment.Name = "btnAcceptPayment";
+            this.btnAcceptPayment.Size = new System.Drawing.Size(134, 29);
+            this.btnAcceptPayment.TabIndex = 4;
+            this.btnAcceptPayment.Text = "Accept Payment";
+            this.btnAcceptPayment.UseVisualStyleBackColor = true;
+            this.btnAcceptPayment.Click += new System.EventHandler(this.btnAcceptPayment_Click);
+            // 
+            // lblPaid_amount
+            // 
+            this.lblPaid_amount.AutoSize = true;
+            this.lblPaid_amount.Location = new System.Drawing.Point(248, 73);
+            this.lblPaid_amount.Name = "lblPaid_amount";
+            this.lblPaid_amount.Size = new System.Drawing.Size(103, 18);
+            this.lblPaid_amount.TabIndex = 3;
+            this.lblPaid_amount.Text = "Paid Amount : ";
+            // 
+            // lblPayment_student_name
+            // 
+            this.lblPayment_student_name.AutoSize = true;
+            this.lblPayment_student_name.Location = new System.Drawing.Point(241, 35);
+            this.lblPayment_student_name.Name = "lblPayment_student_name";
+            this.lblPayment_student_name.Size = new System.Drawing.Size(110, 18);
+            this.lblPayment_student_name.TabIndex = 2;
+            this.lblPayment_student_name.Text = "Student Name : ";
+            // 
+            // lstPayment_list
+            // 
+            this.lstPayment_list.FormattingEnabled = true;
+            this.lstPayment_list.ItemHeight = 18;
+            this.lstPayment_list.Location = new System.Drawing.Point(25, 35);
+            this.lstPayment_list.Name = "lstPayment_list";
+            this.lstPayment_list.Size = new System.Drawing.Size(156, 184);
+            this.lstPayment_list.TabIndex = 1;
+            this.lstPayment_list.SelectedIndexChanged += new System.EventHandler(this.lstPayment_list_SelectedIndexChanged);
+            // 
+            // lblPaymentList
+            // 
+            this.lblPaymentList.AutoSize = true;
+            this.lblPaymentList.Location = new System.Drawing.Point(25, 14);
+            this.lblPaymentList.Name = "lblPaymentList";
+            this.lblPaymentList.Size = new System.Drawing.Size(90, 18);
+            this.lblPaymentList.TabIndex = 0;
+            this.lblPaymentList.Text = "Payment List";
             // 
             // ReceptionistHomePage
             // 
@@ -868,6 +927,8 @@
             this.tabStudent_Request.PerformLayout();
             this.tabProgress_student.ResumeLayout(false);
             this.tabProgress_student.PerformLayout();
+            this.tabPayment.ResumeLayout(false);
+            this.tabPayment.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -925,7 +986,7 @@
         private Label lblSubject_Change_From;
         private Label lblStudent_name_request;
         private ListBox lstRequest_sub_change;
-        private Label label1;
+        private Label lblRequestList;
         private Button btnApprove;
         private TabPage tabProgress_student;
         private Label lblProgress_student;
@@ -942,5 +1003,10 @@
         private Label lblSubject1;
         private Label lblStudent_level_progress2;
         private Label lblStudent_name_progress2;
+        private Label lblPaymentList;
+        private Button btnAcceptPayment;
+        private Label lblPaid_amount;
+        private Label lblPayment_student_name;
+        private ListBox lstPayment_list;
     }
 }

@@ -27,6 +27,8 @@ namespace Tuition_Centre_Management_System
         private string student_level;
         private int student_id;
         private int request_id;
+        private int payment_id;
+
 
         public Receptionist(int uid, string s_name, string s_contact, string s_email, string s_address, string s_level)
         {
@@ -50,10 +52,11 @@ namespace Tuition_Centre_Management_System
             student_id = s_id;
         }
 
-        public Receptionist(int id)//could be request id or student id
+        public Receptionist(int id)//could be request id or student id,...
         {
             student_id = id;
             request_id= id;
+            payment_id = id;
         }
 
 
@@ -367,6 +370,7 @@ namespace Tuition_Centre_Management_System
             {
                 level = reader.GetString(0);
             }
+            con.Close();
             return level;
 
         }
@@ -391,8 +395,8 @@ namespace Tuition_Centre_Management_System
             {
                 sub_name_list.Add(getSubjectName(id));
             }
-    
 
+            con.Close();
             return sub_name_list;
 
         }
@@ -448,6 +452,60 @@ namespace Tuition_Centre_Management_System
             MessageBox.Show("Student have completed thier studies from their level.\nStudent have progress from "+student_level+" to "+progress_level_to, "Student Progressed",MessageBoxButtons.OK, MessageBoxIcon.Information);
             con.Close();
             return true;
+        }
+
+
+        public ArrayList getPaymentlist()
+        {
+            ArrayList paid_list = new ArrayList();
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["myCS"].ToString());
+            con.Open();
+            SqlCommand cmd = new SqlCommand("Select id from payment where status = 'Paid'", con);
+            SqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                paid_list.Add(reader.GetInt32(0));
+            }
+            con.Close();
+            return paid_list;
+        }
+
+
+        public Tuple<int, decimal> getPaymentInfo()
+        {
+            int stu_id = 0;
+            decimal amount = 0;
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["myCS"].ToString());
+            con.Open();
+            SqlCommand cmd = new SqlCommand("Select studentid, outstanding from Payment where id = "+payment_id, con);
+            SqlDataReader reader = cmd.ExecuteReader();
+            if (reader.Read())
+            {
+                stu_id = Convert.ToInt32(reader["studentid"]);
+                amount = Convert.ToDecimal(reader["outstanding"]);
+
+            }
+            var payment_info = Tuple.Create(stu_id, amount);
+            con.Close();
+            return payment_info;
+                
+        }
+
+        public void accept_payment()
+        {
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["myCS"].ToString());
+            con.Open();
+            var payment_info = getPaymentInfo();
+
+            DateTime today = DateTime.Today;
+            string date = today.ToString("yyyy-MM-dd");
+            SqlCommand cmd = new SqlCommand("insert into receipt (studentid, date, amount) values("+payment_info.Item1+",'"+date+"',"+payment_info.Item2+")", con);
+            cmd.ExecuteNonQuery();
+
+            SqlCommand cmd2 = new SqlCommand("Delete from payment where id = "+payment_id, con);
+            cmd2.ExecuteNonQuery();
+
+            con.Close();
         }
 
     }

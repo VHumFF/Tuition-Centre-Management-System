@@ -63,7 +63,13 @@ namespace Tuition_Centre_Management_System
                 lstStudent_Complete_studies.Items.Add(item);
             }
 
-
+            Receptionist p_list = new Receptionist();
+            ArrayList payment_list = new ArrayList();
+            payment_list = p_list.getPaymentlist();
+            foreach(var item in payment_list)
+            {
+                lstPayment_list.Items.Add(item);
+            }
         }
 
         private void btneditprofile_Click(object sender, EventArgs e)
@@ -508,6 +514,39 @@ namespace Tuition_Centre_Management_System
                 {
                     lstStudent_Complete_studies.Items.Add(item);
                 }
+            }
+        }
+
+        private void lstPayment_list_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string payment_id = lstPayment_list.GetItemText(lstPayment_list.SelectedItem);
+
+            if (lstPayment_list.SelectedItems.Count > 0)
+            {
+                Receptionist obj = new Receptionist(Convert.ToInt32(payment_id));
+                var payment_info = obj.getPaymentInfo();
+                Receptionist getname = new Receptionist(payment_info.Item1);
+                string name = getname.getStudentName();
+                lblPayment_student_name.Text = "Student Name : " + name;
+                lblPaid_amount.Text = "Paid Amount : RM" + payment_info.Item2;
+
+                btnAcceptPayment.Enabled = true;
+            }
+        }
+
+        private void btnAcceptPayment_Click(object sender, EventArgs e)
+        {
+            string payment_id = lstPayment_list.GetItemText(lstPayment_list.SelectedItem);
+            Receptionist obj = new Receptionist(Convert.ToInt32(payment_id));
+            obj.accept_payment();
+            MessageBox.Show("Payment accepted, payment receipt have been generated", "Payment Accepted", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            btnAcceptPayment.Enabled = false;
+            Receptionist p_list = new Receptionist();
+            ArrayList payment_list = new ArrayList();
+            payment_list = p_list.getPaymentlist();
+            foreach (var item in payment_list)
+            {
+                lstPayment_list.Items.Add(item);
             }
         }
     }
