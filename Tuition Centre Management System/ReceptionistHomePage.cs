@@ -461,6 +461,7 @@ namespace Tuition_Centre_Management_System
             ArrayList request_list = new ArrayList();
             request_list = r_list.getSubject_change_RequestList();
             lstRequest_sub_change.Items.Clear();
+            btnApprove.Enabled= false;
             foreach (var item in request_list)
             {
                 lstRequest_sub_change.Items.Add(item);
@@ -476,13 +477,37 @@ namespace Tuition_Centre_Management_System
             {
                 Receptionist obj = new Receptionist(Convert.ToInt32(stu_id));
                 var student_info = obj.getStudent_complete_studies_info();
-                lblStudent_name_progress.Text = "Student Name : " + student_info[0];
-                lblStudent_level_progress.Text = "Student Level : " + student_info[1];
+                lblStudent_name_progress2.Text = student_info[0];
+                lblStudent_level_progress2.Text = student_info[1];
                 lblSubject1.Text = student_info[2];
                 lblSubject2.Text = student_info[3];
                 lblSubject3.Text = student_info[4];
 
                 btnProgress_student.Enabled = true;
+            }
+        }
+
+        private void btnProgress_student_Click(object sender, EventArgs e)
+        {
+            string stu_id = lstStudent_Complete_studies.GetItemText(lstStudent_Complete_studies.SelectedItem);
+            Receptionist obj = new Receptionist(this.lblStudent_level_progress2.Text, Convert.ToInt32(stu_id));
+            bool progress = obj.progress_Student_level();
+            if (progress)
+            {
+                btnProgress_student.Enabled = false;
+                Receptionist s_list = new Receptionist();
+                ArrayList stu_list = new ArrayList();
+                stu_list = s_list.getStudentid_Studies_complete();
+                lstStudent_Complete_studies.Items.Clear();
+                lblStudent_name_progress2.Text = "";
+                lblStudent_level_progress2.Text = "";
+                lblSubject1.Text = "";
+                lblSubject2.Text = "";
+                lblSubject3.Text = "";
+                foreach (var item in stu_list)
+                {
+                    lstStudent_Complete_studies.Items.Add(item);
+                }
             }
         }
     }

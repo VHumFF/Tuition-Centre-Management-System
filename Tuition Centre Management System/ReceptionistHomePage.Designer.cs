@@ -82,6 +82,9 @@
             this.lblStudent_name_request = new System.Windows.Forms.Label();
             this.lstRequest_sub_change = new System.Windows.Forms.ListBox();
             this.tabProgress_student = new System.Windows.Forms.TabPage();
+            this.lblSubject3 = new System.Windows.Forms.Label();
+            this.lblSubject2 = new System.Windows.Forms.Label();
+            this.lblSubject1 = new System.Windows.Forms.Label();
             this.lblProgress_student = new System.Windows.Forms.Label();
             this.btnProgress_student = new System.Windows.Forms.Button();
             this.lblStudent_completed_sub = new System.Windows.Forms.Label();
@@ -91,9 +94,8 @@
             this.lblStudent_complete_title = new System.Windows.Forms.Label();
             this.lstStudent_Complete_studies = new System.Windows.Forms.ListBox();
             this.tabPayment = new System.Windows.Forms.TabPage();
-            this.lblSubject1 = new System.Windows.Forms.Label();
-            this.lblSubject2 = new System.Windows.Forms.Label();
-            this.lblSubject3 = new System.Windows.Forms.Label();
+            this.lblStudent_name_progress2 = new System.Windows.Forms.Label();
+            this.lblStudent_level_progress2 = new System.Windows.Forms.Label();
             this.tabEnrollStudent.SuspendLayout();
             this.tabpRegisterStudent.SuspendLayout();
             this.tabprofile.SuspendLayout();
@@ -693,6 +695,8 @@
             // 
             // tabProgress_student
             // 
+            this.tabProgress_student.Controls.Add(this.lblStudent_level_progress2);
+            this.tabProgress_student.Controls.Add(this.lblStudent_name_progress2);
             this.tabProgress_student.Controls.Add(this.lblSubject3);
             this.tabProgress_student.Controls.Add(this.lblSubject2);
             this.tabProgress_student.Controls.Add(this.lblSubject1);
@@ -711,6 +715,33 @@
             this.tabProgress_student.TabIndex = 4;
             this.tabProgress_student.Text = "Student Progression";
             this.tabProgress_student.UseVisualStyleBackColor = true;
+            // 
+            // lblSubject3
+            // 
+            this.lblSubject3.AutoSize = true;
+            this.lblSubject3.Location = new System.Drawing.Point(343, 164);
+            this.lblSubject3.Name = "lblSubject3";
+            this.lblSubject3.Size = new System.Drawing.Size(45, 18);
+            this.lblSubject3.TabIndex = 10;
+            this.lblSubject3.Text = "label4";
+            // 
+            // lblSubject2
+            // 
+            this.lblSubject2.AutoSize = true;
+            this.lblSubject2.Location = new System.Drawing.Point(343, 146);
+            this.lblSubject2.Name = "lblSubject2";
+            this.lblSubject2.Size = new System.Drawing.Size(45, 18);
+            this.lblSubject2.TabIndex = 9;
+            this.lblSubject2.Text = "label3";
+            // 
+            // lblSubject1
+            // 
+            this.lblSubject1.AutoSize = true;
+            this.lblSubject1.Location = new System.Drawing.Point(343, 128);
+            this.lblSubject1.Name = "lblSubject1";
+            this.lblSubject1.Size = new System.Drawing.Size(45, 18);
+            this.lblSubject1.TabIndex = 8;
+            this.lblSubject1.Text = "label2";
             // 
             // lblProgress_student
             // 
@@ -732,6 +763,7 @@
             this.btnProgress_student.TabIndex = 6;
             this.btnProgress_student.Text = "Progress Student";
             this.btnProgress_student.UseVisualStyleBackColor = true;
+            this.btnProgress_student.Click += new System.EventHandler(this.btnProgress_student_Click);
             // 
             // lblStudent_completed_sub
             // 
@@ -798,32 +830,23 @@
             this.tabPayment.Text = "Payment";
             this.tabPayment.UseVisualStyleBackColor = true;
             // 
-            // lblSubject1
+            // lblStudent_name_progress2
             // 
-            this.lblSubject1.AutoSize = true;
-            this.lblSubject1.Location = new System.Drawing.Point(343, 128);
-            this.lblSubject1.Name = "lblSubject1";
-            this.lblSubject1.Size = new System.Drawing.Size(45, 18);
-            this.lblSubject1.TabIndex = 8;
-            this.lblSubject1.Text = "label2";
+            this.lblStudent_name_progress2.AutoSize = true;
+            this.lblStudent_name_progress2.Location = new System.Drawing.Point(343, 63);
+            this.lblStudent_name_progress2.Name = "lblStudent_name_progress2";
+            this.lblStudent_name_progress2.Size = new System.Drawing.Size(45, 18);
+            this.lblStudent_name_progress2.TabIndex = 11;
+            this.lblStudent_name_progress2.Text = "label2";
             // 
-            // lblSubject2
+            // lblStudent_level_progress2
             // 
-            this.lblSubject2.AutoSize = true;
-            this.lblSubject2.Location = new System.Drawing.Point(343, 146);
-            this.lblSubject2.Name = "lblSubject2";
-            this.lblSubject2.Size = new System.Drawing.Size(45, 18);
-            this.lblSubject2.TabIndex = 9;
-            this.lblSubject2.Text = "label3";
-            // 
-            // lblSubject3
-            // 
-            this.lblSubject3.AutoSize = true;
-            this.lblSubject3.Location = new System.Drawing.Point(343, 164);
-            this.lblSubject3.Name = "lblSubject3";
-            this.lblSubject3.Size = new System.Drawing.Size(45, 18);
-            this.lblSubject3.TabIndex = 10;
-            this.lblSubject3.Text = "label4";
+            this.lblStudent_level_progress2.AutoSize = true;
+            this.lblStudent_level_progress2.Location = new System.Drawing.Point(343, 95);
+            this.lblStudent_level_progress2.Name = "lblStudent_level_progress2";
+            this.lblStudent_level_progress2.Size = new System.Drawing.Size(45, 18);
+            this.lblStudent_level_progress2.TabIndex = 12;
+            this.lblStudent_level_progress2.Text = "label3";
             // 
             // ReceptionistHomePage
             // 
@@ -922,5 +945,7 @@
         private Label lblSubject3;
         private Label lblSubject2;
         private Label lblSubject1;
+        private Label lblStudent_level_progress2;
+        private Label lblStudent_name_progress2;
     }
 }

@@ -397,6 +397,59 @@ namespace Tuition_Centre_Management_System
 
         }
 
+
+
+        public bool progress_Student_level()
+        {
+            string progress_level_to = "";
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["myCS"].ToString());
+            con.Open();
+            SqlCommand cmd = new SqlCommand("select * from payment where studentid = "+student_id, con);
+            SqlDataReader reader = cmd.ExecuteReader();
+            if (reader.Read())
+            {
+                MessageBox.Show("Student still have unsettle outstanding");
+                con.Close();
+                return false;
+            }
+            reader.Close();
+            if(student_level == "Form 1")
+            {
+                progress_level_to = "Form 2";
+            }
+            else if (student_level == "Form 2")
+            {
+                progress_level_to = "Form 3";
+            }
+            else if(student_level == "Form 3")
+            {
+                progress_level_to = "Form 4";
+            }
+            else if(student_level == "Form 4")
+            {
+                progress_level_to = "Form 5";
+            }
+            else if(student_level == "Form 5")
+            {
+                SqlCommand cmd4 = new SqlCommand("Delete from users where id = (select userid from student where id = "+student_id+")", con);
+                cmd4.ExecuteNonQuery();
+                MessageBox.Show("Student have completed thier studies from all level.\nuser info have been deleted from the system.");
+                con.Close();
+                return true;
+
+
+            }
+
+            SqlCommand cmd2 = new SqlCommand("Delete from enroll where studentID = "+student_id, con);
+            cmd2.ExecuteNonQuery();
+            SqlCommand cmd3 = new SqlCommand("Update Student set LevelID =(select id from Level where level = '"+progress_level_to+"') where id = "+student_id, con);
+            cmd3.ExecuteNonQuery();
+
+            MessageBox.Show("Student have completed thier studies from their level.\nStudent have progress from "+student_level+" to "+progress_level_to);
+            con.Close();
+            return true;
+        }
+
     }
 
 
