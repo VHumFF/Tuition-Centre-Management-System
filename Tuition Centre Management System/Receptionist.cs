@@ -163,7 +163,7 @@ namespace Tuition_Centre_Management_System
                 //dont allow student to enroll new subject if already enrolled in 3
                 if(subject_enrolled == 3)
                 {
-                    MessageBox.Show("Student cannot enrolled more than 3 subject.\nCurrent taken Subject number : "+ subject_enrolled);
+                    MessageBox.Show("Student cannot enrolled more than 3 subject.\nCurrent taken Subject number : "+ subject_enrolled, "Student Enrollment", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                     con.Close();
                     return false;
                 }
@@ -178,7 +178,7 @@ namespace Tuition_Centre_Management_System
             //if read rows, means student have enrolled in the subject.
             if(sub_exist)
             { 
-                MessageBox.Show("Student already in the subject.\n\n" + subject + "\n\nPlease enroll another subject");
+                MessageBox.Show("Student already in the subject.\n\n" + subject + "\n\nPlease enroll another subject", "Student Enrollment", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 con.Close();
                 return false;
             }
@@ -408,7 +408,7 @@ namespace Tuition_Centre_Management_System
             SqlDataReader reader = cmd.ExecuteReader();
             if (reader.Read())
             {
-                MessageBox.Show("Student still have unsettle outstanding");
+                MessageBox.Show("Student still have unsettle outstanding", "Student Progression", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 con.Close();
                 return false;
             }
@@ -433,7 +433,7 @@ namespace Tuition_Centre_Management_System
             {
                 SqlCommand cmd4 = new SqlCommand("Delete from users where id = (select userid from student where id = "+student_id+")", con);
                 cmd4.ExecuteNonQuery();
-                MessageBox.Show("Student have completed thier studies from all level.\nuser info have been deleted from the system.");
+                MessageBox.Show("Student have completed thier studies from all level.\nuser info have been deleted from the system.", "Student Progressed", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 con.Close();
                 return true;
 
@@ -445,7 +445,7 @@ namespace Tuition_Centre_Management_System
             SqlCommand cmd3 = new SqlCommand("Update Student set LevelID =(select id from Level where level = '"+progress_level_to+"') where id = "+student_id, con);
             cmd3.ExecuteNonQuery();
 
-            MessageBox.Show("Student have completed thier studies from their level.\nStudent have progress from "+student_level+" to "+progress_level_to);
+            MessageBox.Show("Student have completed thier studies from their level.\nStudent have progress from "+student_level+" to "+progress_level_to, "Student Progressed",MessageBoxButtons.OK, MessageBoxIcon.Information);
             con.Close();
             return true;
         }

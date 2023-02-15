@@ -427,7 +427,7 @@ namespace Tuition_Centre_Management_System
                 //display message if enroll successful
                 if (obj1.enrollStudent(selected_subject))
                 {
-                    MessageBox.Show("Student have been enrolled successfully.");
+                    MessageBox.Show("Student have been enrolled successfully.", "Student Enrollment", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
 
             }
@@ -454,7 +454,7 @@ namespace Tuition_Centre_Management_System
             int request_id = Convert.ToInt32(lstRequest_sub_change.GetItemText(lstRequest_sub_change.SelectedItem));
             Receptionist receptionistobj = new Receptionist(request_id);
             receptionistobj.approve_sub_change_request();
-            MessageBox.Show("Student subject have been updated.");
+            MessageBox.Show("Student subject have been updated.","Subject Changed", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
 
             Receptionist r_list = new Receptionist();
