@@ -79,6 +79,24 @@ namespace Tuition_Centre_Management_System
 
         }
 
+        public string getLevel()
+        {
+            string level = "";
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["myCS"].ToString());
+            con.Open();
+
+            SqlCommand cmd = new SqlCommand("Select level from level where id = (select levelid from "+role+" where userid = (select id from users where username = '"+username+"'))", con);
+            SqlDataReader userlevel;
+            userlevel = cmd.ExecuteReader();
+            if(userlevel.Read())
+            {
+                level = userlevel["level"].ToString();
+            }
+
+
+            return level;
+        }
+
 
         public void updateProfile()
         {
@@ -146,6 +164,8 @@ namespace Tuition_Centre_Management_System
                 return true;
             }
         }
+
+
     }
 
 }

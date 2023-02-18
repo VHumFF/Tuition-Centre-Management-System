@@ -42,7 +42,7 @@ namespace Tuition_Centre_Management_System
             else if (test_account == "tutor")
             {
                 //open tutor page
-                TutorHomePage t = new TutorHomePage();
+                TutorHomePage t = new TutorHomePage(txtUsername.Text, test_account);
                 t.ShowDialog();
 
             }
