@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -33,6 +34,16 @@ namespace Tuition_Centre_Management_System
             txtAddress.Text = info[3];
             txtlevel.Text = profile1.getLevel();
 
+            //display subject id tutor taught
+            Tutor sub_list = new Tutor(username);
+            ArrayList subject_list = new ArrayList();
+            subject_list = sub_list.get_taught_subject_list();
+            foreach(int item in subject_list)
+            {
+                lstTaught_subject_list.Items.Add(item);
+            }
+
+            cmbWeekdays.SelectedIndex = cmbWeekdays.FindString("Monday");
 
         }
 
@@ -113,6 +124,46 @@ namespace Tuition_Centre_Management_System
             cp.ShowDialog();
         }
 
+        private void lstTaught_subject_list_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string subject_id = lstTaught_subject_list.GetItemText(lstTaught_subject_list.SelectedItem);
 
+            if(lstTaught_subject_list.SelectedItems.Count > 0)
+            {
+                Tutor obj = new Tutor(Convert.ToInt32(subject_id));
+                lblsubject_name_selected.Text = obj.get_subject_name();
+                btnCreate.Enabled = true;
+            }
+        }
+
+        private void btnCreate_Click(object sender, EventArgs e)
+        {
+            if(dtpStart_Time.Value > dtpEnd_Time.Value)
+            {
+                MessageBox.Show("Start Time must be earlier than End Time");
+            }
+            else if(dtpStart_Time.Value == dtpEnd_Time.Value)
+            {
+                MessageBox.Show("End Time should be greater than Start Time");
+            }
+            else if((dtpEnd_Time.Value - dtpStart_Time.Value).TotalHours > 2)
+            {
+                MessageBox.Show("Class must not exceed 2 hours");
+            }
+            else if ((dtpEnd_Time.Value - dtpStart_Time.Value).TotalHours < 0.5)
+            {
+                MessageBox.Show("Class must not less than 30 minutes");
+            }
+            else
+            {
+                DialogResult create_class = MessageBox.Show("Class Information\n\n\nSubject Name : "+lblsubject_name_selected.Text+"\n\nStart Time : "+dtpStart_Time.Value.ToString("hh mm tt")+
+                    "\n\nEnd Time : "+dtpEnd_Time.Value.ToString("hh mm tt")+"\n\nWeekday : "+cmbWeekdays.Text, "Create Class Comfirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                if(create_class == DialogResult.Yes)
+                {
+
+                }
+            }
+
+        }
     }
 }

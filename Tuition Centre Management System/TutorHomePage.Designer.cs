@@ -46,17 +46,35 @@
             this.lblemail = new System.Windows.Forms.Label();
             this.lblcontact = new System.Windows.Forms.Label();
             this.lblname = new System.Windows.Forms.Label();
+            this.tabCreateClass = new System.Windows.Forms.TabPage();
+            this.lblsubject_name_selected = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
+            this.btnCreate = new System.Windows.Forms.Button();
+            this.lblSubject_Name = new System.Windows.Forms.Label();
+            this.lstTaught_subject_list = new System.Windows.Forms.ListBox();
+            this.cmbWeekdays = new System.Windows.Forms.ComboBox();
+            this.dtpEnd_Time = new System.Windows.Forms.DateTimePicker();
+            this.dtpStart_Time = new System.Windows.Forms.DateTimePicker();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.button5 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.lblwelcome = new System.Windows.Forms.Label();
             this.lbltuitioname = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabProfile.SuspendLayout();
+            this.tabCreateClass.SuspendLayout();
+            this.tabPage1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
             // 
             this.tabControl1.Appearance = System.Windows.Forms.TabAppearance.FlatButtons;
             this.tabControl1.Controls.Add(this.tabProfile);
+            this.tabControl1.Controls.Add(this.tabCreateClass);
+            this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.tabControl1.Font = new System.Drawing.Font("Gill Sans MT", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -254,14 +272,167 @@
             this.lblname.TabIndex = 19;
             this.lblname.Text = "Name";
             // 
+            // tabCreateClass
+            // 
+            this.tabCreateClass.Controls.Add(this.lblsubject_name_selected);
+            this.tabCreateClass.Controls.Add(this.label1);
+            this.tabCreateClass.Controls.Add(this.button2);
+            this.tabCreateClass.Controls.Add(this.btnCreate);
+            this.tabCreateClass.Controls.Add(this.lblSubject_Name);
+            this.tabCreateClass.Controls.Add(this.lstTaught_subject_list);
+            this.tabCreateClass.Controls.Add(this.cmbWeekdays);
+            this.tabCreateClass.Controls.Add(this.dtpEnd_Time);
+            this.tabCreateClass.Controls.Add(this.dtpStart_Time);
+            this.tabCreateClass.Location = new System.Drawing.Point(4, 30);
+            this.tabCreateClass.Name = "tabCreateClass";
+            this.tabCreateClass.Padding = new System.Windows.Forms.Padding(3);
+            this.tabCreateClass.Size = new System.Drawing.Size(651, 249);
+            this.tabCreateClass.TabIndex = 1;
+            this.tabCreateClass.Text = "Create Class";
+            this.tabCreateClass.UseVisualStyleBackColor = true;
+            // 
+            // lblsubject_name_selected
+            // 
+            this.lblsubject_name_selected.AutoSize = true;
+            this.lblsubject_name_selected.Location = new System.Drawing.Point(330, 6);
+            this.lblsubject_name_selected.Name = "lblsubject_name_selected";
+            this.lblsubject_name_selected.Size = new System.Drawing.Size(45, 18);
+            this.lblsubject_name_selected.TabIndex = 8;
+            this.lblsubject_name_selected.Text = "label2";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(16, 9);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(45, 18);
+            this.label1.TabIndex = 7;
+            this.label1.Text = "label1";
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(446, 218);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 6;
+            this.button2.Text = "button2";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // btnCreate
+            // 
+            this.btnCreate.Enabled = false;
+            this.btnCreate.Location = new System.Drawing.Point(546, 218);
+            this.btnCreate.Name = "btnCreate";
+            this.btnCreate.Size = new System.Drawing.Size(75, 23);
+            this.btnCreate.TabIndex = 5;
+            this.btnCreate.Text = "Create";
+            this.btnCreate.UseVisualStyleBackColor = true;
+            this.btnCreate.Click += new System.EventHandler(this.btnCreate_Click);
+            // 
+            // lblSubject_Name
+            // 
+            this.lblSubject_Name.AutoSize = true;
+            this.lblSubject_Name.Location = new System.Drawing.Point(216, 6);
+            this.lblSubject_Name.Name = "lblSubject_Name";
+            this.lblSubject_Name.Size = new System.Drawing.Size(108, 18);
+            this.lblSubject_Name.TabIndex = 4;
+            this.lblSubject_Name.Text = "Subject Name : ";
+            // 
+            // lstTaught_subject_list
+            // 
+            this.lstTaught_subject_list.FormattingEnabled = true;
+            this.lstTaught_subject_list.ItemHeight = 18;
+            this.lstTaught_subject_list.Location = new System.Drawing.Point(8, 31);
+            this.lstTaught_subject_list.Name = "lstTaught_subject_list";
+            this.lstTaught_subject_list.Size = new System.Drawing.Size(120, 94);
+            this.lstTaught_subject_list.TabIndex = 3;
+            this.lstTaught_subject_list.SelectedIndexChanged += new System.EventHandler(this.lstTaught_subject_list_SelectedIndexChanged);
+            // 
+            // cmbWeekdays
+            // 
+            this.cmbWeekdays.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbWeekdays.FormattingEnabled = true;
+            this.cmbWeekdays.Items.AddRange(new object[] {
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday"});
+            this.cmbWeekdays.Location = new System.Drawing.Point(216, 131);
+            this.cmbWeekdays.Name = "cmbWeekdays";
+            this.cmbWeekdays.Size = new System.Drawing.Size(133, 26);
+            this.cmbWeekdays.TabIndex = 2;
+            // 
+            // dtpEnd_Time
+            // 
+            this.dtpEnd_Time.CustomFormat = "hh:mm tt";
+            this.dtpEnd_Time.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpEnd_Time.Location = new System.Drawing.Point(400, 59);
+            this.dtpEnd_Time.Name = "dtpEnd_Time";
+            this.dtpEnd_Time.ShowUpDown = true;
+            this.dtpEnd_Time.Size = new System.Drawing.Size(133, 23);
+            this.dtpEnd_Time.TabIndex = 1;
+            this.dtpEnd_Time.Value = new System.DateTime(2023, 2, 19, 11, 0, 0, 0);
+            // 
+            // dtpStart_Time
+            // 
+            this.dtpStart_Time.CustomFormat = "hh:mm tt";
+            this.dtpStart_Time.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpStart_Time.Location = new System.Drawing.Point(216, 59);
+            this.dtpStart_Time.Name = "dtpStart_Time";
+            this.dtpStart_Time.ShowUpDown = true;
+            this.dtpStart_Time.Size = new System.Drawing.Size(133, 23);
+            this.dtpStart_Time.TabIndex = 0;
+            this.dtpStart_Time.Value = new System.DateTime(2023, 2, 19, 10, 0, 0, 0);
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.button5);
+            this.tabPage1.Controls.Add(this.button4);
+            this.tabPage1.Controls.Add(this.button3);
+            this.tabPage1.Location = new System.Drawing.Point(4, 30);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(651, 249);
+            this.tabPage1.TabIndex = 2;
+            this.tabPage1.Text = "Update/Delete Class";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(151, 213);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(75, 23);
+            this.button5.TabIndex = 2;
+            this.button5.Text = "button5";
+            this.button5.UseVisualStyleBackColor = true;
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(377, 213);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(75, 23);
+            this.button4.TabIndex = 1;
+            this.button4.Text = "button4";
+            this.button4.UseVisualStyleBackColor = true;
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(264, 213);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.TabIndex = 0;
+            this.button3.Text = "button3";
+            this.button3.UseVisualStyleBackColor = true;
+            // 
             // tabPage2
             // 
             this.tabPage2.Location = new System.Drawing.Point(4, 30);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage2.Size = new System.Drawing.Size(651, 249);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "tabPage2";
+            this.tabPage2.TabIndex = 3;
+            this.tabPage2.Text = "View Student List";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // lblwelcome
@@ -302,6 +473,9 @@
             this.tabControl1.ResumeLayout(false);
             this.tabProfile.ResumeLayout(false);
             this.tabProfile.PerformLayout();
+            this.tabCreateClass.ResumeLayout(false);
+            this.tabCreateClass.PerformLayout();
+            this.tabPage1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -311,7 +485,7 @@
 
         private TabControl tabControl1;
         private TabPage tabProfile;
-        private TabPage tabPage2;
+        private TabPage tabCreateClass;
         private Label lblwelcome;
         private Label lbltuitioname;
         private Label lbladdresserror;
@@ -330,5 +504,19 @@
         private TextBox txtlevel;
         private Label lbllevel;
         private Label lblcpass;
+        private DateTimePicker dtpStart_Time;
+        private Label lblSubject_Name;
+        private ListBox lstTaught_subject_list;
+        private ComboBox cmbWeekdays;
+        private DateTimePicker dtpEnd_Time;
+        private TabPage tabPage1;
+        private Button button2;
+        private Button btnCreate;
+        private TabPage tabPage2;
+        private Button button5;
+        private Button button4;
+        private Button button3;
+        private Label label1;
+        private Label lblsubject_name_selected;
     }
 }
