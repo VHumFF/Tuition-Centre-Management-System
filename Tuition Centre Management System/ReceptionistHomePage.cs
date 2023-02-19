@@ -373,12 +373,13 @@ namespace Tuition_Centre_Management_System
 
         private void cmbStudent_from_level_SelectedIndexChanged(object sender, EventArgs e)
         {
+            //reset list, button and label
             btnEnroll_Student.Enabled = false;
             lstSubjectList.Items.Clear();
             lblStudent_name2.Text = "Student Name : ";
             lstStudent_List.Items.Clear();
 
-
+            //reload student and subject list from select level
             Receptionist s_list = new Receptionist(this.cmbStudent_from_level.Text);
             ArrayList student_ID_list = new ArrayList();
             ArrayList subject_list = new ArrayList();
@@ -443,9 +444,10 @@ namespace Tuition_Centre_Management_System
         {
             string request_id = lstRequest_sub_change.GetItemText(lstRequest_sub_change.SelectedItem);
 
-
+            //ensure user have selected a value
             if (lstRequest_sub_change.SelectedItems.Count > 0)
             {
+                //display subject change request information
                 Receptionist receptionistobj = new Receptionist(Convert.ToInt32(request_id));
                 var request_info = receptionistobj.getRequestInfo();
                 lblStudent_name_request.Text = "Student Name : "+request_info[0];
@@ -457,12 +459,13 @@ namespace Tuition_Centre_Management_System
 
         private void btnApprove_Click(object sender, EventArgs e)
         {
+            //Aprove student subject change request
             int request_id = Convert.ToInt32(lstRequest_sub_change.GetItemText(lstRequest_sub_change.SelectedItem));
             Receptionist receptionistobj = new Receptionist(request_id);
             receptionistobj.approve_sub_change_request();
             MessageBox.Show("Student subject have been updated.","Subject Changed", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-
+            //refresh and reset request list and button
             Receptionist r_list = new Receptionist();
             ArrayList request_list = new ArrayList();
             request_list = r_list.getSubject_change_RequestList();
@@ -481,6 +484,7 @@ namespace Tuition_Centre_Management_System
 
             if (lstStudent_Complete_studies.SelectedItems.Count > 0)
             {
+                //display student progress information
                 Receptionist obj = new Receptionist(Convert.ToInt32(stu_id));
                 var student_info = obj.getStudent_complete_studies_info();
                 lblStudent_name_progress2.Text = student_info[0];
@@ -495,11 +499,13 @@ namespace Tuition_Centre_Management_System
 
         private void btnProgress_student_Click(object sender, EventArgs e)
         {
+            //progress student to next level
             string stu_id = lstStudent_Complete_studies.GetItemText(lstStudent_Complete_studies.SelectedItem);
             Receptionist obj = new Receptionist(this.lblStudent_level_progress2.Text, Convert.ToInt32(stu_id));
             bool progress = obj.progress_Student_level();
             if (progress)
             {
+                //reset button, student list, and label
                 btnProgress_student.Enabled = false;
                 Receptionist s_list = new Receptionist();
                 ArrayList stu_list = new ArrayList();
@@ -523,6 +529,7 @@ namespace Tuition_Centre_Management_System
 
             if (lstPayment_list.SelectedItems.Count > 0)
             {
+                //display payment information
                 Receptionist obj = new Receptionist(Convert.ToInt32(payment_id));
                 var payment_info = obj.getPaymentInfo();
                 Receptionist getname = new Receptionist(payment_info.Item1);
@@ -536,10 +543,13 @@ namespace Tuition_Centre_Management_System
 
         private void btnAcceptPayment_Click(object sender, EventArgs e)
         {
+            //accept payment from student
             string payment_id = lstPayment_list.GetItemText(lstPayment_list.SelectedItem);
             Receptionist obj = new Receptionist(Convert.ToInt32(payment_id));
             obj.accept_payment();
             MessageBox.Show("Payment accepted, payment receipt have been generated", "Payment Accepted", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            
+            //reset button and list
             btnAcceptPayment.Enabled = false;
             lstPayment_list.Items.Clear();
 

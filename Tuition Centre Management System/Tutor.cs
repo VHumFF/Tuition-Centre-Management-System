@@ -98,6 +98,7 @@ namespace Tuition_Centre_Management_System
 
         private bool check_timeslot(string wday, string stime, string etime)
         {
+            //check whether the time slot choosen is available
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["myCS"].ToString());
             con.Open();
 
@@ -107,7 +108,7 @@ namespace Tuition_Centre_Management_System
             reader = cmd.ExecuteReader();
             if (reader.Read())
             {
-                MessageBox.Show("TimeSlot Occupied, Please try another timeslot");
+                MessageBox.Show("TimeSlot Occupied, Please try another timeslot", "TimeSlot Occupid", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 con.Close();
                 return false;
             }
@@ -117,6 +118,7 @@ namespace Tuition_Centre_Management_System
 
         public ArrayList get_class_list()
         {
+            //get list of class for the subject
             ArrayList class_list = new ArrayList();
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["myCS"].ToString());
             con.Open();
@@ -156,6 +158,7 @@ namespace Tuition_Centre_Management_System
 
         public void update_class()
         {
+            //update information of class, example (day, start time and end time)
             bool time_valid = check_timeslot(weekday, start_time, end_time);
             if(time_valid)
             {
@@ -171,6 +174,7 @@ namespace Tuition_Centre_Management_System
 
         public void delete_class()
         {
+            //delete class of a subject
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["myCS"].ToString());
             con.Open();
             SqlCommand cmd = new SqlCommand("Delete from class where id = " + class_id, con);
@@ -180,6 +184,7 @@ namespace Tuition_Centre_Management_System
 
         public ArrayList get_student_id_list()
         {
+            //get the list of student id enrolled in the subject
             ArrayList stu_id_list = new ArrayList();
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["myCS"].ToString());
             con.Open();
@@ -197,6 +202,7 @@ namespace Tuition_Centre_Management_System
 
         public Tuple<int, string, string ,string, string> get_student_info()
         {
+            //get the information of student
             int id = 0;
             string name = "", contact = "", email = "", address = "";
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["myCS"].ToString());

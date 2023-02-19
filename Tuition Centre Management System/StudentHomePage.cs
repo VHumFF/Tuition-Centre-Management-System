@@ -284,6 +284,7 @@ namespace Tuition_Centre_Management_System
 
             if (lstSubject_enrolled_list.SelectedItems.Count > 0)
             {
+                //display subject name and progress
                 Tutor obj = new Tutor(Convert.ToInt32(subject_id));
                 lblSubject_name4.Text = obj.get_subject_name();
 
@@ -307,6 +308,7 @@ namespace Tuition_Centre_Management_System
             }
             else
             {
+                //change subject progress to completed
                 string subject_id = lstSubject_enrolled_list.GetItemText(lstSubject_enrolled_list.SelectedItem);
                 DialogResult complete_studies = MessageBox.Show("Click \"Yes\" to complete subject studies", "Complete Subject Studies", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
                 if (complete_studies == DialogResult.Yes)

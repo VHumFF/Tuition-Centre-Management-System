@@ -131,6 +131,7 @@ namespace Tuition_Centre_Management_System
         {
             string subject_id = lstTaught_subject_list.GetItemText(lstTaught_subject_list.SelectedItem);
 
+            //make sure user selected a value
             if(lstTaught_subject_list.SelectedItems.Count > 0)
             {
                 Tutor obj = new Tutor(Convert.ToInt32(subject_id));
@@ -141,6 +142,7 @@ namespace Tuition_Centre_Management_System
 
         private void btnCreate_Click(object sender, EventArgs e)
         {
+            //valid time duration of a class
             if(dtpStart_Time.Value > dtpEnd_Time.Value)
             {
                 MessageBox.Show("Start Time must be earlier than End Time");
@@ -159,6 +161,7 @@ namespace Tuition_Centre_Management_System
             }
             else
             {
+                //create class
                 string subject_id = lstTaught_subject_list.GetItemText(lstTaught_subject_list.SelectedItem);
                 DialogResult create_class = MessageBox.Show("Class Information\n\n\nSubject Name : "+lblsubject_name_selected.Text+"\n\nStart Time : "+dtpStart_Time.Value.ToString("hh:mm tt")+
                     "\n\nEnd Time : "+dtpEnd_Time.Value.ToString("hh:mm tt")+"\n\nWeekday : "+cmbWeekdays.Text, "Create Class Comfirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
@@ -173,6 +176,7 @@ namespace Tuition_Centre_Management_System
 
         private void lstsubject_list_SelectedIndexChanged(object sender, EventArgs e)
         {
+            //reset button, datetimepicker and combobox
             lstClass_list.Items.Clear();
             btnEdit.Enabled= false;
             cmbWeekday2.Enabled = false;
@@ -180,7 +184,11 @@ namespace Tuition_Centre_Management_System
             dtpEnd_time2.Enabled = false;
             btnDelete.Enabled = false;
             btnUpdate.Enabled= false;
+
+            
             string subject_id = lstsubject_list.GetItemText(lstsubject_list.SelectedItem);
+            //get the list of class in the subject
+
             Tutor get_list = new Tutor(Convert.ToInt32(subject_id));
             ArrayList class_list = new ArrayList();
             class_list = get_list.get_class_list();
@@ -188,6 +196,7 @@ namespace Tuition_Centre_Management_System
             {
                 lstClass_list.Items.Add(item);
             }
+            //makesure user selected a value
             if (lstsubject_list.SelectedItems.Count > 0)
             {
                 Tutor obj = new Tutor(Convert.ToInt32(subject_id));
@@ -200,13 +209,17 @@ namespace Tuition_Centre_Management_System
         private void lstClass_list_SelectedIndexChanged(object sender, EventArgs e)
         {
             string class_id = lstClass_list.GetItemText(lstClass_list.SelectedItem);
+            //makesure user selected a value
             if (lstClass_list.SelectedItems.Count > 0)
             {
                 Tutor obj = new Tutor(Convert.ToInt32(class_id));
                 var class_info = obj.get_class_info();
+
+                //display class information
                 cmbWeekday2.Text = class_info.Item1;
                 dtpStart_time2.Text = class_info.Item2;
                 dtpEnd_time2.Text = class_info.Item3;
+                
                 btnEdit.Enabled = true;
                 btnDelete.Enabled = true;
             }
@@ -223,6 +236,7 @@ namespace Tuition_Centre_Management_System
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
+            //validate class duration
             if (dtpStart_time2.Value > dtpEnd_time2.Value)
             {
                 MessageBox.Show("Start Time must be earlier than End Time");
@@ -241,6 +255,7 @@ namespace Tuition_Centre_Management_System
             }
             else
             {
+                //update class information
                 string subject_id = lstsubject_list.GetItemText(lstsubject_list.SelectedItem);
                 string class_id = lstClass_list.GetItemText(lstClass_list.SelectedItem);
                 DialogResult create_class = MessageBox.Show("Class Information\n\n\nSubject Name : " + lblsubject_name_selected1.Text + "\n\nStart Time : " + dtpStart_time2.Value.ToString("hh:mm tt") +
@@ -249,11 +264,14 @@ namespace Tuition_Centre_Management_System
                 {
                     Tutor obj = new Tutor(Convert.ToInt32(class_id), this.cmbWeekday2.Text, dtpStart_time2.Value.ToString("hh:mm tt"), dtpEnd_time2.Value.ToString("hh:mm tt"));
                     obj.update_class();
+
+                    //reset
                     cmbWeekday2.Enabled = false;
                     dtpStart_time2.Enabled = false;
                     dtpEnd_time2.Enabled = false;
                     btnUpdate.Enabled = false;
 
+                    //refresh class information, if update unsuccessful
                     Tutor obj2 = new Tutor(Convert.ToInt32(class_id));
                     var class_info = obj2.get_class_info();
                     cmbWeekday2.Text = class_info.Item1;
@@ -266,6 +284,7 @@ namespace Tuition_Centre_Management_System
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
+            //delete a class from a subject
             string class_id = lstClass_list.GetItemText(lstClass_list.SelectedItem);
             if (lstClass_list.SelectedItems.Count > 0)
             {
@@ -274,8 +293,12 @@ namespace Tuition_Centre_Management_System
                 {
                     Tutor obj = new Tutor(Convert.ToInt32(class_id));
                     obj.delete_class();
+
+                    //reset button
                     btnDelete.Enabled = false;
                     btnEdit.Enabled = false;
+
+                    //refresh class list
                     string subject_id = lstsubject_list.GetItemText(lstsubject_list.SelectedItem);
                     lstClass_list.Items.Clear();
                     Tutor get_list = new Tutor(Convert.ToInt32(subject_id));
@@ -294,12 +317,17 @@ namespace Tuition_Centre_Management_System
         private void lstSubject_list3_SelectedIndexChanged(object sender, EventArgs e)
         {
             string subject_id = lstSubject_list3.GetItemText(lstSubject_list3.SelectedItem);
+            //reset table
             dgvStudentList.Rows.Clear();
 
+            //make sure user selected a value
             if (lstSubject_list3.SelectedItems.Count > 0)
             {
+                //display subject name
                 Tutor obj = new Tutor(Convert.ToInt32(subject_id));
                 lblSubject_name_selected3.Text = obj.get_subject_name();
+
+                //get student information
                 ArrayList stu_id_list = new ArrayList();
                 stu_id_list = obj.get_student_id_list();
                 foreach(int item in stu_id_list)
