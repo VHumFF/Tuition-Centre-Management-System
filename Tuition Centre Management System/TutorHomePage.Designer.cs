@@ -49,7 +49,6 @@
             this.tabCreateClass = new System.Windows.Forms.TabPage();
             this.lblsubject_name_selected = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
             this.btnCreate = new System.Windows.Forms.Button();
             this.lblSubject_Name = new System.Windows.Forms.Label();
             this.lstTaught_subject_list = new System.Windows.Forms.ListBox();
@@ -57,16 +56,34 @@
             this.dtpEnd_Time = new System.Windows.Forms.DateTimePicker();
             this.dtpStart_Time = new System.Windows.Forms.DateTimePicker();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.lblsubject_name_selected1 = new System.Windows.Forms.Label();
+            this.lblsubject_name1 = new System.Windows.Forms.Label();
+            this.cmbWeekday2 = new System.Windows.Forms.ComboBox();
+            this.dtpEnd_time2 = new System.Windows.Forms.DateTimePicker();
+            this.dtpStart_time2 = new System.Windows.Forms.DateTimePicker();
+            this.lstsubject_list = new System.Windows.Forms.ListBox();
+            this.lstClass_list = new System.Windows.Forms.ListBox();
+            this.btnEdit = new System.Windows.Forms.Button();
+            this.btnUpdate = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.dgvStudentList = new System.Windows.Forms.DataGridView();
+            this.StudentID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sEmail = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sContact = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lstSubject_list3 = new System.Windows.Forms.ListBox();
             this.lblwelcome = new System.Windows.Forms.Label();
             this.lbltuitioname = new System.Windows.Forms.Label();
+            this.lblSubject_name_selected3 = new System.Windows.Forms.Label();
+            this.lblSubject_name3 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabProfile.SuspendLayout();
             this.tabCreateClass.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvStudentList)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -276,7 +293,6 @@
             // 
             this.tabCreateClass.Controls.Add(this.lblsubject_name_selected);
             this.tabCreateClass.Controls.Add(this.label1);
-            this.tabCreateClass.Controls.Add(this.button2);
             this.tabCreateClass.Controls.Add(this.btnCreate);
             this.tabCreateClass.Controls.Add(this.lblSubject_Name);
             this.tabCreateClass.Controls.Add(this.lstTaught_subject_list);
@@ -296,9 +312,8 @@
             this.lblsubject_name_selected.AutoSize = true;
             this.lblsubject_name_selected.Location = new System.Drawing.Point(330, 6);
             this.lblsubject_name_selected.Name = "lblsubject_name_selected";
-            this.lblsubject_name_selected.Size = new System.Drawing.Size(45, 18);
+            this.lblsubject_name_selected.Size = new System.Drawing.Size(0, 18);
             this.lblsubject_name_selected.TabIndex = 8;
-            this.lblsubject_name_selected.Text = "label2";
             // 
             // label1
             // 
@@ -308,15 +323,6 @@
             this.label1.Size = new System.Drawing.Size(45, 18);
             this.label1.TabIndex = 7;
             this.label1.Text = "label1";
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(446, 218);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 6;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
             // 
             // btnCreate
             // 
@@ -387,9 +393,16 @@
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.button5);
-            this.tabPage1.Controls.Add(this.button4);
-            this.tabPage1.Controls.Add(this.button3);
+            this.tabPage1.Controls.Add(this.lblsubject_name_selected1);
+            this.tabPage1.Controls.Add(this.lblsubject_name1);
+            this.tabPage1.Controls.Add(this.cmbWeekday2);
+            this.tabPage1.Controls.Add(this.dtpEnd_time2);
+            this.tabPage1.Controls.Add(this.dtpStart_time2);
+            this.tabPage1.Controls.Add(this.lstsubject_list);
+            this.tabPage1.Controls.Add(this.lstClass_list);
+            this.tabPage1.Controls.Add(this.btnEdit);
+            this.tabPage1.Controls.Add(this.btnUpdate);
+            this.tabPage1.Controls.Add(this.btnDelete);
             this.tabPage1.Location = new System.Drawing.Point(4, 30);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
@@ -398,35 +411,123 @@
             this.tabPage1.Text = "Update/Delete Class";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // button5
+            // lblsubject_name_selected1
             // 
-            this.button5.Location = new System.Drawing.Point(151, 213);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(75, 23);
-            this.button5.TabIndex = 2;
-            this.button5.Text = "button5";
-            this.button5.UseVisualStyleBackColor = true;
+            this.lblsubject_name_selected1.AutoSize = true;
+            this.lblsubject_name_selected1.Location = new System.Drawing.Point(432, 17);
+            this.lblsubject_name_selected1.Name = "lblsubject_name_selected1";
+            this.lblsubject_name_selected1.Size = new System.Drawing.Size(45, 18);
+            this.lblsubject_name_selected1.TabIndex = 13;
+            this.lblsubject_name_selected1.Text = "label2";
             // 
-            // button4
+            // lblsubject_name1
             // 
-            this.button4.Location = new System.Drawing.Point(377, 213);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 1;
-            this.button4.Text = "button4";
-            this.button4.UseVisualStyleBackColor = true;
+            this.lblsubject_name1.AutoSize = true;
+            this.lblsubject_name1.Location = new System.Drawing.Point(318, 17);
+            this.lblsubject_name1.Name = "lblsubject_name1";
+            this.lblsubject_name1.Size = new System.Drawing.Size(108, 18);
+            this.lblsubject_name1.TabIndex = 12;
+            this.lblsubject_name1.Text = "Subject Name : ";
             // 
-            // button3
+            // cmbWeekday2
             // 
-            this.button3.Location = new System.Drawing.Point(264, 213);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 0;
-            this.button3.Text = "button3";
-            this.button3.UseVisualStyleBackColor = true;
+            this.cmbWeekday2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbWeekday2.Enabled = false;
+            this.cmbWeekday2.FormattingEnabled = true;
+            this.cmbWeekday2.Items.AddRange(new object[] {
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday"});
+            this.cmbWeekday2.Location = new System.Drawing.Point(318, 142);
+            this.cmbWeekday2.Name = "cmbWeekday2";
+            this.cmbWeekday2.Size = new System.Drawing.Size(133, 26);
+            this.cmbWeekday2.TabIndex = 11;
+            // 
+            // dtpEnd_time2
+            // 
+            this.dtpEnd_time2.CustomFormat = "hh:mm tt";
+            this.dtpEnd_time2.Enabled = false;
+            this.dtpEnd_time2.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpEnd_time2.Location = new System.Drawing.Point(502, 70);
+            this.dtpEnd_time2.Name = "dtpEnd_time2";
+            this.dtpEnd_time2.ShowUpDown = true;
+            this.dtpEnd_time2.Size = new System.Drawing.Size(133, 23);
+            this.dtpEnd_time2.TabIndex = 10;
+            this.dtpEnd_time2.Value = new System.DateTime(2023, 2, 19, 11, 0, 0, 0);
+            // 
+            // dtpStart_time2
+            // 
+            this.dtpStart_time2.CustomFormat = "hh:mm tt";
+            this.dtpStart_time2.Enabled = false;
+            this.dtpStart_time2.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpStart_time2.Location = new System.Drawing.Point(318, 70);
+            this.dtpStart_time2.Name = "dtpStart_time2";
+            this.dtpStart_time2.ShowUpDown = true;
+            this.dtpStart_time2.Size = new System.Drawing.Size(133, 23);
+            this.dtpStart_time2.TabIndex = 9;
+            this.dtpStart_time2.Value = new System.DateTime(2023, 2, 19, 10, 0, 0, 0);
+            // 
+            // lstsubject_list
+            // 
+            this.lstsubject_list.FormattingEnabled = true;
+            this.lstsubject_list.ItemHeight = 18;
+            this.lstsubject_list.Location = new System.Drawing.Point(6, 17);
+            this.lstsubject_list.Name = "lstsubject_list";
+            this.lstsubject_list.Size = new System.Drawing.Size(120, 94);
+            this.lstsubject_list.TabIndex = 4;
+            this.lstsubject_list.SelectedIndexChanged += new System.EventHandler(this.lstsubject_list_SelectedIndexChanged);
+            // 
+            // lstClass_list
+            // 
+            this.lstClass_list.FormattingEnabled = true;
+            this.lstClass_list.ItemHeight = 18;
+            this.lstClass_list.Location = new System.Drawing.Point(151, 17);
+            this.lstClass_list.Name = "lstClass_list";
+            this.lstClass_list.Size = new System.Drawing.Size(120, 94);
+            this.lstClass_list.TabIndex = 3;
+            this.lstClass_list.SelectedIndexChanged += new System.EventHandler(this.lstClass_list_SelectedIndexChanged);
+            // 
+            // btnEdit
+            // 
+            this.btnEdit.Enabled = false;
+            this.btnEdit.Location = new System.Drawing.Point(560, 189);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(75, 23);
+            this.btnEdit.TabIndex = 2;
+            this.btnEdit.Text = "Edit";
+            this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
+            // 
+            // btnUpdate
+            // 
+            this.btnUpdate.Enabled = false;
+            this.btnUpdate.Location = new System.Drawing.Point(560, 218);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(75, 23);
+            this.btnUpdate.TabIndex = 1;
+            this.btnUpdate.Text = "Update";
+            this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.Enabled = false;
+            this.btnDelete.Location = new System.Drawing.Point(8, 218);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(75, 23);
+            this.btnDelete.TabIndex = 0;
+            this.btnDelete.Text = "Delete";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.lblSubject_name_selected3);
+            this.tabPage2.Controls.Add(this.lblSubject_name3);
+            this.tabPage2.Controls.Add(this.dgvStudentList);
+            this.tabPage2.Controls.Add(this.lstSubject_list3);
             this.tabPage2.Location = new System.Drawing.Point(4, 30);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -434,6 +535,57 @@
             this.tabPage2.TabIndex = 3;
             this.tabPage2.Text = "View Student List";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // dgvStudentList
+            // 
+            this.dgvStudentList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvStudentList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvStudentList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.StudentID,
+            this.SName,
+            this.sEmail,
+            this.sContact,
+            this.sAddress});
+            this.dgvStudentList.Location = new System.Drawing.Point(146, 46);
+            this.dgvStudentList.Name = "dgvStudentList";
+            this.dgvStudentList.RowTemplate.Height = 25;
+            this.dgvStudentList.Size = new System.Drawing.Size(497, 195);
+            this.dgvStudentList.TabIndex = 1;
+            // 
+            // StudentID
+            // 
+            this.StudentID.HeaderText = "Student ID";
+            this.StudentID.Name = "StudentID";
+            // 
+            // SName
+            // 
+            this.SName.HeaderText = "Student Name";
+            this.SName.Name = "SName";
+            // 
+            // sEmail
+            // 
+            this.sEmail.HeaderText = "Email";
+            this.sEmail.Name = "sEmail";
+            // 
+            // sContact
+            // 
+            this.sContact.HeaderText = "Contact";
+            this.sContact.Name = "sContact";
+            // 
+            // sAddress
+            // 
+            this.sAddress.HeaderText = "Address";
+            this.sAddress.Name = "sAddress";
+            // 
+            // lstSubject_list3
+            // 
+            this.lstSubject_list3.FormattingEnabled = true;
+            this.lstSubject_list3.ItemHeight = 18;
+            this.lstSubject_list3.Location = new System.Drawing.Point(8, 46);
+            this.lstSubject_list3.Name = "lstSubject_list3";
+            this.lstSubject_list3.Size = new System.Drawing.Size(120, 130);
+            this.lstSubject_list3.TabIndex = 0;
+            this.lstSubject_list3.SelectedIndexChanged += new System.EventHandler(this.lstSubject_list3_SelectedIndexChanged);
             // 
             // lblwelcome
             // 
@@ -456,6 +608,24 @@
             this.lbltuitioname.TabIndex = 3;
             this.lbltuitioname.Text = "Excellent Tuition Centre";
             // 
+            // lblSubject_name_selected3
+            // 
+            this.lblSubject_name_selected3.AutoSize = true;
+            this.lblSubject_name_selected3.Location = new System.Drawing.Point(122, 13);
+            this.lblSubject_name_selected3.Name = "lblSubject_name_selected3";
+            this.lblSubject_name_selected3.Size = new System.Drawing.Size(45, 18);
+            this.lblSubject_name_selected3.TabIndex = 15;
+            this.lblSubject_name_selected3.Text = "label2";
+            // 
+            // lblSubject_name3
+            // 
+            this.lblSubject_name3.AutoSize = true;
+            this.lblSubject_name3.Location = new System.Drawing.Point(8, 13);
+            this.lblSubject_name3.Name = "lblSubject_name3";
+            this.lblSubject_name3.Size = new System.Drawing.Size(108, 18);
+            this.lblSubject_name3.TabIndex = 14;
+            this.lblSubject_name3.Text = "Subject Name : ";
+            // 
             // TutorHomePage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -476,6 +646,10 @@
             this.tabCreateClass.ResumeLayout(false);
             this.tabCreateClass.PerformLayout();
             this.tabPage1.ResumeLayout(false);
+            this.tabPage1.PerformLayout();
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvStudentList)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -510,13 +684,28 @@
         private ComboBox cmbWeekdays;
         private DateTimePicker dtpEnd_Time;
         private TabPage tabPage1;
-        private Button button2;
         private Button btnCreate;
         private TabPage tabPage2;
-        private Button button5;
-        private Button button4;
-        private Button button3;
+        private Button btnEdit;
+        private Button btnUpdate;
+        private Button btnDelete;
         private Label label1;
         private Label lblsubject_name_selected;
+        private ListBox lstClass_list;
+        private ListBox lstsubject_list;
+        private Label lblsubject_name_selected1;
+        private Label lblsubject_name1;
+        private ComboBox cmbWeekday2;
+        private DateTimePicker dtpEnd_time2;
+        private DateTimePicker dtpStart_time2;
+        private DataGridView dgvStudentList;
+        private ListBox lstSubject_list3;
+        private DataGridViewTextBoxColumn StudentID;
+        private DataGridViewTextBoxColumn SName;
+        private DataGridViewTextBoxColumn sEmail;
+        private DataGridViewTextBoxColumn sContact;
+        private DataGridViewTextBoxColumn sAddress;
+        private Label lblSubject_name_selected3;
+        private Label lblSubject_name3;
     }
 }

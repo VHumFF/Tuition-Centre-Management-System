@@ -35,15 +35,18 @@ namespace Tuition_Centre_Management_System
             txtlevel.Text = profile1.getLevel();
 
             //display subject id tutor taught
-            Tutor sub_list = new Tutor(username);
+            Tutor get_list = new Tutor(username);
             ArrayList subject_list = new ArrayList();
-            subject_list = sub_list.get_taught_subject_list();
+            subject_list = get_list.get_taught_subject_list();
             foreach(int item in subject_list)
             {
                 lstTaught_subject_list.Items.Add(item);
+                lstsubject_list.Items.Add(item);
+                lstSubject_list3.Items.Add(item);
             }
-
+            
             cmbWeekdays.SelectedIndex = cmbWeekdays.FindString("Monday");
+
 
         }
 
@@ -156,14 +159,157 @@ namespace Tuition_Centre_Management_System
             }
             else
             {
-                DialogResult create_class = MessageBox.Show("Class Information\n\n\nSubject Name : "+lblsubject_name_selected.Text+"\n\nStart Time : "+dtpStart_Time.Value.ToString("hh mm tt")+
-                    "\n\nEnd Time : "+dtpEnd_Time.Value.ToString("hh mm tt")+"\n\nWeekday : "+cmbWeekdays.Text, "Create Class Comfirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                string subject_id = lstTaught_subject_list.GetItemText(lstTaught_subject_list.SelectedItem);
+                DialogResult create_class = MessageBox.Show("Class Information\n\n\nSubject Name : "+lblsubject_name_selected.Text+"\n\nStart Time : "+dtpStart_Time.Value.ToString("hh:mm tt")+
+                    "\n\nEnd Time : "+dtpEnd_Time.Value.ToString("hh:mm tt")+"\n\nWeekday : "+cmbWeekdays.Text, "Create Class Comfirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
                 if(create_class == DialogResult.Yes)
                 {
-
+                    Tutor obj = new Tutor(Convert.ToInt32(subject_id), this.cmbWeekdays.Text, dtpStart_Time.Value.ToString("hh:mm tt"), dtpEnd_Time.Value.ToString("hh:mm tt"));
+                    obj.create_class();
                 }
             }
 
         }
+
+        private void lstsubject_list_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            lstClass_list.Items.Clear();
+            btnEdit.Enabled= false;
+            cmbWeekday2.Enabled = false;
+            dtpStart_time2.Enabled = false;
+            dtpEnd_time2.Enabled = false;
+            btnDelete.Enabled = false;
+            btnUpdate.Enabled= false;
+            string subject_id = lstsubject_list.GetItemText(lstsubject_list.SelectedItem);
+            Tutor get_list = new Tutor(Convert.ToInt32(subject_id));
+            ArrayList class_list = new ArrayList();
+            class_list = get_list.get_class_list();
+            foreach (int item in class_list)
+            {
+                lstClass_list.Items.Add(item);
+            }
+            if (lstsubject_list.SelectedItems.Count > 0)
+            {
+                Tutor obj = new Tutor(Convert.ToInt32(subject_id));
+                lblsubject_name_selected1.Text = obj.get_subject_name();
+
+            }
+
+        }
+
+        private void lstClass_list_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string class_id = lstClass_list.GetItemText(lstClass_list.SelectedItem);
+            if (lstClass_list.SelectedItems.Count > 0)
+            {
+                Tutor obj = new Tutor(Convert.ToInt32(class_id));
+                var class_info = obj.get_class_info();
+                cmbWeekday2.Text = class_info.Item1;
+                dtpStart_time2.Text = class_info.Item2;
+                dtpEnd_time2.Text = class_info.Item3;
+                btnEdit.Enabled = true;
+                btnDelete.Enabled = true;
+            }
+
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            cmbWeekday2.Enabled = true;
+            dtpStart_time2.Enabled = true;
+            dtpEnd_time2.Enabled = true;
+            btnUpdate.Enabled = true;
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            if (dtpStart_time2.Value > dtpEnd_time2.Value)
+            {
+                MessageBox.Show("Start Time must be earlier than End Time");
+            }
+            else if (dtpStart_time2.Value == dtpEnd_time2.Value)
+            {
+                MessageBox.Show("End Time should be greater than Start Time");
+            }
+            else if ((dtpEnd_time2.Value - dtpStart_time2.Value).TotalHours > 2)
+            {
+                MessageBox.Show("Class must not exceed 2 hours");
+            }
+            else if ((dtpEnd_time2.Value - dtpStart_time2.Value).TotalHours < 0.5)
+            {
+                MessageBox.Show("Class must not less than 30 minutes");
+            }
+            else
+            {
+                string subject_id = lstsubject_list.GetItemText(lstsubject_list.SelectedItem);
+                string class_id = lstClass_list.GetItemText(lstClass_list.SelectedItem);
+                DialogResult create_class = MessageBox.Show("Class Information\n\n\nSubject Name : " + lblsubject_name_selected1.Text + "\n\nStart Time : " + dtpStart_time2.Value.ToString("hh:mm tt") +
+                    "\n\nEnd Time : " + dtpEnd_time2.Value.ToString("hh:mm tt") + "\n\nWeekday : " + cmbWeekday2.Text, "Update Class Comfirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+                if (create_class == DialogResult.Yes)
+                {
+                    Tutor obj = new Tutor(Convert.ToInt32(class_id), this.cmbWeekday2.Text, dtpStart_time2.Value.ToString("hh:mm tt"), dtpEnd_time2.Value.ToString("hh:mm tt"));
+                    obj.update_class();
+                    cmbWeekday2.Enabled = false;
+                    dtpStart_time2.Enabled = false;
+                    dtpEnd_time2.Enabled = false;
+                    btnUpdate.Enabled = false;
+
+                    Tutor obj2 = new Tutor(Convert.ToInt32(class_id));
+                    var class_info = obj2.get_class_info();
+                    cmbWeekday2.Text = class_info.Item1;
+                    dtpStart_time2.Text = class_info.Item2;
+                    dtpEnd_time2.Text = class_info.Item3;
+                    btnEdit.Enabled = true;
+                }
+            }
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            string class_id = lstClass_list.GetItemText(lstClass_list.SelectedItem);
+            if (lstClass_list.SelectedItems.Count > 0)
+            {
+                DialogResult create_class = MessageBox.Show("Click Yes to Delete Class", "Delete Class Comfirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (create_class == DialogResult.Yes)
+                {
+                    Tutor obj = new Tutor(Convert.ToInt32(class_id));
+                    obj.delete_class();
+                    btnDelete.Enabled = false;
+                    btnEdit.Enabled = false;
+                    string subject_id = lstsubject_list.GetItemText(lstsubject_list.SelectedItem);
+                    lstClass_list.Items.Clear();
+                    Tutor get_list = new Tutor(Convert.ToInt32(subject_id));
+                    ArrayList class_list = new ArrayList();
+                    class_list = get_list.get_class_list();
+                    foreach (int item in class_list)
+                    {
+                        lstClass_list.Items.Add(item);
+                    }
+                }
+                
+
+            }
+        }
+
+        private void lstSubject_list3_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string subject_id = lstSubject_list3.GetItemText(lstSubject_list3.SelectedItem);
+            dgvStudentList.Rows.Clear();
+
+            if (lstSubject_list3.SelectedItems.Count > 0)
+            {
+                Tutor obj = new Tutor(Convert.ToInt32(subject_id));
+                lblSubject_name_selected3.Text = obj.get_subject_name();
+                ArrayList stu_id_list = new ArrayList();
+                stu_id_list = obj.get_student_id_list();
+                foreach(int item in stu_id_list)
+                {
+                    Tutor obj1 = new Tutor(item);
+                    var student_info = obj1.get_student_info();
+                    dgvStudentList.Rows.Add(student_info.Item1, student_info.Item2, student_info.Item3, student_info.Item4, student_info.Item5);
+                }
+            }
+        }
+
     }
 }
