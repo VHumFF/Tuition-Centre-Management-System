@@ -74,9 +74,8 @@
             this.lblusername.ForeColor = System.Drawing.Color.White;
             this.lblusername.Location = new System.Drawing.Point(68, 39);
             this.lblusername.Name = "lblusername";
-            this.lblusername.Size = new System.Drawing.Size(115, 30);
+            this.lblusername.Size = new System.Drawing.Size(0, 30);
             this.lblusername.TabIndex = 7;
-            this.lblusername.Text = "Username";
             // 
             // lblcurrentpass
             // 
@@ -144,9 +143,8 @@
             this.lblcurrentpasserror.AutoSize = true;
             this.lblcurrentpasserror.Location = new System.Drawing.Point(140, 128);
             this.lblcurrentpasserror.Name = "lblcurrentpasserror";
-            this.lblcurrentpasserror.Size = new System.Drawing.Size(38, 15);
+            this.lblcurrentpasserror.Size = new System.Drawing.Size(0, 15);
             this.lblcurrentpasserror.TabIndex = 14;
-            this.lblcurrentpasserror.Text = "label4";
             // 
             // btnclose
             // 
@@ -174,18 +172,16 @@
             this.lblnewpasserror.AutoSize = true;
             this.lblnewpasserror.Location = new System.Drawing.Point(140, 183);
             this.lblnewpasserror.Name = "lblnewpasserror";
-            this.lblnewpasserror.Size = new System.Drawing.Size(38, 15);
+            this.lblnewpasserror.Size = new System.Drawing.Size(0, 15);
             this.lblnewpasserror.TabIndex = 17;
-            this.lblnewpasserror.Text = "label5";
             // 
             // lblcomfirmpasserror
             // 
             this.lblcomfirmpasserror.AutoSize = true;
             this.lblcomfirmpasserror.Location = new System.Drawing.Point(139, 227);
             this.lblcomfirmpasserror.Name = "lblcomfirmpasserror";
-            this.lblcomfirmpasserror.Size = new System.Drawing.Size(38, 15);
+            this.lblcomfirmpasserror.Size = new System.Drawing.Size(0, 15);
             this.lblcomfirmpasserror.TabIndex = 18;
-            this.lblcomfirmpasserror.Text = "label6";
             // 
             // changePassword
             // 

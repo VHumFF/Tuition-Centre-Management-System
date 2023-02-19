@@ -42,6 +42,7 @@ namespace Tuition_Centre_Management_System
 
         public ArrayList get_taught_subject_list()
         {
+            //get a list of subject the tutor have been assigned to
             ArrayList sub_list = new ArrayList();
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["myCS"].ToString());
             con.Open();
@@ -59,6 +60,7 @@ namespace Tuition_Centre_Management_System
 
         public string get_subject_name()
         {
+            //get the name of subject with subject id
             string sub_name = "";
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["myCS"].ToString());
             con.Open();

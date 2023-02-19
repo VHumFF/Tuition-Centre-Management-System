@@ -35,7 +35,7 @@ namespace Tuition_Centre_Management_System
             else if (test_account == "student")
             {
                 //open student page
-                StudentHomePage s = new StudentHomePage();
+                StudentHomePage s = new StudentHomePage(txtUsername.Text, test_account);
                 s.ShowDialog();
   
             }

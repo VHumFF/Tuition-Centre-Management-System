@@ -541,6 +541,8 @@ namespace Tuition_Centre_Management_System
             obj.accept_payment();
             MessageBox.Show("Payment accepted, payment receipt have been generated", "Payment Accepted", MessageBoxButtons.OK, MessageBoxIcon.Information);
             btnAcceptPayment.Enabled = false;
+            lstPayment_list.Items.Clear();
+
             Receptionist p_list = new Receptionist();
             ArrayList payment_list = new ArrayList();
             payment_list = p_list.getPaymentlist();
