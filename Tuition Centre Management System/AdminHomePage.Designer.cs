@@ -88,9 +88,13 @@
             this.btnDelete2 = new System.Windows.Forms.Button();
             this.lstRecepID = new System.Windows.Forms.ListBox();
             this.tabreport = new System.Windows.Forms.TabPage();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.lblTotal = new System.Windows.Forms.Label();
+            this.btnGetReport = new System.Windows.Forms.Button();
+            this.dtpMonthYear = new System.Windows.Forms.DateTimePicker();
+            this.dgvIncomeReport = new System.Windows.Forms.DataGridView();
+            this.Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label5 = new System.Windows.Forms.Label();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.lbltuitioname = new System.Windows.Forms.Label();
             this.lblwelcome = new System.Windows.Forms.Label();
             this.tabconprofile.SuspendLayout();
@@ -98,8 +102,7 @@
             this.tabtutor.SuspendLayout();
             this.tabreceptionist.SuspendLayout();
             this.tabreport.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvIncomeReport)).BeginInit();
             this.SuspendLayout();
             // 
             // tabconprofile
@@ -184,6 +187,7 @@
             this.lblcpass.Size = new System.Drawing.Size(104, 18);
             this.lblcpass.TabIndex = 15;
             this.lblcpass.Text = "Change Password";
+            this.lblcpass.Click += new System.EventHandler(this.lblcpass_Click);
             // 
             // btnupdateprofile
             // 
@@ -193,6 +197,7 @@
             this.btnupdateprofile.TabIndex = 14;
             this.btnupdateprofile.Text = "Update Profile";
             this.btnupdateprofile.UseVisualStyleBackColor = true;
+            this.btnupdateprofile.Click += new System.EventHandler(this.btnupdateprofile_Click);
             // 
             // btneditprofile
             // 
@@ -202,6 +207,7 @@
             this.btneditprofile.TabIndex = 13;
             this.btneditprofile.Text = "Edit Profile";
             this.btneditprofile.UseVisualStyleBackColor = true;
+            this.btneditprofile.Click += new System.EventHandler(this.btneditprofile_Click);
             // 
             // lbladdress
             // 
@@ -221,6 +227,7 @@
             this.txtAddress.ReadOnly = true;
             this.txtAddress.Size = new System.Drawing.Size(184, 23);
             this.txtAddress.TabIndex = 11;
+            this.txtAddress.TextChanged += new System.EventHandler(this.txtAddress_TextChanged);
             // 
             // txtemail
             // 
@@ -231,6 +238,7 @@
             this.txtemail.ReadOnly = true;
             this.txtemail.Size = new System.Drawing.Size(184, 23);
             this.txtemail.TabIndex = 7;
+            this.txtemail.TextChanged += new System.EventHandler(this.txtemail_TextChanged);
             // 
             // txtcontact
             // 
@@ -241,6 +249,7 @@
             this.txtcontact.ReadOnly = true;
             this.txtcontact.Size = new System.Drawing.Size(184, 23);
             this.txtcontact.TabIndex = 6;
+            this.txtcontact.TextChanged += new System.EventHandler(this.txtcontact_TextChanged);
             // 
             // txtname
             // 
@@ -609,6 +618,7 @@
             this.btnClear2.TabIndex = 58;
             this.btnClear2.Text = "Clear";
             this.btnClear2.UseVisualStyleBackColor = true;
+            this.btnClear2.Click += new System.EventHandler(this.btnClear2_Click);
             // 
             // txtRecepUsername
             // 
@@ -638,6 +648,7 @@
             this.btnRegisterRecep.TabIndex = 52;
             this.btnRegisterRecep.Text = "Register";
             this.btnRegisterRecep.UseVisualStyleBackColor = true;
+            this.btnRegisterRecep.Click += new System.EventHandler(this.btnRegisterRecep_Click);
             // 
             // txtRecepAddress
             // 
@@ -721,6 +732,7 @@
             this.btnDelete2.TabIndex = 43;
             this.btnDelete2.Text = "Delete";
             this.btnDelete2.UseVisualStyleBackColor = true;
+            this.btnDelete2.Click += new System.EventHandler(this.btnDelete2_Click);
             // 
             // lstRecepID
             // 
@@ -735,59 +747,82 @@
             // 
             // tabreport
             // 
-            this.tabreport.Controls.Add(this.dataGridView1);
+            this.tabreport.Controls.Add(this.lblTotal);
+            this.tabreport.Controls.Add(this.btnGetReport);
+            this.tabreport.Controls.Add(this.dtpMonthYear);
+            this.tabreport.Controls.Add(this.dgvIncomeReport);
             this.tabreport.Controls.Add(this.label5);
-            this.tabreport.Controls.Add(this.numericUpDown1);
             this.tabreport.Location = new System.Drawing.Point(4, 30);
             this.tabreport.Name = "tabreport";
             this.tabreport.Padding = new System.Windows.Forms.Padding(3);
             this.tabreport.Size = new System.Drawing.Size(651, 254);
             this.tabreport.TabIndex = 3;
-            this.tabreport.Text = "Report";
+            this.tabreport.Text = "Income Report";
             this.tabreport.UseVisualStyleBackColor = true;
             // 
-            // dataGridView1
+            // lblTotal
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(20, 33);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 29;
-            this.dataGridView1.Size = new System.Drawing.Size(300, 197);
-            this.dataGridView1.TabIndex = 2;
+            this.lblTotal.AutoSize = true;
+            this.lblTotal.Location = new System.Drawing.Point(321, 78);
+            this.lblTotal.Name = "lblTotal";
+            this.lblTotal.Size = new System.Drawing.Size(99, 18);
+            this.lblTotal.TabIndex = 5;
+            this.lblTotal.Text = "Total Income :";
+            // 
+            // btnGetReport
+            // 
+            this.btnGetReport.Location = new System.Drawing.Point(426, 129);
+            this.btnGetReport.Name = "btnGetReport";
+            this.btnGetReport.Size = new System.Drawing.Size(105, 23);
+            this.btnGetReport.TabIndex = 4;
+            this.btnGetReport.Text = "GetReport";
+            this.btnGetReport.UseVisualStyleBackColor = true;
+            this.btnGetReport.Click += new System.EventHandler(this.btnGetReport_Click);
+            // 
+            // dtpMonthYear
+            // 
+            this.dtpMonthYear.CustomFormat = "MM-yyyy";
+            this.dtpMonthYear.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpMonthYear.Location = new System.Drawing.Point(426, 26);
+            this.dtpMonthYear.Name = "dtpMonthYear";
+            this.dtpMonthYear.ShowUpDown = true;
+            this.dtpMonthYear.Size = new System.Drawing.Size(133, 23);
+            this.dtpMonthYear.TabIndex = 3;
+            this.dtpMonthYear.Value = new System.DateTime(2023, 2, 19, 10, 0, 0, 0);
+            this.dtpMonthYear.ValueChanged += new System.EventHandler(this.dtpMonthYear_ValueChanged);
+            // 
+            // dgvIncomeReport
+            // 
+            this.dgvIncomeReport.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvIncomeReport.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Date,
+            this.Amount});
+            this.dgvIncomeReport.Location = new System.Drawing.Point(20, 26);
+            this.dgvIncomeReport.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dgvIncomeReport.Name = "dgvIncomeReport";
+            this.dgvIncomeReport.RowHeadersWidth = 51;
+            this.dgvIncomeReport.RowTemplate.Height = 29;
+            this.dgvIncomeReport.Size = new System.Drawing.Size(254, 197);
+            this.dgvIncomeReport.TabIndex = 2;
+            // 
+            // Date
+            // 
+            this.Date.HeaderText = "Date";
+            this.Date.Name = "Date";
+            // 
+            // Amount
+            // 
+            this.Amount.HeaderText = "Amount";
+            this.Amount.Name = "Amount";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(375, 31);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(57, 18);
+            this.label5.Size = new System.Drawing.Size(45, 18);
             this.label5.TabIndex = 1;
-            this.label5.Text = "Month :";
-            // 
-            // numericUpDown1
-            // 
-            this.numericUpDown1.Location = new System.Drawing.Point(442, 28);
-            this.numericUpDown1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.numericUpDown1.Maximum = new decimal(new int[] {
-            12,
-            0,
-            0,
-            0});
-            this.numericUpDown1.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(131, 23);
-            this.numericUpDown1.TabIndex = 0;
-            this.numericUpDown1.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
+            this.label5.Text = "Date :";
             // 
             // lbltuitioname
             // 
@@ -831,8 +866,7 @@
             this.tabreceptionist.PerformLayout();
             this.tabreport.ResumeLayout(false);
             this.tabreport.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvIncomeReport)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -859,9 +893,8 @@
         private TabPage tabtutor;
         private TabPage tabreceptionist;
         private TabPage tabreport;
-        private DataGridView dataGridView1;
+        private DataGridView dgvIncomeReport;
         private Label label5;
-        private NumericUpDown numericUpDown1;
         private Label lbltuitioname;
         private Label lblwelcome;
         private Label lblAddress_error_messsage;
@@ -905,5 +938,10 @@
         private Label label12;
         private Button btnDelete2;
         private ListBox lstRecepID;
+        private Button btnGetReport;
+        private DateTimePicker dtpMonthYear;
+        private DataGridViewTextBoxColumn Date;
+        private DataGridViewTextBoxColumn Amount;
+        private Label lblTotal;
     }
 }

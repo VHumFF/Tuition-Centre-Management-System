@@ -49,7 +49,7 @@ namespace Tuition_Centre_Management_System
             else if (test_account == "admin")
             {
                 //open admin page
-                AdminHomePage a = new AdminHomePage();
+                AdminHomePage a = new AdminHomePage(txtUsername.Text, test_account);
                 a.ShowDialog();
 
             }

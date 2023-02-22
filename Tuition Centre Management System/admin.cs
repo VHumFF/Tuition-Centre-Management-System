@@ -4,10 +4,13 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Net;
 using System.Security;
 using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
+using System.Xml.Linq;
 
 namespace Tuition_Centre_Management_System
 {
@@ -21,7 +24,14 @@ namespace Tuition_Centre_Management_System
         private string tutor_address;
         private string tutor_level;
         private int tutor_id;
-
+        private int recep_id;
+        private string recep_name;
+        private string recep_contact;
+        private string recep_email;
+        private string recep_address;
+        private int month;
+        private int year;
+        private int receipt_id;
 
 
         public admin(int uid, string t_name, string t_contact, string t_email, string t_address, string t_level)
@@ -35,9 +45,28 @@ namespace Tuition_Centre_Management_System
 
         }
 
+        public admin(int uid, string r_name, string r_contact, string r_email, string r_address)
+        {
+            userid = uid;
+            recep_name = r_name;
+            recep_contact = r_contact;
+            recep_email = r_email;
+            recep_address = r_address;
+
+
+        }
+
+        public admin (int m, int y)
+        {
+            month = m;
+            year = y;
+        }
+
         public admin(int id)
         {
             tutor_id = id;
+            recep_id = id;
+            receipt_id = id;
         }
         public admin()
         {
@@ -148,7 +177,7 @@ namespace Tuition_Centre_Management_System
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["myCS"].ToString());
             con.Open();
 
-            SqlCommand cmd = new SqlCommand("Select id from receptionist", con);
+            SqlCommand cmd = new SqlCommand("Select receptionistid from receptionist", con);
             SqlDataReader reader;
             reader = cmd.ExecuteReader();
             while (reader.Read())
@@ -162,5 +191,109 @@ namespace Tuition_Centre_Management_System
         }
 
 
+
+        public Tuple<string, string, string, string> getRecepInfo()
+        {
+            string name = "";
+            string contact = "";
+            string email = "";
+            string address = "";
+
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["myCS"].ToString());
+            con.Open();
+
+            SqlCommand cmd = new SqlCommand("Select name, contact, email, address from receptionist where receptionistid = " + recep_id, con);
+            SqlDataReader reader;
+            reader = cmd.ExecuteReader();
+            if (reader.Read())
+            {
+                name = reader["name"].ToString();
+                contact = reader["contact"].ToString();
+                email = reader["email"].ToString();
+                address = reader["address"].ToString();
+            }
+
+            var recep_info = Tuple.Create(name, contact, email, address);
+
+            con.Close();
+            return recep_info;
+
+
+        }
+
+
+        public void register_recep()
+        {
+            int level_id = 0;
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["myCS"].ToString());
+            con.Open(); //open connection
+
+            SqlCommand cmd = new SqlCommand("insert into receptionist (UserId, name, contact, email, address) values (" + userid + ",'" + recep_name + "','"
+                + recep_contact + "','" + recep_email + "','" + recep_address+ "')", con);
+            cmd.ExecuteNonQuery();
+            con.Close();
+        }
+
+
+
+        public void deleteRecep()
+        {
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["myCS"].ToString());
+            con.Open();
+
+            SqlCommand cmd = new SqlCommand("Delete from users where id = (select userid from receptionist where receptionistid = " + recep_id + ")", con);
+            cmd.ExecuteNonQuery();
+
+
+        }
+
+
+        public ArrayList getreceiptid()
+        {
+            ArrayList recepitID =new ArrayList();
+
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["myCS"].ToString());
+            con.Open();
+
+            SqlCommand cmd = new SqlCommand("select id from receipt where MONTH(date) = "+month+" AND YEAR(date) = "+year, con);
+
+            SqlDataReader reader;
+            reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                recepitID.Add(reader.GetInt32(0));
+            }
+
+            con.Close();
+            return recepitID;
+
+        }
+
+
+        public Tuple<string, decimal> getIncomeReport()
+        {
+            string date = "";
+            decimal amount = 0;
+            string r_date = "";
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["myCS"].ToString());
+            con.Open();
+
+            SqlCommand cmd = new SqlCommand("select date, amount from receipt where id = " + receipt_id, con);
+            SqlDataReader reader;
+            reader = cmd.ExecuteReader();
+            if (reader.Read())
+            {
+                date = reader["date"].ToString();
+                amount = Convert.ToDecimal(reader["amount"]);
+
+
+                r_date = DateTime.Parse(date, System.Globalization.CultureInfo.CurrentCulture).ToString("dd-MM-yyyy");
+            }
+            var income_report = Tuple.Create(r_date, amount);
+
+
+            con.Close();
+            return income_report;
+        }
     }
 }
