@@ -32,6 +32,8 @@ namespace Tuition_Centre_Management_System
         private int month;
         private int year;
         private int receipt_id;
+        private string level;
+        private int subject_id;
 
 
         public admin(int uid, string t_name, string t_contact, string t_email, string t_address, string t_level)
@@ -55,11 +57,17 @@ namespace Tuition_Centre_Management_System
 
 
         }
-
-        public admin (int m, int y)
+        public admin (string l)
         {
-            month = m;
-            year = y;
+            level = l;
+        }
+        public admin (int i, int ii)
+        {
+            month = i;
+            year = ii;
+
+            subject_id = i;
+            tutor_id = ii;
         }
 
         public admin(int id)
@@ -294,6 +302,88 @@ namespace Tuition_Centre_Management_System
 
             con.Close();
             return income_report;
+        }
+
+
+        public ArrayList getTutorIDList_with_level()
+        {
+            int l_id = 0;
+            ArrayList t_id = new ArrayList();
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["myCS"].ToString());
+            con.Open();
+
+            SqlCommand cmd = new SqlCommand("Select id from level where level = '" + level+"'", con);
+            SqlDataReader reader;
+            reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                l_id = Convert.ToInt32(reader["id"]);
+            }
+
+            reader.Close();
+
+            SqlCommand cmd2 = new SqlCommand("Select id from tutor where levelid = "+l_id, con);
+            SqlDataReader reader2;
+            reader2 = cmd2.ExecuteReader();
+            while (reader2.Read())
+            {
+                t_id.Add(reader2.GetInt32(0));
+            }
+
+
+            con.Close();
+            return t_id;
+        }
+
+        public ArrayList getSubjectList_with_level()
+        {
+            int l_id = 0;
+            ArrayList s_id = new ArrayList();
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["myCS"].ToString());
+            con.Open();
+
+            SqlCommand cmd = new SqlCommand("Select id from level where level = '" + level + "'", con);
+            SqlDataReader reader;
+            reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                l_id = Convert.ToInt32(reader["id"]);
+            }
+
+            reader.Close();
+            SqlCommand cmd2 = new SqlCommand("Select id from subject where levelid = " + l_id, con);
+            SqlDataReader reader2;
+            reader2 = cmd2.ExecuteReader();
+            while (reader2.Read())
+            {
+                s_id.Add(reader2.GetInt32(0));
+            }
+
+
+            con.Close();
+            return s_id;
+        }
+
+
+        public bool assignTutorToSub()
+        {
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["myCS"].ToString());
+            con.Open();
+
+            SqlCommand cmd = new SqlCommand("select * from subject where id = "+subject_id+" and tutorID is not NULL", con);
+            SqlDataReader reader;
+            reader = cmd.ExecuteReader();
+            if (reader.Read())
+            {
+                
+                return false;
+            }
+
+            reader.Close();
+
+            SqlCommand cmd2 = new SqlCommand("Update Subject set tutorID = "+tutor_id+" where id = "+subject_id, con);
+            cmd2.ExecuteNonQuery();
+            return true;
         }
     }
 }

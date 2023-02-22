@@ -751,5 +751,11 @@ namespace Tuition_Centre_Management_System
             changePassword cp = new changePassword(username);
             cp.ShowDialog();
         }
+
+        private void linklblassign_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            AssignTutorSubject ats = new AssignTutorSubject();
+            ats.ShowDialog();
+        }
     }
 }

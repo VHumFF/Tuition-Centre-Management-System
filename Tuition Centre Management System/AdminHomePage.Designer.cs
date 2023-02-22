@@ -421,12 +421,13 @@
             // linklblassign
             // 
             this.linklblassign.AutoSize = true;
-            this.linklblassign.Location = new System.Drawing.Point(481, 227);
+            this.linklblassign.Location = new System.Drawing.Point(535, 229);
             this.linklblassign.Name = "linklblassign";
-            this.linklblassign.Size = new System.Drawing.Size(164, 18);
+            this.linklblassign.Size = new System.Drawing.Size(100, 18);
             this.linklblassign.TabIndex = 11;
             this.linklblassign.TabStop = true;
-            this.linklblassign.Text = "Assign Level and Subject";
+            this.linklblassign.Text = "Assign Subject";
+            this.linklblassign.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linklblassign_LinkClicked);
             // 
             // btnRegisterTutor
             // 
