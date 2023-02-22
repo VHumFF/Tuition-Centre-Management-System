@@ -68,17 +68,25 @@
             this.btnDeleteTutor = new System.Windows.Forms.Button();
             this.lstTutorID = new System.Windows.Forms.ListBox();
             this.tabreceptionist = new System.Windows.Forms.TabPage();
-            this.btnAddRec = new System.Windows.Forms.Button();
-            this.txtBoxrecAddress = new System.Windows.Forms.TextBox();
-            this.txtBoxrecEmail = new System.Windows.Forms.TextBox();
-            this.txtBoxrecContact = new System.Windows.Forms.TextBox();
-            this.txtBoxrecName = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.btnDeleteRec = new System.Windows.Forms.Button();
-            this.listBoxrec = new System.Windows.Forms.ListBox();
+            this.lblAddress_error_message2 = new System.Windows.Forms.Label();
+            this.lblEmail_error_message2 = new System.Windows.Forms.Label();
+            this.lblContact_error_message2 = new System.Windows.Forms.Label();
+            this.lblName_error_message2 = new System.Windows.Forms.Label();
+            this.lblUsername_error_message2 = new System.Windows.Forms.Label();
+            this.btnClear2 = new System.Windows.Forms.Button();
+            this.txtRecepUsername = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.btnRegisterRecep = new System.Windows.Forms.Button();
+            this.txtRecepAddress = new System.Windows.Forms.TextBox();
+            this.txtRecepEmail = new System.Windows.Forms.TextBox();
+            this.txtRecepContact = new System.Windows.Forms.TextBox();
+            this.txtRecepName = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.btnDelete2 = new System.Windows.Forms.Button();
+            this.lstRecepID = new System.Windows.Forms.ListBox();
             this.tabreport = new System.Windows.Forms.TabPage();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.label5 = new System.Windows.Forms.Label();
@@ -306,47 +314,47 @@
             // lblAddress_error_messsage
             // 
             this.lblAddress_error_messsage.AutoSize = true;
+            this.lblAddress_error_messsage.ForeColor = System.Drawing.Color.Red;
             this.lblAddress_error_messsage.Location = new System.Drawing.Point(481, 92);
             this.lblAddress_error_messsage.Name = "lblAddress_error_messsage";
-            this.lblAddress_error_messsage.Size = new System.Drawing.Size(52, 18);
+            this.lblAddress_error_messsage.Size = new System.Drawing.Size(0, 18);
             this.lblAddress_error_messsage.TabIndex = 41;
-            this.lblAddress_error_messsage.Text = "label10";
             // 
             // lblEmail_error_message
             // 
             this.lblEmail_error_message.AutoSize = true;
+            this.lblEmail_error_message.ForeColor = System.Drawing.Color.Red;
             this.lblEmail_error_message.Location = new System.Drawing.Point(481, 39);
             this.lblEmail_error_message.Name = "lblEmail_error_message";
-            this.lblEmail_error_message.Size = new System.Drawing.Size(45, 18);
+            this.lblEmail_error_message.Size = new System.Drawing.Size(0, 18);
             this.lblEmail_error_message.TabIndex = 40;
-            this.lblEmail_error_message.Text = "label9";
             // 
             // lblContact_error_message
             // 
             this.lblContact_error_message.AutoSize = true;
+            this.lblContact_error_message.ForeColor = System.Drawing.Color.Red;
             this.lblContact_error_message.Location = new System.Drawing.Point(220, 145);
             this.lblContact_error_message.Name = "lblContact_error_message";
-            this.lblContact_error_message.Size = new System.Drawing.Size(45, 18);
+            this.lblContact_error_message.Size = new System.Drawing.Size(0, 18);
             this.lblContact_error_message.TabIndex = 39;
-            this.lblContact_error_message.Text = "label8";
             // 
             // lblName_error_message
             // 
             this.lblName_error_message.AutoSize = true;
+            this.lblName_error_message.ForeColor = System.Drawing.Color.Red;
             this.lblName_error_message.Location = new System.Drawing.Point(220, 92);
             this.lblName_error_message.Name = "lblName_error_message";
-            this.lblName_error_message.Size = new System.Drawing.Size(45, 18);
+            this.lblName_error_message.Size = new System.Drawing.Size(0, 18);
             this.lblName_error_message.TabIndex = 38;
-            this.lblName_error_message.Text = "label7";
             // 
             // lblUsername_error_message
             // 
             this.lblUsername_error_message.AutoSize = true;
+            this.lblUsername_error_message.ForeColor = System.Drawing.Color.Red;
             this.lblUsername_error_message.Location = new System.Drawing.Point(220, 39);
             this.lblUsername_error_message.Name = "lblUsername_error_message";
-            this.lblUsername_error_message.Size = new System.Drawing.Size(45, 18);
+            this.lblUsername_error_message.Size = new System.Drawing.Size(0, 18);
             this.lblUsername_error_message.TabIndex = 37;
-            this.lblUsername_error_message.Text = "label6";
             // 
             // btnClear
             // 
@@ -520,17 +528,25 @@
             // 
             // tabreceptionist
             // 
-            this.tabreceptionist.Controls.Add(this.btnAddRec);
-            this.tabreceptionist.Controls.Add(this.txtBoxrecAddress);
-            this.tabreceptionist.Controls.Add(this.txtBoxrecEmail);
-            this.tabreceptionist.Controls.Add(this.txtBoxrecContact);
-            this.tabreceptionist.Controls.Add(this.txtBoxrecName);
-            this.tabreceptionist.Controls.Add(this.label1);
-            this.tabreceptionist.Controls.Add(this.label2);
-            this.tabreceptionist.Controls.Add(this.label3);
-            this.tabreceptionist.Controls.Add(this.label4);
-            this.tabreceptionist.Controls.Add(this.btnDeleteRec);
-            this.tabreceptionist.Controls.Add(this.listBoxrec);
+            this.tabreceptionist.Controls.Add(this.lblAddress_error_message2);
+            this.tabreceptionist.Controls.Add(this.lblEmail_error_message2);
+            this.tabreceptionist.Controls.Add(this.lblContact_error_message2);
+            this.tabreceptionist.Controls.Add(this.lblName_error_message2);
+            this.tabreceptionist.Controls.Add(this.lblUsername_error_message2);
+            this.tabreceptionist.Controls.Add(this.btnClear2);
+            this.tabreceptionist.Controls.Add(this.txtRecepUsername);
+            this.tabreceptionist.Controls.Add(this.label8);
+            this.tabreceptionist.Controls.Add(this.btnRegisterRecep);
+            this.tabreceptionist.Controls.Add(this.txtRecepAddress);
+            this.tabreceptionist.Controls.Add(this.txtRecepEmail);
+            this.tabreceptionist.Controls.Add(this.txtRecepContact);
+            this.tabreceptionist.Controls.Add(this.txtRecepName);
+            this.tabreceptionist.Controls.Add(this.label9);
+            this.tabreceptionist.Controls.Add(this.label10);
+            this.tabreceptionist.Controls.Add(this.label11);
+            this.tabreceptionist.Controls.Add(this.label12);
+            this.tabreceptionist.Controls.Add(this.btnDelete2);
+            this.tabreceptionist.Controls.Add(this.lstRecepID);
             this.tabreceptionist.Location = new System.Drawing.Point(4, 30);
             this.tabreceptionist.Name = "tabreceptionist";
             this.tabreceptionist.Padding = new System.Windows.Forms.Padding(3);
@@ -539,103 +555,183 @@
             this.tabreceptionist.Text = "Receptionist";
             this.tabreceptionist.UseVisualStyleBackColor = true;
             // 
-            // btnAddRec
+            // lblAddress_error_message2
             // 
-            this.btnAddRec.Location = new System.Drawing.Point(444, 183);
-            this.btnAddRec.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnAddRec.Name = "btnAddRec";
-            this.btnAddRec.Size = new System.Drawing.Size(82, 22);
-            this.btnAddRec.TabIndex = 21;
-            this.btnAddRec.Text = "Add";
-            this.btnAddRec.UseVisualStyleBackColor = true;
+            this.lblAddress_error_message2.AutoSize = true;
+            this.lblAddress_error_message2.ForeColor = System.Drawing.Color.Red;
+            this.lblAddress_error_message2.Location = new System.Drawing.Point(480, 89);
+            this.lblAddress_error_message2.Name = "lblAddress_error_message2";
+            this.lblAddress_error_message2.Size = new System.Drawing.Size(0, 18);
+            this.lblAddress_error_message2.TabIndex = 63;
             // 
-            // txtBoxrecAddress
+            // lblEmail_error_message2
             // 
-            this.txtBoxrecAddress.Location = new System.Drawing.Point(458, 127);
-            this.txtBoxrecAddress.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtBoxrecAddress.Name = "txtBoxrecAddress";
-            this.txtBoxrecAddress.Size = new System.Drawing.Size(139, 23);
-            this.txtBoxrecAddress.TabIndex = 20;
+            this.lblEmail_error_message2.AutoSize = true;
+            this.lblEmail_error_message2.ForeColor = System.Drawing.Color.Red;
+            this.lblEmail_error_message2.Location = new System.Drawing.Point(480, 36);
+            this.lblEmail_error_message2.Name = "lblEmail_error_message2";
+            this.lblEmail_error_message2.Size = new System.Drawing.Size(0, 18);
+            this.lblEmail_error_message2.TabIndex = 62;
             // 
-            // txtBoxrecEmail
+            // lblContact_error_message2
             // 
-            this.txtBoxrecEmail.Location = new System.Drawing.Point(444, 94);
-            this.txtBoxrecEmail.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtBoxrecEmail.Name = "txtBoxrecEmail";
-            this.txtBoxrecEmail.Size = new System.Drawing.Size(154, 23);
-            this.txtBoxrecEmail.TabIndex = 19;
+            this.lblContact_error_message2.AutoSize = true;
+            this.lblContact_error_message2.ForeColor = System.Drawing.Color.Red;
+            this.lblContact_error_message2.Location = new System.Drawing.Point(219, 142);
+            this.lblContact_error_message2.Name = "lblContact_error_message2";
+            this.lblContact_error_message2.Size = new System.Drawing.Size(0, 18);
+            this.lblContact_error_message2.TabIndex = 61;
             // 
-            // txtBoxrecContact
+            // lblName_error_message2
             // 
-            this.txtBoxrecContact.Location = new System.Drawing.Point(458, 62);
-            this.txtBoxrecContact.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtBoxrecContact.Name = "txtBoxrecContact";
-            this.txtBoxrecContact.Size = new System.Drawing.Size(139, 23);
-            this.txtBoxrecContact.TabIndex = 18;
+            this.lblName_error_message2.AutoSize = true;
+            this.lblName_error_message2.ForeColor = System.Drawing.Color.Red;
+            this.lblName_error_message2.Location = new System.Drawing.Point(219, 89);
+            this.lblName_error_message2.Name = "lblName_error_message2";
+            this.lblName_error_message2.Size = new System.Drawing.Size(0, 18);
+            this.lblName_error_message2.TabIndex = 60;
             // 
-            // txtBoxrecName
+            // lblUsername_error_message2
             // 
-            this.txtBoxrecName.Location = new System.Drawing.Point(444, 29);
-            this.txtBoxrecName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtBoxrecName.Name = "txtBoxrecName";
-            this.txtBoxrecName.Size = new System.Drawing.Size(154, 23);
-            this.txtBoxrecName.TabIndex = 17;
+            this.lblUsername_error_message2.AutoSize = true;
+            this.lblUsername_error_message2.ForeColor = System.Drawing.Color.Red;
+            this.lblUsername_error_message2.Location = new System.Drawing.Point(219, 36);
+            this.lblUsername_error_message2.Name = "lblUsername_error_message2";
+            this.lblUsername_error_message2.Size = new System.Drawing.Size(0, 18);
+            this.lblUsername_error_message2.TabIndex = 59;
             // 
-            // label1
+            // btnClear2
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(380, 130);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(67, 18);
-            this.label1.TabIndex = 16;
-            this.label1.Text = "Address :";
+            this.btnClear2.Location = new System.Drawing.Point(291, 215);
+            this.btnClear2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnClear2.Name = "btnClear2";
+            this.btnClear2.Size = new System.Drawing.Size(82, 27);
+            this.btnClear2.TabIndex = 58;
+            this.btnClear2.Text = "Clear";
+            this.btnClear2.UseVisualStyleBackColor = true;
             // 
-            // label2
+            // txtRecepUsername
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(382, 97);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(51, 18);
-            this.label2.TabIndex = 15;
-            this.label2.Text = "Email :";
+            this.txtRecepUsername.Location = new System.Drawing.Point(219, 11);
+            this.txtRecepUsername.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtRecepUsername.Name = "txtRecepUsername";
+            this.txtRecepUsername.Size = new System.Drawing.Size(154, 23);
+            this.txtRecepUsername.TabIndex = 55;
+            this.txtRecepUsername.TextChanged += new System.EventHandler(this.txtRecepUsername_TextChanged);
             // 
-            // label3
+            // label8
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(380, 65);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(66, 18);
-            this.label3.TabIndex = 14;
-            this.label3.Text = "Contact :";
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(129, 16);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(84, 18);
+            this.label8.TabIndex = 54;
+            this.label8.Text = "Username : ";
             // 
-            // label4
+            // btnRegisterRecep
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(380, 32);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(53, 18);
-            this.label4.TabIndex = 13;
-            this.label4.Text = "Name :";
+            this.btnRegisterRecep.Enabled = false;
+            this.btnRegisterRecep.Location = new System.Drawing.Point(385, 215);
+            this.btnRegisterRecep.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnRegisterRecep.Name = "btnRegisterRecep";
+            this.btnRegisterRecep.Size = new System.Drawing.Size(82, 27);
+            this.btnRegisterRecep.TabIndex = 52;
+            this.btnRegisterRecep.Text = "Register";
+            this.btnRegisterRecep.UseVisualStyleBackColor = true;
             // 
-            // btnDeleteRec
+            // txtRecepAddress
             // 
-            this.btnDeleteRec.Location = new System.Drawing.Point(162, 223);
-            this.btnDeleteRec.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnDeleteRec.Name = "btnDeleteRec";
-            this.btnDeleteRec.Size = new System.Drawing.Size(82, 22);
-            this.btnDeleteRec.TabIndex = 12;
-            this.btnDeleteRec.Text = "Delete";
-            this.btnDeleteRec.UseVisualStyleBackColor = true;
+            this.txtRecepAddress.Location = new System.Drawing.Point(480, 64);
+            this.txtRecepAddress.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtRecepAddress.Name = "txtRecepAddress";
+            this.txtRecepAddress.Size = new System.Drawing.Size(154, 23);
+            this.txtRecepAddress.TabIndex = 51;
+            this.txtRecepAddress.TextChanged += new System.EventHandler(this.txtRecepAddress_TextChanged);
             // 
-            // listBoxrec
+            // txtRecepEmail
             // 
-            this.listBoxrec.FormattingEnabled = true;
-            this.listBoxrec.ItemHeight = 18;
-            this.listBoxrec.Location = new System.Drawing.Point(117, 29);
-            this.listBoxrec.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.listBoxrec.Name = "listBoxrec";
-            this.listBoxrec.Size = new System.Drawing.Size(194, 166);
-            this.listBoxrec.TabIndex = 11;
+            this.txtRecepEmail.Location = new System.Drawing.Point(480, 11);
+            this.txtRecepEmail.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtRecepEmail.Name = "txtRecepEmail";
+            this.txtRecepEmail.Size = new System.Drawing.Size(154, 23);
+            this.txtRecepEmail.TabIndex = 50;
+            this.txtRecepEmail.TextChanged += new System.EventHandler(this.txtRecepEmail_TextChanged);
+            // 
+            // txtRecepContact
+            // 
+            this.txtRecepContact.Location = new System.Drawing.Point(219, 117);
+            this.txtRecepContact.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtRecepContact.Name = "txtRecepContact";
+            this.txtRecepContact.Size = new System.Drawing.Size(154, 23);
+            this.txtRecepContact.TabIndex = 49;
+            this.txtRecepContact.TextChanged += new System.EventHandler(this.txtRecepContact_TextChanged);
+            // 
+            // txtRecepName
+            // 
+            this.txtRecepName.Location = new System.Drawing.Point(219, 64);
+            this.txtRecepName.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtRecepName.Name = "txtRecepName";
+            this.txtRecepName.Size = new System.Drawing.Size(154, 23);
+            this.txtRecepName.TabIndex = 48;
+            this.txtRecepName.TextChanged += new System.EventHandler(this.txtRecepName_TextChanged);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(400, 69);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(67, 18);
+            this.label9.TabIndex = 47;
+            this.label9.Text = "Address :";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(416, 16);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(51, 18);
+            this.label10.TabIndex = 46;
+            this.label10.Text = "Email :";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(142, 122);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(66, 18);
+            this.label11.TabIndex = 45;
+            this.label11.Text = "Contact :";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(153, 69);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(53, 18);
+            this.label12.TabIndex = 44;
+            this.label12.Text = "Name :";
+            // 
+            // btnDelete2
+            // 
+            this.btnDelete2.Enabled = false;
+            this.btnDelete2.Location = new System.Drawing.Point(7, 222);
+            this.btnDelete2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnDelete2.Name = "btnDelete2";
+            this.btnDelete2.Size = new System.Drawing.Size(82, 22);
+            this.btnDelete2.TabIndex = 43;
+            this.btnDelete2.Text = "Delete";
+            this.btnDelete2.UseVisualStyleBackColor = true;
+            // 
+            // lstRecepID
+            // 
+            this.lstRecepID.FormattingEnabled = true;
+            this.lstRecepID.ItemHeight = 18;
+            this.lstRecepID.Location = new System.Drawing.Point(7, 11);
+            this.lstRecepID.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.lstRecepID.Name = "lstRecepID";
+            this.lstRecepID.Size = new System.Drawing.Size(113, 166);
+            this.lstRecepID.TabIndex = 42;
+            this.lstRecepID.SelectedIndexChanged += new System.EventHandler(this.lstRecepID_SelectedIndexChanged);
             // 
             // tabreport
             // 
@@ -761,6 +857,23 @@
         private Label lblcontact;
         private Label lblname;
         private TabPage tabtutor;
+        private TabPage tabreceptionist;
+        private TabPage tabreport;
+        private DataGridView dataGridView1;
+        private Label label5;
+        private NumericUpDown numericUpDown1;
+        private Label lbltuitioname;
+        private Label lblwelcome;
+        private Label lblAddress_error_messsage;
+        private Label lblEmail_error_message;
+        private Label lblContact_error_message;
+        private Label lblName_error_message;
+        private Label lblUsername_error_message;
+        private Button btnClear;
+        private ComboBox cmbTutorLevel;
+        private Label lblStudent_Level;
+        private TextBox txtTutorUsername;
+        private Label lblUsername;
         private LinkLabel linklblassign;
         private Button btnRegisterTutor;
         private TextBox txtTutorAddress;
@@ -773,33 +886,24 @@
         private Label lbltutName;
         private Button btnDeleteTutor;
         private ListBox lstTutorID;
-        private TabPage tabreceptionist;
-        private Button btnAddRec;
-        private TextBox txtBoxrecAddress;
-        private TextBox txtBoxrecEmail;
-        private TextBox txtBoxrecContact;
-        private TextBox txtBoxrecName;
-        private Label label1;
-        private Label label2;
-        private Label label3;
-        private Label label4;
-        private Button btnDeleteRec;
-        private ListBox listBoxrec;
-        private TabPage tabreport;
-        private DataGridView dataGridView1;
-        private Label label5;
-        private NumericUpDown numericUpDown1;
-        private Label lbltuitioname;
-        private Label lblwelcome;
-        private TextBox txtTutorUsername;
-        private Label lblUsername;
-        private ComboBox cmbTutorLevel;
-        private Label lblStudent_Level;
-        private Label lblAddress_error_messsage;
-        private Label lblEmail_error_message;
-        private Label lblContact_error_message;
-        private Label lblName_error_message;
-        private Label lblUsername_error_message;
-        private Button btnClear;
+        private Label lblAddress_error_message2;
+        private Label lblEmail_error_message2;
+        private Label lblContact_error_message2;
+        private Label lblName_error_message2;
+        private Label lblUsername_error_message2;
+        private Button btnClear2;
+        private TextBox txtRecepUsername;
+        private Label label8;
+        private Button btnRegisterRecep;
+        private TextBox txtRecepAddress;
+        private TextBox txtRecepEmail;
+        private TextBox txtRecepContact;
+        private TextBox txtRecepName;
+        private Label label9;
+        private Label label10;
+        private Label label11;
+        private Label label12;
+        private Button btnDelete2;
+        private ListBox lstRecepID;
     }
 }

@@ -142,7 +142,24 @@ namespace Tuition_Centre_Management_System
            
         }
 
+        public ArrayList getRecepIDList()
+        {
+            ArrayList recep_id = new ArrayList();
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["myCS"].ToString());
+            con.Open();
 
+            SqlCommand cmd = new SqlCommand("Select id from receptionist", con);
+            SqlDataReader reader;
+            reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                recep_id.Add(reader.GetInt32(0));
+            }
+
+
+            con.Close();
+            return recep_id;
+        }
 
 
     }

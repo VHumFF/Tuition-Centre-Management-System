@@ -25,11 +25,18 @@ namespace Tuition_Centre_Management_System
 
             admin obj = new admin();
             ArrayList tutorlist = new ArrayList();
+            ArrayList receplist = new ArrayList();
             tutorlist = obj.getTutorIDList();
+            receplist = obj.getRecepIDList();
             foreach (int i in tutorlist)
             {
                 lstTutorID.Items.Add(i);
             }
+            foreach (int i in receplist)
+            {
+                lstRecepID.Items.Add(i);
+            }
+
         }
 
         private void txtBoxtutEmail_TextChanged(object sender, EventArgs e)
@@ -322,6 +329,165 @@ namespace Tuition_Centre_Management_System
 
                 }
             }
+        }
+
+        private void txtRecepUsername_TextChanged(object sender, EventArgs e)
+        {
+            Profile username = new Profile(this.txtRecepUsername.Text);
+            if (username.IsStringValid())
+            {
+                lblUsername_error_message2.Text = "";
+                if (lblContact_error_message2.Text == "Invalid Contact Number" || lblEmail_error_message2.Text == "Invalid Email Address"
+                    || lblName_error_message2.Text == "Invalid Receptionist name" || lblAddress_error_message2.Text == "Invalid Address")
+                {
+                    btnRegisterRecep.Enabled = false;
+                }
+                else if (txtRecepContact.Text == "" || txtRecepEmail.Text == ""
+                    || txtRecepName.Text == "" || txtRecepAddress.Text == "")
+                {
+                    btnRegisterRecep.Enabled = false;
+                }
+                else
+                {
+                    btnRegisterRecep.Enabled = true;
+                }
+            }
+            else if (txtRecepUsername.Text.Length == 0)
+            {
+                lblUsername_error_message2.Text = "Invalid Username";
+                btnRegisterRecep.Enabled = false;
+            }
+            else
+            {
+                lblUsername_error_message2.Text = "Invalid Username";
+                btnRegisterRecep.Enabled = false;
+            }
+        }
+
+        private void txtRecepName_TextChanged(object sender, EventArgs e)
+        {
+            Profile name = new Profile(this.txtRecepName.Text);
+            if (name.IsStringValid())
+            {
+                lblName_error_message2.Text = "";
+                if (lblContact_error_message2.Text == "Invalid Contact Number" || lblEmail_error_message2.Text == "Invalid Email Address"
+                    || lblUsername_error_message2.Text == "Invalid Username" || lblAddress_error_message2.Text == "Invalid Address")
+                {
+
+                    btnRegisterRecep.Enabled = false;
+                }
+                else if (txtRecepContact.Text == "" || txtRecepEmail.Text == ""
+                    || txtRecepUsername.Text == "" || txtRecepAddress.Text == "")
+                {
+
+                    btnRegisterRecep.Enabled = false;
+                }
+                else
+                {
+
+                    btnRegisterRecep.Enabled = true;
+                }
+            }
+            else if (txtRecepName.Text.Length <= 0)
+            {
+                lblName_error_message2.Text = "Invalid Receptionist name";
+                btnRegisterRecep.Enabled = false;
+            }
+            else
+            {
+                lblName_error_message2.Text = "Invalid Receptionist name";
+                btnRegisterRecep.Enabled = false;
+            }
+        }
+
+        private void txtRecepContact_TextChanged(object sender, EventArgs e)
+        {
+            Profile contact = new Profile(this.txtRecepContact.Text);
+            if (contact.IsContactValid())
+            {
+                lblContact_error_message2.Text = "";
+                if (lblAddress_error_message2.Text == "Invalid Address" || lblEmail_error_message2.Text == "Invalid Email Address"
+                    || lblName_error_message2.Text == "Invalid Receptionist name" || lblUsername_error_message2.Text == "Invalid Username")
+                {
+                    btnRegisterRecep.Enabled = false;
+                }
+                else if (txtRecepEmail.Text == "" || txtRecepAddress.Text == ""
+                    || txtRecepName.Text == "" || txtRecepUsername.Text == "")
+                {
+                    btnRegisterRecep.Enabled = false;
+                }
+                else
+                {
+                    btnRegisterRecep.Enabled = true;
+                }
+            }
+            else
+            {
+                lblContact_error_message2.Text = "Invalid Contact Number";
+                btnRegisterRecep.Enabled = false;
+            }
+        }
+
+        private void txtRecepEmail_TextChanged(object sender, EventArgs e)
+        {
+            Profile email = new Profile(this.txtRecepEmail.Text);
+            if (email.IsEmailValid())
+            {
+                lblEmail_error_message2.Text = "";
+                if (lblAddress_error_message2.Text == "Invalid Address" || lblContact_error_message2.Text == "Invalid Contact Number"
+                    || lblName_error_message2.Text == "Invalid Receptionist name" || lblUsername_error_message2.Text == "Invalid Username")
+                {
+                    btnRegisterRecep.Enabled = false;
+                }
+                else if (txtRecepContact.Text == "" || txtRecepAddress.Text == ""
+                    || txtRecepName.Text == "" || txtRecepUsername.Text == "")
+                {
+                    btnRegisterRecep.Enabled = false;
+                }
+                else
+                {
+                    btnRegisterRecep.Enabled = true;
+                }
+            }
+            else
+            {
+                lblEmail_error_message2.Text = "Invalid Email Address";
+                btnRegisterRecep.Enabled = false;
+            }
+        }
+
+        private void txtRecepAddress_TextChanged(object sender, EventArgs e)
+        {
+            //check whether user user have enter a valid data
+            Profile address = new Profile(this.txtRecepAddress.Text);
+            if (address.IsStringValid())
+            {
+                lblAddress_error_message2.Text = "";
+                if (lblContact_error_message2.Text == "Invalid Contact Number" || lblEmail_error_message2.Text == "Invalid Email Address"
+                    || lblName_error_message2.Text == "Invalid Receptionist name" || lblUsername_error_message2.Text == "Invalid Username")
+                {
+                    btnRegisterRecep.Enabled = false;
+                }
+                else if (txtRecepContact.Text == "" || txtRecepEmail.Text == ""
+                    || txtRecepName.Text == "" || txtRecepUsername.Text == "")
+                {
+                    btnRegisterRecep.Enabled = false;
+                }
+                else
+                {
+                    btnRegisterRecep.Enabled = true;
+                }
+            }
+            else
+            {
+                lblAddress_error_message2.Text = "Invalid Address";
+                btnRegisterRecep.Enabled = false;
+            }
+        }
+
+        private void lstRecepID_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
