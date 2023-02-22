@@ -67,6 +67,8 @@
             this.btnUpdate = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.lblSubject_name_selected3 = new System.Windows.Forms.Label();
+            this.lblSubject_name3 = new System.Windows.Forms.Label();
             this.dgvStudentList = new System.Windows.Forms.DataGridView();
             this.StudentID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -76,8 +78,6 @@
             this.lstSubject_list3 = new System.Windows.Forms.ListBox();
             this.lblwelcome = new System.Windows.Forms.Label();
             this.lbltuitioname = new System.Windows.Forms.Label();
-            this.lblSubject_name_selected3 = new System.Windows.Forms.Label();
-            this.lblSubject_name3 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabProfile.SuspendLayout();
             this.tabCreateClass.SuspendLayout();
@@ -318,11 +318,11 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(16, 9);
+            this.label1.Location = new System.Drawing.Point(8, 6);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(45, 18);
+            this.label1.Size = new System.Drawing.Size(158, 18);
             this.label1.TabIndex = 7;
-            this.label1.Text = "label1";
+            this.label1.Text = "List of Subject Assigned";
             // 
             // btnCreate
             // 
@@ -536,6 +536,24 @@
             this.tabPage2.Text = "View Student List";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // lblSubject_name_selected3
+            // 
+            this.lblSubject_name_selected3.AutoSize = true;
+            this.lblSubject_name_selected3.Location = new System.Drawing.Point(122, 13);
+            this.lblSubject_name_selected3.Name = "lblSubject_name_selected3";
+            this.lblSubject_name_selected3.Size = new System.Drawing.Size(45, 18);
+            this.lblSubject_name_selected3.TabIndex = 15;
+            this.lblSubject_name_selected3.Text = "label2";
+            // 
+            // lblSubject_name3
+            // 
+            this.lblSubject_name3.AutoSize = true;
+            this.lblSubject_name3.Location = new System.Drawing.Point(8, 13);
+            this.lblSubject_name3.Name = "lblSubject_name3";
+            this.lblSubject_name3.Size = new System.Drawing.Size(108, 18);
+            this.lblSubject_name3.TabIndex = 14;
+            this.lblSubject_name3.Text = "Subject Name : ";
+            // 
             // dgvStudentList
             // 
             this.dgvStudentList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
@@ -607,24 +625,6 @@
             this.lbltuitioname.Size = new System.Drawing.Size(295, 23);
             this.lbltuitioname.TabIndex = 3;
             this.lbltuitioname.Text = "Excellent Tuition Centre";
-            // 
-            // lblSubject_name_selected3
-            // 
-            this.lblSubject_name_selected3.AutoSize = true;
-            this.lblSubject_name_selected3.Location = new System.Drawing.Point(122, 13);
-            this.lblSubject_name_selected3.Name = "lblSubject_name_selected3";
-            this.lblSubject_name_selected3.Size = new System.Drawing.Size(45, 18);
-            this.lblSubject_name_selected3.TabIndex = 15;
-            this.lblSubject_name_selected3.Text = "label2";
-            // 
-            // lblSubject_name3
-            // 
-            this.lblSubject_name3.AutoSize = true;
-            this.lblSubject_name3.Location = new System.Drawing.Point(8, 13);
-            this.lblSubject_name3.Name = "lblSubject_name3";
-            this.lblSubject_name3.Size = new System.Drawing.Size(108, 18);
-            this.lblSubject_name3.TabIndex = 14;
-            this.lblSubject_name3.Text = "Subject Name : ";
             // 
             // TutorHomePage
             // 

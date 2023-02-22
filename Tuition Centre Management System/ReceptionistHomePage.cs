@@ -284,7 +284,7 @@ namespace Tuition_Centre_Management_System
             {
                 lblStudent_Name_error.Text = "";
                 if (lblStudent_Contact_error.Text == "Invalid Contact Number" || lblStudent_Email_error.Text == "Invalid Email Address"
-                    || lblStudent_Username_error.Text == "Username too long" || lblStudent_Address_error.Text == "Invalid Address")
+                    || lblStudent_Username_error.Text == "Invalid Username" || lblStudent_Address_error.Text == "Invalid Address")
                 {
                     
                     btnRegister_Student.Enabled = false;
