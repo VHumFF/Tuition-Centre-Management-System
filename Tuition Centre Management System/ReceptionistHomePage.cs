@@ -546,9 +546,14 @@ namespace Tuition_Centre_Management_System
             //accept payment from student
             string payment_id = lstPayment_list.GetItemText(lstPayment_list.SelectedItem);
             Receptionist obj = new Receptionist(Convert.ToInt32(payment_id));
-            obj.accept_payment();
+
+            int receipt_id = obj.accept_payment();
             MessageBox.Show("Payment accepted, payment receipt have been generated", "Payment Accepted", MessageBoxButtons.OK, MessageBoxIcon.Information);
             
+            //Open receipt
+            Receipt viewreceipt = new Receipt(receipt_id);
+            viewreceipt.ShowDialog();
+
             //reset button and list
             btnAcceptPayment.Enabled = false;
             lstPayment_list.Items.Clear();
@@ -563,3 +568,4 @@ namespace Tuition_Centre_Management_System
         }
     }
 }
+

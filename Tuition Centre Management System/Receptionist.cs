@@ -491,11 +491,12 @@ namespace Tuition_Centre_Management_System
                 
         }
 
-        public void accept_payment()
+        public int accept_payment()
         {
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["myCS"].ToString());
             con.Open();
             var payment_info = getPaymentInfo();
+            int r_id = 0;
 
             DateTime today = DateTime.Today;
             string date = today.ToString("yyyy-MM-dd");
@@ -505,7 +506,19 @@ namespace Tuition_Centre_Management_System
             SqlCommand cmd2 = new SqlCommand("Delete from payment where id = "+payment_id, con);
             cmd2.ExecuteNonQuery();
 
+
+            SqlCommand cmd3 = new SqlCommand("SELECT TOP 1 id FROM receipt ORDER BY Id DESC", con);
+            SqlDataReader reader = cmd3.ExecuteReader();
+            if (reader.Read())
+            {
+                r_id = Convert.ToInt32(reader["id"]);
+                MessageBox.Show(r_id.ToString());
+            }
+
+           
             con.Close();
+
+            return r_id;
         }
 
     }

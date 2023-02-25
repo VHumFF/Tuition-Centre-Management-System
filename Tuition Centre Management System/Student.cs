@@ -119,7 +119,7 @@ namespace Tuition_Centre_Management_System
             //submit subject change request
             string progress = "";
             bool submit_request = true;
-            bool check_ticket_exist = check_request_ticket(username);
+            bool check_ticket_exist = check_request_ticket(username, current_subject_id, change_to_subject_id);
             //check if student already have a request in pending if no, proceed
             if (!check_ticket_exist)
             {
@@ -162,18 +162,28 @@ namespace Tuition_Centre_Management_System
             
         }
 
-        private bool check_request_ticket(string u_name)
+        private bool check_request_ticket(string u_name, int c_sub, int n_sub)
         {
             //check whether student already have a request ticket in pending
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["myCS"].ToString());
             con.Open();
 
-            SqlCommand cmd = new SqlCommand("select * from request where studentid = (select id from student where userid = (select id from users where username = '"+u_name+"'))", con);
+            SqlCommand cmd = new SqlCommand("select * from request where studentid = (select id from student where userid = (select id from users where username = '"+u_name+"')) and currentsubjectid = "+c_sub, con);
             SqlDataReader reader;
             reader = cmd.ExecuteReader();
             if (reader.Read())
             {
-                MessageBox.Show("You can only submit 1 request ticket each time", "Request Submission", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show("You already sent a request to change this subject", "Request Submission", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                return true;
+            }
+
+            reader.Close();
+            SqlCommand cmd2 = new SqlCommand("select * from request where studentid = (select id from student where userid = (select id from users where username = '" + u_name + "')) and newsubjectid = " + n_sub, con);
+            SqlDataReader reader2;
+            reader2 = cmd2.ExecuteReader();
+            if (reader2.Read())
+            {
+                MessageBox.Show("You already sent a request to change to this subject", "Request Submission", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 return true;
             }
 
@@ -181,10 +191,10 @@ namespace Tuition_Centre_Management_System
             return false;
         }
 
-        public Tuple<string, string, string> get_requset_info()
+        public Tuple<int, string, string> get_requset_info()
         {
             //return request infomation
-            string r_id = "";
+
             string c_sub_id = "";
             string n_sub_id = "";
             string c_sub_name = "";
@@ -192,35 +202,25 @@ namespace Tuition_Centre_Management_System
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["myCS"].ToString());
             con.Open();
 
-            //get request id
-            SqlCommand cmd = new SqlCommand("select id from request where studentid = (select id from student where userid = (select id from users where username = '"+username+"'))", con);
-            SqlDataReader reader = cmd.ExecuteReader();
-            if (reader.Read())
+            //get request information
+            SqlCommand cmd2 = new SqlCommand("select currentsubjectid, newsubjectid from request where id = " + request_id, con);
+            SqlDataReader reader2;
+            reader2 = cmd2.ExecuteReader();
+            if (reader2.Read())
             {
-                r_id = reader["id"].ToString();
-                reader.Close();
+                c_sub_id = reader2["currentsubjectid"].ToString();
+                n_sub_id = reader2["newsubjectid"].ToString();
 
-                //get request information
-                SqlCommand cmd2 = new SqlCommand("select currentsubjectid, newsubjectid from request where id = " + r_id, con);
-                SqlDataReader reader2;
-                reader2 = cmd2.ExecuteReader();
-                if (reader2.Read())
-                {
-                    c_sub_id = reader2["currentsubjectid"].ToString();
-                    n_sub_id = reader2["newsubjectid"].ToString();
-
-                    Tutor obj = new Tutor(Convert.ToInt32(c_sub_id));
-                    c_sub_name = obj.get_subject_name();
-                    Tutor obj2 = new Tutor(Convert.ToInt32(n_sub_id));
-                    n_sub_name = obj2.get_subject_name();
-                }
+                Tutor obj = new Tutor(Convert.ToInt32(c_sub_id));
+                c_sub_name = obj.get_subject_name();
+                Tutor obj2 = new Tutor(Convert.ToInt32(n_sub_id));
+                n_sub_name = obj2.get_subject_name();
             }
 
-            var request_info = Tuple.Create(r_id, c_sub_name, n_sub_name);
+            var request_info = Tuple.Create(request_id, c_sub_name, n_sub_name);
 
             con.Close();
             return request_info;
-
 
         }
 
@@ -230,7 +230,9 @@ namespace Tuition_Centre_Management_System
             SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["myCS"].ToString());
             con.Open();
 
-            SqlCommand cmd = new SqlCommand("update enroll set progress = 'In Progress' where subjectid = (select currentsubjectid from request where id = " + request_id + ") and studentid = (select studentid from request where id = " + request_id + ")", con);
+            SqlCommand cmd = new SqlCommand("update enroll set progress = 'In Progress' where subjectid = " +
+                "(select currentsubjectid from request where id = " + request_id + ") and studentid = " +
+                "(select studentid from request where id = " + request_id + ")", con);
             cmd.ExecuteNonQuery();
 
             SqlCommand cmd2 = new SqlCommand("delete from request where id = "+request_id, con);
@@ -355,6 +357,25 @@ namespace Tuition_Centre_Management_System
             var receipt_info = Tuple.Create(p_date, amount);
             con.Close();
             return receipt_info;
+        }
+
+
+        public ArrayList get_request_id_list()
+        {
+            //get list of subject student enrolled in
+            ArrayList r_id_list = new ArrayList();
+            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["myCS"].ToString());
+            con.Open();
+
+            SqlCommand cmd = new SqlCommand("select id from request where studentid = (select id from student where userid = (select id from users where username = '" + username + "'))", con);
+            SqlDataReader reader;
+            reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                r_id_list.Add(reader.GetInt32(0));
+            }
+            con.Close();
+            return r_id_list;
         }
 
 

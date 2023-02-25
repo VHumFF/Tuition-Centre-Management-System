@@ -220,6 +220,7 @@ namespace Tuition_Centre_Management_System
                 address = Convert.ToString(reader["address"]);
             }
 
+            con.Close();
             var student_info = Tuple.Create(id, name, email, contact, address);
             return student_info;
         }

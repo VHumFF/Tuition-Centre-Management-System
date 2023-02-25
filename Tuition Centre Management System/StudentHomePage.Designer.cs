@@ -67,7 +67,8 @@
             this.lblname = new System.Windows.Forms.Label();
             this.tabcon = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.lblMessage = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.lstRequestIDl = new System.Windows.Forms.ListBox();
             this.lblNew_Sub = new System.Windows.Forms.Label();
             this.lblCurrent_sub1 = new System.Windows.Forms.Label();
             this.lblRequestid = new System.Windows.Forms.Label();
@@ -76,6 +77,7 @@
             this.lblChange_sub_to = new System.Windows.Forms.Label();
             this.lblCurrent_sub = new System.Windows.Forms.Label();
             this.tabUpdateStudies = new System.Windows.Forms.TabPage();
+            this.lblList_of_sub_enrolled = new System.Windows.Forms.Label();
             this.lblSub_progress = new System.Windows.Forms.Label();
             this.lblSubject_progress = new System.Windows.Forms.Label();
             this.lblSubject_name4 = new System.Windows.Forms.Label();
@@ -83,14 +85,13 @@
             this.lblSubject_name3 = new System.Windows.Forms.Label();
             this.lstSubject_enrolled_list = new System.Windows.Forms.ListBox();
             this.tabPayment = new System.Windows.Forms.TabPage();
+            this.lblList_of_receipt = new System.Windows.Forms.Label();
+            this.lblList_of_unpaid_fee = new System.Windows.Forms.Label();
             this.lblOutstanding = new System.Windows.Forms.Label();
             this.btnViewReceipt = new System.Windows.Forms.Button();
             this.btnPay = new System.Windows.Forms.Button();
             this.lstReceipt = new System.Windows.Forms.ListBox();
             this.lstUnpaidfee = new System.Windows.Forms.ListBox();
-            this.lblList_of_sub_enrolled = new System.Windows.Forms.Label();
-            this.lblList_of_unpaid_fee = new System.Windows.Forms.Label();
-            this.lblList_of_receipt = new System.Windows.Forms.Label();
             this.tabRequest.SuspendLayout();
             this.tabView_schedule.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvClass_Shedule)).BeginInit();
@@ -501,7 +502,8 @@
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.lblMessage);
+            this.tabPage1.Controls.Add(this.label2);
+            this.tabPage1.Controls.Add(this.lstRequestIDl);
             this.tabPage1.Controls.Add(this.lblNew_Sub);
             this.tabPage1.Controls.Add(this.lblCurrent_sub1);
             this.tabPage1.Controls.Add(this.lblRequestid);
@@ -517,14 +519,24 @@
             this.tabPage1.Text = "Withdraw Request";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // lblMessage
+            // label2
             // 
-            this.lblMessage.AutoSize = true;
-            this.lblMessage.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.lblMessage.Location = new System.Drawing.Point(195, 171);
-            this.lblMessage.Name = "lblMessage";
-            this.lblMessage.Size = new System.Drawing.Size(0, 18);
-            this.lblMessage.TabIndex = 8;
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(533, 3);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(103, 18);
+            this.label2.TabIndex = 10;
+            this.label2.Text = "Request ID List";
+            // 
+            // lstRequestIDl
+            // 
+            this.lstRequestIDl.FormattingEnabled = true;
+            this.lstRequestIDl.ItemHeight = 18;
+            this.lstRequestIDl.Location = new System.Drawing.Point(533, 35);
+            this.lstRequestIDl.Name = "lstRequestIDl";
+            this.lstRequestIDl.Size = new System.Drawing.Size(120, 94);
+            this.lstRequestIDl.TabIndex = 9;
+            this.lstRequestIDl.SelectedIndexChanged += new System.EventHandler(this.lstRequestIDl_SelectedIndexChanged);
             // 
             // lblNew_Sub
             // 
@@ -605,6 +617,15 @@
             this.tabUpdateStudies.Text = "UpdateStudies";
             this.tabUpdateStudies.UseVisualStyleBackColor = true;
             // 
+            // lblList_of_sub_enrolled
+            // 
+            this.lblList_of_sub_enrolled.AutoSize = true;
+            this.lblList_of_sub_enrolled.Location = new System.Drawing.Point(20, 3);
+            this.lblList_of_sub_enrolled.Name = "lblList_of_sub_enrolled";
+            this.lblList_of_sub_enrolled.Size = new System.Drawing.Size(155, 18);
+            this.lblList_of_sub_enrolled.TabIndex = 6;
+            this.lblList_of_sub_enrolled.Text = "List of Subject Enrolled";
+            // 
             // lblSub_progress
             // 
             this.lblSub_progress.AutoSize = true;
@@ -677,6 +698,24 @@
             this.tabPayment.Text = "Payment";
             this.tabPayment.UseVisualStyleBackColor = true;
             // 
+            // lblList_of_receipt
+            // 
+            this.lblList_of_receipt.AutoSize = true;
+            this.lblList_of_receipt.Location = new System.Drawing.Point(413, 9);
+            this.lblList_of_receipt.Name = "lblList_of_receipt";
+            this.lblList_of_receipt.Size = new System.Drawing.Size(98, 18);
+            this.lblList_of_receipt.TabIndex = 7;
+            this.lblList_of_receipt.Text = "List of Receipt";
+            // 
+            // lblList_of_unpaid_fee
+            // 
+            this.lblList_of_unpaid_fee.AutoSize = true;
+            this.lblList_of_unpaid_fee.Location = new System.Drawing.Point(21, 9);
+            this.lblList_of_unpaid_fee.Name = "lblList_of_unpaid_fee";
+            this.lblList_of_unpaid_fee.Size = new System.Drawing.Size(119, 18);
+            this.lblList_of_unpaid_fee.TabIndex = 6;
+            this.lblList_of_unpaid_fee.Text = "List of Unpaid fee";
+            // 
             // lblOutstanding
             // 
             this.lblOutstanding.AutoSize = true;
@@ -727,33 +766,6 @@
             this.lstUnpaidfee.Size = new System.Drawing.Size(120, 94);
             this.lstUnpaidfee.TabIndex = 0;
             this.lstUnpaidfee.SelectedIndexChanged += new System.EventHandler(this.lstUnpaidfee_SelectedIndexChanged);
-            // 
-            // lblList_of_sub_enrolled
-            // 
-            this.lblList_of_sub_enrolled.AutoSize = true;
-            this.lblList_of_sub_enrolled.Location = new System.Drawing.Point(20, 3);
-            this.lblList_of_sub_enrolled.Name = "lblList_of_sub_enrolled";
-            this.lblList_of_sub_enrolled.Size = new System.Drawing.Size(155, 18);
-            this.lblList_of_sub_enrolled.TabIndex = 6;
-            this.lblList_of_sub_enrolled.Text = "List of Subject Enrolled";
-            // 
-            // lblList_of_unpaid_fee
-            // 
-            this.lblList_of_unpaid_fee.AutoSize = true;
-            this.lblList_of_unpaid_fee.Location = new System.Drawing.Point(21, 9);
-            this.lblList_of_unpaid_fee.Name = "lblList_of_unpaid_fee";
-            this.lblList_of_unpaid_fee.Size = new System.Drawing.Size(119, 18);
-            this.lblList_of_unpaid_fee.TabIndex = 6;
-            this.lblList_of_unpaid_fee.Text = "List of Unpaid fee";
-            // 
-            // lblList_of_receipt
-            // 
-            this.lblList_of_receipt.AutoSize = true;
-            this.lblList_of_receipt.Location = new System.Drawing.Point(413, 9);
-            this.lblList_of_receipt.Name = "lblList_of_receipt";
-            this.lblList_of_receipt.Size = new System.Drawing.Size(98, 18);
-            this.lblList_of_receipt.TabIndex = 7;
-            this.lblList_of_receipt.Text = "List of Receipt";
             // 
             // StudentHomePage
             // 
@@ -835,7 +847,6 @@
         private Label lblCurrent_sub1;
         private Label lblRequestid;
         private Label label1;
-        private Label lblMessage;
         private TabPage tabUpdateStudies;
         private Label lblSub_progress;
         private Label lblSubject_progress;
@@ -852,5 +863,7 @@
         private Label lblList_of_sub_enrolled;
         private Label lblList_of_receipt;
         private Label lblList_of_unpaid_fee;
+        private Label label2;
+        private ListBox lstRequestIDl;
     }
 }

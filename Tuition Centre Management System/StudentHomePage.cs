@@ -40,6 +40,9 @@ namespace Tuition_Centre_Management_System
             Student get_list = new Student(username);
             ArrayList subject_list = new ArrayList();
             ArrayList subject_change_list = new ArrayList();
+            ArrayList request_id_list = new ArrayList();
+
+            request_id_list = get_list.get_request_id_list();
             subject_list = get_list.get_enrolled_subject();
             subject_change_list = get_list.get_subject_change_list();
 
@@ -55,22 +58,11 @@ namespace Tuition_Centre_Management_System
             {
                 lstchange_Sub_list.Items.Add(item);
             }
-
-            //load request info
-            Student get_r_info = new Student(username);
-            var r_info = get_r_info.get_requset_info();
-            lblRequestid.Text = r_info.Item1;
-            lblCurrent_sub1.Text = r_info.Item2;
-            lblNew_Sub.Text = r_info.Item3;
-
-            if(lblRequestid.Text == "")
+            foreach (int item in request_id_list)
             {
-                lblMessage.Text = "You do not have any pending request";
+                lstRequestIDl.Items.Add(item);
             }
-            else
-            {
-                btnWithdraw.Enabled = true;
-            }
+
 
             //load list of unpaid fee
             ArrayList payment_id_list = new ArrayList();
@@ -230,7 +222,7 @@ namespace Tuition_Centre_Management_System
             {
                 if(item == Convert.ToInt32(subject_id))
                 {
-                    MessageBox.Show("Already enrolled in the subject");
+                    MessageBox.Show("Already enrolled in the subject", "Unable to Send Request", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     already_enrolled = true;
                 }
             }
@@ -244,13 +236,16 @@ namespace Tuition_Centre_Management_System
                     btnRequest.Enabled = false;
 
                     //reset request list and label
-                    Student get_r_info = new Student(username);
-                    var r_info = get_r_info.get_requset_info();
-                    lblRequestid.Text = r_info.Item1;
-                    lblCurrent_sub1.Text = r_info.Item2;
-                    lblNew_Sub.Text = r_info.Item3;
-                    btnWithdraw.Enabled = true;
-                    lblMessage.Text = "";
+                    Student get_list = new Student(username);
+                    ArrayList request_id_list = new ArrayList();
+
+                    lstRequestIDl.Items.Clear();
+                    request_id_list = get_list.get_request_id_list();
+                    foreach (int item in request_id_list)
+                    {
+                        lstRequestIDl.Items.Add(item);
+                    }
+
                 }
                 
             }
@@ -268,10 +263,21 @@ namespace Tuition_Centre_Management_System
 
                 //reset button and label
                 btnWithdraw.Enabled = false;
-                lblMessage.Text = "You do not have any pending request";
                 lblRequestid.Text = "";
                 lblCurrent_sub1.Text = "";
                 lblNew_Sub.Text = "";
+
+                MessageBox.Show("You have withdraw the request", "Request Withdrawal Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Student get_list = new Student(username);
+                ArrayList request_id_list = new ArrayList();
+
+                lstRequestIDl.Items.Clear();
+                request_id_list = get_list.get_request_id_list();
+                foreach (int item in request_id_list)
+                {
+                    lstRequestIDl.Items.Add(item);
+                }
+
             }
             
 
@@ -379,6 +385,27 @@ namespace Tuition_Centre_Management_System
             string receipt_id = lstReceipt.GetItemText(lstReceipt.SelectedItem);
             Receipt viewreceipt = new Receipt(Convert.ToInt32(receipt_id));
             viewreceipt.ShowDialog();
+        }
+
+        private void lstRequestIDl_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string request_id = lstRequestIDl.GetItemText(lstRequestIDl.SelectedItem);
+
+            if (lstRequestIDl.SelectedItems.Count > 0)
+            {
+                Student get_r_info = new Student(Convert.ToInt32(request_id));
+                var r_info = get_r_info.get_requset_info();
+                lblRequestid.Text = r_info.Item1.ToString();
+                lblCurrent_sub1.Text = r_info.Item2;
+                lblNew_Sub.Text = r_info.Item3;
+
+                btnWithdraw.Enabled = true;
+            }
+
+
+            
+
+            
         }
     }
 }
