@@ -511,7 +511,7 @@ namespace Tuition_Centre_Management_System
             SqlDataReader reader = cmd3.ExecuteReader();
             if (reader.Read())
             {
-                r_id = Convert.ToInt32(reader["id"]);
+
                 MessageBox.Show(r_id.ToString());
             }
 
