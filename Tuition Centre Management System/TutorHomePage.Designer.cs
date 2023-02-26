@@ -416,9 +416,8 @@
             this.lblsubject_name_selected1.AutoSize = true;
             this.lblsubject_name_selected1.Location = new System.Drawing.Point(432, 17);
             this.lblsubject_name_selected1.Name = "lblsubject_name_selected1";
-            this.lblsubject_name_selected1.Size = new System.Drawing.Size(45, 18);
+            this.lblsubject_name_selected1.Size = new System.Drawing.Size(0, 18);
             this.lblsubject_name_selected1.TabIndex = 13;
-            this.lblsubject_name_selected1.Text = "label2";
             // 
             // lblsubject_name1
             // 
@@ -541,9 +540,8 @@
             this.lblSubject_name_selected3.AutoSize = true;
             this.lblSubject_name_selected3.Location = new System.Drawing.Point(122, 13);
             this.lblSubject_name_selected3.Name = "lblSubject_name_selected3";
-            this.lblSubject_name_selected3.Size = new System.Drawing.Size(45, 18);
+            this.lblSubject_name_selected3.Size = new System.Drawing.Size(0, 18);
             this.lblSubject_name_selected3.TabIndex = 15;
-            this.lblSubject_name_selected3.Text = "label2";
             // 
             // lblSubject_name3
             // 

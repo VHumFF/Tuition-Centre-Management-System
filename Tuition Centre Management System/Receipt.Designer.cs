@@ -39,6 +39,7 @@
             this.lbldivider = new System.Windows.Forms.Label();
             this.lblDivider2 = new System.Windows.Forms.Label();
             this.lblReceipt = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lblTuitionName
@@ -87,7 +88,7 @@
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(94, 262);
+            this.btnClose.Location = new System.Drawing.Point(94, 335);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(75, 23);
             this.btnClose.TabIndex = 4;
@@ -150,12 +151,24 @@
             this.lblReceipt.TabIndex = 10;
             this.lblReceipt.Text = "RECEIPT";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Gill Sans MT", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(69, 273);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(132, 30);
+            this.label1.TabIndex = 11;
+            this.label1.Text = "Thank You !";
+            // 
             // Receipt
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(155)))), ((int)(((byte)(240)))));
-            this.ClientSize = new System.Drawing.Size(279, 297);
+            this.ClientSize = new System.Drawing.Size(279, 370);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.lblReceipt);
             this.Controls.Add(this.lblDivider2);
             this.Controls.Add(this.lbldivider);
@@ -188,5 +201,6 @@
         private Label lbldivider;
         private Label lblDivider2;
         private Label lblReceipt;
+        private Label label1;
     }
 }
